@@ -1,7 +1,17 @@
 # dhbw-study-smart
 DHBW TINF22B4 Software Engineering Project: DHBW Study Smart Webapp
 
-## Prerequisites
+## Table of Contents
+- [About](#about)
+- [Prerequisites](#-prerequisites)
+  - [nvm (Node Version Manager)](#nvm-node-version-manager)
+  - [Node.js and npm](#nodejs-and-npm)
+  - [Angular CLI](#angular-cli)
+
+## About
+TBA
+
+## 📝 Prerequisites
 
 ### nvm (Node Version Manager)
 Install nvm on **unix** or **macOS** systems by following this installation guide: https://github.com/nvm-sh/nvm#installing-and-updating
@@ -24,4 +34,9 @@ npm -v
 Install the Angular CLI with the following command:
 ```
 npm install -g @angular/cli
+```
+
+Check your version of the Angular CLI with the following command:
+```
+ng version
 ```

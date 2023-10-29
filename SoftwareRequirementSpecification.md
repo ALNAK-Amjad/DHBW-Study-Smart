@@ -19,13 +19,14 @@ Der Geltungsbereich dieser Software-Anforderungsspezifikation umfasst die Defini
 - [GitHub Repo](https://github.com/HoshizawaYuriko/dhbw-study-smart) (nur sichtbar für Projektmitglieder)
 - [UI-Mockup Figma](https://www.figma.com/file/ePWy89JDHyOeOx02FN3OTo/Studi-Verwaltung-Webapp?type=design&node-id=0-1&mode=design) (öffentlich)
 - [UML-Anwendungsfalldiagramm](https://hoshizawa-yuriko.atlassian.net/wiki/spaces/PD/pages/2031617/UML-Anwendungsfalldiagramm) (nur sichtbar für Projektmitglieder)
+- [UML-Aktivitäts-/Sequenzdiagramme](https://hoshizawa-yuriko.atlassian.net/wiki/spaces/PD/pages/2490369/UML-Aktivit+tsdiagramme+und+UML-Sequenzdiagramme) (nur sichtbar für Projektmitglieder)
 
 ### 2. Funktionale Anforderungen
 
 #### 2.1 Übersicht
 Bei der Anwendung handelt es sich um eine Webapplikation, welche grundsätzlich nur für Desktop-Geräte entwickelt wird.
 Über die Homepage soll man sich als registrierter User anmelden, wodurch man dann vollen Zugriff auf alle Funktionallitäten der Webapp hat. Über eine Navigationsleiste kann man so auf verschiedene Funktionen bzw. Features der Webapp zugreifen, welche in den nachfolgenden Punkten beschrieben werden.
-Das UI-Mockup für alle Features wird mithilfe von Figma erstellt und wird [hier](https://www.figma.com/file/ePWy89JDHyOeOx02FN3OTo/Studi-Verwaltung-Webapp) bearbeitet.
+Das UI-Mockup für alle Features wird mithilfe von Figma erstellt und wird [hier](https://www.figma.com/file/ePWy89JDHyOeOx02FN3OTo/Studi-Verwaltung-Webapp) bearbeitet. Die UML-Anwendungsfall-, Aktivitäts- und Sequenzdiagramme aller Features sind unter den Links in [1.4 Referenzen](#14-referenzen) einsehbar.
 
 #### 2.2 Notenplaner / Notenübersicht
 Der Notenplaner soll eine Übersicht für alle erzielten Noten für einzelne Fächer/Vorlesungen darstellen und den Notendurchschnitt pro Semester sowie den Notendurchschnitt insgesamt berechnen. Zudem soll man seine eigene Zielnote sowie der tatsächlich erreichte Note eintragen können. Dies bietet dann eine direkte Möglichkeit den eigenen Lernfortschritt zu prüfen, da man einen direkten Vergleich von Wunschnote zur tatsächlich erreichten Note hat.

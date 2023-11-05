@@ -19,24 +19,33 @@ Install nvm on **unix** or **macOS** systems by following this installation guid
 To install nvm on a **Windows** system download and run the **nvm-setup.exe** from the following: https://github.com/coreybutler/nvm-windows/releases
 
 ### Node.js and npm
-Install Node.js via the following command (npm will be installed with Node.js):
-```
-nvm install node --reinstall-packages-from=node
+Install Node.js depending on the supported Node.js version of the current Angular version. For reference see: https://angular.io/guide/versions
+
+Node.js can be installed via the following command and change the version accordingly if needed (npm will be installed automatically with Node.js):
+```bash
+nvm install 18.18.2
 ```
 
 Check your installation and version of Node.js and npm with the following commands:
-```
+```bash
 node -v
+```
+```bash
 npm -v
+```
+
+If you have a different Node.js version on your system you can change the used version via the following command (change the version accordingly):
+```bash
+nvm use 18.18.2
 ```
 
 ### Angular CLI
 Install the Angular CLI with the following command:
-```
+```bash
 npm install -g @angular/cli
 ```
 
 Check your version of the Angular CLI with the following command:
-```
+```bash
 ng version
 ```

@@ -1,4 +1,4 @@
 package com.example.dhbwstudysmartbackend.service;
 
-public interface UserService {
+public interface UsersService {
 }

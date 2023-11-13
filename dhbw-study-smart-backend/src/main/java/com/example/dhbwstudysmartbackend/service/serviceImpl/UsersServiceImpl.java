@@ -1,8 +1,8 @@
 package com.example.dhbwstudysmartbackend.service.serviceImpl;
 
-import com.example.dhbwstudysmartbackend.service.UserService;
+import com.example.dhbwstudysmartbackend.service.UsersService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UsersServiceImpl implements UsersService {
 }

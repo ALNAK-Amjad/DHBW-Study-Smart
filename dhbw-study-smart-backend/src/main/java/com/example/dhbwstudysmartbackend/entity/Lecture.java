@@ -19,7 +19,5 @@ public class Lecture {
 
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "CourseId", nullable = false)
-    private Course course;
+
 }

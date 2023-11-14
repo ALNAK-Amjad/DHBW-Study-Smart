@@ -7,6 +7,7 @@ DHBW TINF22B4 Software Engineering Project: DHBW Study Smart Webapp
   - [nvm (Node Version Manager)](#nvm-node-version-manager)
   - [Node.js and npm](#nodejs-and-npm)
   - [Angular CLI](#angular-cli)
+  - [H2 Database Console](#h2-database-console)
 
 ## About
 TBA
@@ -53,9 +54,9 @@ ng version
 ### H2 Database Console
 Start the Spring Boot Application and check the following localhost.
 The port is the same as the port your Spring application is running on.
-```http
+
 http://localhost:8080/h2-console
-```
+
 Then you will see the following console
 ![img.png](images/img.png)
 

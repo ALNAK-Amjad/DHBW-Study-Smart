@@ -1,0 +1,24 @@
+<p>login works!</p>
+
+<div class="login-container flex-col">
+    <form class="flex-col" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+            <mat-label>E-Mail</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="password" type="password">
+        </mat-form-field>
+
+        <button *ngIf="loginForm.valid" mat-raised-button color="primary" type="submit">Login</button>
+        <button *ngIf="!loginForm.valid" mat-raised-button disabled>Login</button>
+    </form>
+
+    <!-- @TODO remove later -->
+    <div *ngIf="responseTest">
+        <p>User ID: {{ responseTest.userId }}</p>
+        <p>Verified: {{ responseTest.verified }}</p>
+    </div>
+</div>

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class Semester {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long SemsterId;
+    private Long SemesterId;
 
 
 }

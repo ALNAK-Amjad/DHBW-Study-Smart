@@ -10,7 +10,9 @@ export class LoginService {
     constructor(private http: HttpClient) { }
 
     // Invoke a GET-Request for Login
-    login(username: string, password: string): Observable<any> {
-        return this.http.get(`http://localhost:8080/user/verify?email=${username}&password=${password}`);
+    login(email: string, password: string): Observable<any> {
+        const queryParams = {"email": email, "password": password};
+
+        return this.http.get(`http://localhost:8080/user/verify`, {params: queryParams});
     }
 }

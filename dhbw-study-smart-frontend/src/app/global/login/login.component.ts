@@ -13,14 +13,17 @@ export class LoginComponent {
         password: new FormControl('', [Validators.required])
     });
 
-    // Test
+    // Test (remove later)
     responseTest: any;
 
     constructor(private loginService: LoginService) { }
 
     // Invoke Backend-Request for Login
     onSubmit() {
-        this.loginService.login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value)
+        const email = this.loginForm.get('email')?.value;
+        const password = this.loginForm.get('password')?.value;
+
+        this.loginService.login(email, password)
             .subscribe(
                 data => {
                     console.log(data);

@@ -13,6 +13,7 @@ yarn-error.log
 
 # Angular
 package-lock.json
+.angular
 
 # IDEs and editors
 .idea/

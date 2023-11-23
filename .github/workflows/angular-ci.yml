@@ -10,6 +10,10 @@ on:
   pull_request:
     branches: [ "main", "SSW-55-git-ci-cd-pipeline" ]
 
+defaults:
+  run:
+    working-directory: ./dhbw-study-smart-frontend
+
 jobs:
   build:
 

@@ -5,10 +5,8 @@ name: Angular CI
 
 on:
   push:
-    # Remove "SSW-55-git-ci-cd-pipeline" later, currently included for testing
-    branches: [ "main", "SSW-55-git-ci-cd-pipeline" ]
   pull_request:
-    branches: [ "main", "SSW-55-git-ci-cd-pipeline" ]
+    branches: [ "main" ]
 
 defaults:
   run:

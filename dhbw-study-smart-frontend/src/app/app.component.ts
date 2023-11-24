@@ -7,8 +7,6 @@ import { Router } from '@angular/router';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    title = 'dhbw-study-smart-frontend';
-
     constructor(private router: Router) { }
 
     ngOnInit() {

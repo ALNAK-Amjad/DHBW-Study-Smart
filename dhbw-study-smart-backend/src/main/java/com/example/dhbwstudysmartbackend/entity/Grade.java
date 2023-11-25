@@ -26,4 +26,5 @@ public class Grade {
     @ManyToOne
     @JoinColumn(name = "LectureId", nullable = false)
     private Lecture lecture;
+
 }

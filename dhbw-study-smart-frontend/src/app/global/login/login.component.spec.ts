@@ -1,4 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LoginComponent } from './login.component';
 
@@ -8,7 +13,15 @@ describe('LoginComponent', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [LoginComponent]
+            declarations: [LoginComponent],
+            imports: [
+                HttpClientTestingModule,
+                MatFormFieldModule,
+                MatInputModule,
+                ReactiveFormsModule,
+                BrowserAnimationsModule
+            ],
+            providers: [LoginComponent]
         });
         fixture = TestBed.createComponent(LoginComponent);
         component = fixture.componentInstance;

@@ -58,7 +58,7 @@ The port is the same as the port your Spring application is running on.
 http://localhost:8080/h2-console
 
 Then you will see the following console
-![img.png](images/img.png)
+![img.png](images/H2-Database.PNG)
 
 Everything you have to input you can find in the application.properties file from 
 the Spring application. At this point in time the following input is correct: 
@@ -66,7 +66,7 @@ the Spring application. At this point in time the following input is correct:
 
 Driver :    ```org.h2.Driver```
 
-JDBC url:   ```jdbc:h2:mem:./Data/h2db```
+JDBC url:   ```jdbc:h2:mem:.resources/h2db```
 
 User Name:  ```sa```
 

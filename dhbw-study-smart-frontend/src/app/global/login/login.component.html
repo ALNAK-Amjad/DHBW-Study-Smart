@@ -15,10 +15,4 @@
         <button *ngIf="loginForm.valid" mat-raised-button color="primary" type="submit">Login</button>
         <button *ngIf="!loginForm.valid" mat-raised-button disabled>Login</button>
     </form>
-
-    <!-- @TODO remove later -->
-    <div *ngIf="responseTest">
-        <p>User ID: {{ responseTest.userId }}</p>
-        <p>Verified: {{ responseTest.verified }}</p>
-    </div>
 </div>

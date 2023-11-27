@@ -13,9 +13,6 @@ export class LoginComponent {
         password: new FormControl('', [Validators.required])
     });
 
-    // Test (remove later)
-    responseTest: any;
-
     constructor(private loginService: LoginService) { }
 
     // Invoke Backend-Request for Login
@@ -27,7 +24,6 @@ export class LoginComponent {
             .subscribe(
                 data => {
                     console.log(data);
-                    this.responseTest = data;
                     // handle successful login
                 },
                 error => {

@@ -21,14 +21,16 @@ export class LoginComponent {
         const password = this.loginForm.get('password')?.value;
 
         this.loginService.login(email, password)
-            .subscribe(
-                data => {
+            .subscribe({
+                next: (data) => {
                     console.log(data);
                     // handle successful login
                 },
-                error => {
+                error: (error) => {
                     console.log(error);
                     // handle error
-                });
+                }
+            });
+
     }
 }

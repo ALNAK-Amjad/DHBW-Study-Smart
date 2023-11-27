@@ -6,11 +6,20 @@
 
 // mat-card containing the entire login form
 .login-container {
-    width: 400px;
+    width: 420px;
     padding: 20px;
 
     mat-card-header {
         margin-bottom: 30px;
+    }
+}
+
+// Displayed error message on failed login attempt
+.login-error-notice-container {
+    margin-left: auto;
+
+    .login-error-notice {
+        color: red;
     }
 }
 

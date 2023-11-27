@@ -16,6 +16,10 @@
                     <input matInput formControlName="password" type="password">
                 </mat-form-field>
 
+                <div *ngIf="loginResponseData && !loginResponseData?.verified" class="login-error-notice-container">
+                    <p class="login-error-notice">Login fehlgeschlagen. Bitte versuchen Sie es erneut.</p>
+                </div>
+
                 <div class="sign-up-notice-container flex-row">
                     <p class="sign-up-notice">Noch kein Konto?</p>
                     <a class="sign-up-notice-link" routerLink="/registration">Jetzt Registrieren!</a>

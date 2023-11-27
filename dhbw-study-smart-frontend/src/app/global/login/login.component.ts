@@ -13,6 +13,8 @@ export class LoginComponent {
         password: new FormControl('', [Validators.required])
     });
 
+    loginResponseData: null | { verified: boolean; userId: number; } = null;
+
     constructor(private loginService: LoginService) { }
 
     // Invoke Backend-Request for Login
@@ -23,12 +25,12 @@ export class LoginComponent {
         this.loginService.login(email, password)
             .subscribe({
                 next: (data) => {
-                    console.log(data);
-                    // handle successful login
+                    this.loginResponseData = data;
+                    // @TODO forward to main application on successful login
                 },
                 error: (error) => {
                     console.log(error);
-                    // handle error
+                    // @TODO handle error
                 }
             });
 

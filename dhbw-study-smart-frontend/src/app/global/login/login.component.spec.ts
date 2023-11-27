@@ -4,6 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
 
 import { LoginComponent } from './login.component';
 
@@ -19,7 +20,8 @@ describe('LoginComponent', () => {
                 MatFormFieldModule,
                 MatInputModule,
                 ReactiveFormsModule,
-                BrowserAnimationsModule
+                BrowserAnimationsModule,
+                MatCardModule
             ],
             providers: [LoginComponent]
         });

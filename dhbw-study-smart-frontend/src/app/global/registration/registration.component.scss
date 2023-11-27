@@ -1,0 +1,33 @@
+// Centers the registration-container in the page
+.registration-frame {
+    align-items: center;
+    justify-content: center;
+}
+
+// mat-card containing the entire registration form
+.registration-container {
+    width: 420px;
+    padding: 20px;
+
+    mat-card-header {
+        margin-bottom: 30px;
+    }
+}
+
+.sign-in-notice-container {
+    margin-left: auto;
+    margin-bottom: 20px;
+
+    .sign-in-notice {
+        margin-right: 5px;
+        margin-bottom: 0px;
+    }
+
+    .sign-in-notice-link {
+        margin-bottom: 0px;
+    }
+}
+
+.button-container {
+    margin-left: auto;
+}

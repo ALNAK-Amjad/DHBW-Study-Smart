@@ -6,26 +6,24 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
-
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Embeddable
-public class includedLectures {
+public class IncludedLectures {
 
     @EmbeddedId
     private IncludedLecturesKey id;
 
     @ManyToOne
-    @MapsId("courseId")
-    @JoinColumn(name = "courseId")
-    private Course course;
+    @MapsId("studyprogramid")
+    @JoinColumn(name = "studyprogram_id")
+    private StudyProgram studyProgram;
 
     @ManyToOne
     @MapsId("lectureId")
-    @JoinColumn(name = "lectureId")
+    @JoinColumn(name = "lecture_id")
     private Lecture lecture;
 }

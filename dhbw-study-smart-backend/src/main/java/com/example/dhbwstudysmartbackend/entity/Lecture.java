@@ -15,7 +15,7 @@ import java.util.Set;
 public class Lecture {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long LectureId;
+    private Long lectureId;
 
     private String name;
 

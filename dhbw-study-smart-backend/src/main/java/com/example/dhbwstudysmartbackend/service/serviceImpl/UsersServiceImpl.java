@@ -5,9 +5,9 @@ import com.example.dhbwstudysmartbackend.entity.userDTOs.LoginUserDTO;
 import com.example.dhbwstudysmartbackend.entity.userDTOs.RegistrationUserDTO;
 import com.example.dhbwstudysmartbackend.entity.userDTOs.VerifyUserDTO;
 import com.example.dhbwstudysmartbackend.repository.CourseRepository;
+import com.example.dhbwstudysmartbackend.repository.StudyProgramRepository;
 import com.example.dhbwstudysmartbackend.repository.UserRepository;
 import com.example.dhbwstudysmartbackend.service.UsersService;
-import com.example.dhbwstudysmartbackend.entity.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +16,14 @@ import java.util.Objects;
 @Service
 public class UsersServiceImpl implements UsersService {
     private final UserRepository userRepo;
+    private final StudyProgramRepository studyProgramRepository;
     private final CourseRepository courseRepository;
+
+
     @Autowired
-    public UsersServiceImpl(UserRepository userRepo, CourseRepository courseRepository) {
+    public UsersServiceImpl(UserRepository userRepo, CourseRepository courseRepository, StudyProgramRepository studyProgramRepository) {
         this.userRepo = userRepo;
+        this.studyProgramRepository = studyProgramRepository;
         this.courseRepository = courseRepository;
     }
 
@@ -45,12 +49,10 @@ public class UsersServiceImpl implements UsersService {
         user.setPassword(registrationUserDTO.getPassword());
         user.setEmail(registrationUserDTO.getEmail());
         user.setStudentNumber(registrationUserDTO.getStudentNumber());
+        user.setStudyProgram(studyProgramRepository.findById(registrationUserDTO.getStudyProgramId()).get());
 
-        Course course = new Course();
-        course = courseRepository.save(course);
-
-        user.setCourse(course);
         return userRepo.save(user);
+
     }
 
 }

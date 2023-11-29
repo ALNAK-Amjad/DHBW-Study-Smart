@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long DocumentId;
+    private Long documentId;
 
     private String Path;
 

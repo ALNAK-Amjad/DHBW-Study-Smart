@@ -1,4 +1,6 @@
 package com.example.dhbwstudysmartbackend.entity;
+
+import com.example.dhbwstudysmartbackend.entity.compositeKeys.UserInCourseKey;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,21 +12,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Grade {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long gradeId;
+public class UserInCourse {
 
-    private double grade;
-
-    private double plannedGrade;
+    @EmbeddedId
+    private UserInCourseKey id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private Users users;
+    @MapsId("courseId")
+    @JoinColumn(name = "course_id")
+    private Course course;
 
     @ManyToOne
-    @JoinColumn(name = "lecture_id", nullable = false)
+    @MapsId("userId")
+    @JoinColumn(name = "user_id")
     private Lecture lecture;
 
 }

@@ -1,26 +1,27 @@
 package com.example.dhbwstudysmartbackend.entity;
-import jakarta.persistence.*;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Set;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Course {
+public class StudyProgram {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long courseId;
+    private Long studyProgramId;
 
     private String name;
 
+    private double etcs;
 
-
-
-
+    private int semesterCount;
 }

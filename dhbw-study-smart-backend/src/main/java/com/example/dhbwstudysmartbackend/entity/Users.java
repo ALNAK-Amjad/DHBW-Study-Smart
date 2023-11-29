@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long UserId;
+    private Long userId;
 
     private String firstName;
 
@@ -26,13 +26,14 @@ public class Users {
 
     private int studentNumber;
 
+
     @ManyToOne
-    @JoinColumn(name = "SemesterId", nullable = true)
+    @JoinColumn(name = "semester_id", nullable = true)
     private Semester semester;
 
     @ManyToOne
-    @JoinColumn(name = "CourseId", nullable = false)
-    private Course course;
+    @JoinColumn(name = "studyprogram_id", nullable = true)
+    private StudyProgram studyProgram;
 
 
 }

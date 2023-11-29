@@ -7,10 +7,10 @@ import java.io.Serializable;
 
 @Embeddable
 public class IncludedLecturesKey implements Serializable {
-    @Column(name = "courseId")
-    private Long courseId;
+    @Column(name = "studyprogram_id")
+    private Long studyprogramid;
 
-    @Column(name = "lectureId")
+    @Column(name = "lecture_id")
     private Long lectureId;
 
 }

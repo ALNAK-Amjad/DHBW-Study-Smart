@@ -17,12 +17,12 @@ public class StudySession {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long StudySessionId;
+    private Long studySessionId;
 
     private Time flashcardTime;
 
     @ManyToOne
-    @JoinColumn(name = "AppointmentId", nullable = true)
+    @JoinColumn(name = "appointment_id", nullable = true)
     private Appointment appointment;
 }
 

@@ -15,7 +15,7 @@ import java.sql.Timestamp;
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long AppointmentId;
+    private Long appointmentId;
 
     private Timestamp startDate;
 

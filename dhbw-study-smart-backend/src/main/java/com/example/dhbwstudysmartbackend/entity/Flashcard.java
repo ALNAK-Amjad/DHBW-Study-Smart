@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Flashcard {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long FlashcardId;
+    private Long flashcardId;
 
     private String question;
 

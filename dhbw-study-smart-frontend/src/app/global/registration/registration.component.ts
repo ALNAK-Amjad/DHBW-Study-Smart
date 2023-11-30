@@ -18,7 +18,7 @@ export class RegistrationComponent {
 
     constructor(private registrationService: RegistrationService) { }
 
-    // Invoke Backendrequest to register a new User
+    // Invoke Backend-Request to register a new user
     onSubmit() {
         this.registrationService.register(this.registrationForm.value)
             .subscribe({

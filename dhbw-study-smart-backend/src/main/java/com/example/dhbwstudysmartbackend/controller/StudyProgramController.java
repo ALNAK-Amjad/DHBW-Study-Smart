@@ -1,7 +1,7 @@
 package com.example.dhbwstudysmartbackend.controller;
 
-import com.example.dhbwstudysmartbackend.entity.Course;
-import com.example.dhbwstudysmartbackend.service.serviceImpl.CourseServiceImpl;
+import com.example.dhbwstudysmartbackend.entity.StudyProgram;
+import com.example.dhbwstudysmartbackend.service.serviceImpl.StudyProgramServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/course")
+@RequestMapping("/studyprogram")
 @CrossOrigin(origins = "http://localhost:4200")
-public class CourseController {
-    private final CourseServiceImpl courseService;
+public class StudyProgramController {
+    private final StudyProgramServiceImpl studyProgramService;
 
     @Autowired
-    public CourseController(CourseServiceImpl service) {
-        this.courseService = service;
+    public StudyProgramController(StudyProgramServiceImpl service) {
+        this.studyProgramService = service;
     }
 
     @GetMapping("/getall")
-    public List<Course> getAllCourses() {
-        return courseService.getAllCourses();
+    public List<StudyProgram> getAllStudyPrograms() {
+        return studyProgramService.getAllStudyPrograms();
     }
 }

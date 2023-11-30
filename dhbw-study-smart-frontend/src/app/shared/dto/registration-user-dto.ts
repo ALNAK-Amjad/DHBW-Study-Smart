@@ -3,5 +3,7 @@ export interface RegistrationUserDTO {
     lastName: string;
     password: string;
     email: string;
+    studyProgramId: number;
+    courseId: number;
     studentNumber: number;
 }

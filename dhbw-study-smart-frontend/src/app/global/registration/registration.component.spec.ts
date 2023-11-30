@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 
 import { RegistrationComponent } from './registration.component';
 
@@ -20,7 +22,9 @@ describe('RegistrationComponent', () => {
                 BrowserAnimationsModule,
                 MatFormFieldModule,
                 MatInputModule,
-                MatCardModule
+                MatCardModule,
+                MatSelectModule,
+                MatOptionModule
             ],
             declarations: [RegistrationComponent]
         });

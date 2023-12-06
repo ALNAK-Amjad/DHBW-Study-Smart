@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./main-frame.component.scss']
 })
 export class MainFrameComponent {
-
+    mainNavIsOpen = true;
+    subNavIsOpen = true;
 }

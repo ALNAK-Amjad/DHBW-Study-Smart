@@ -6,5 +6,28 @@ import { Component } from '@angular/core';
     styleUrls: ['./main-frame-side-nav.component.scss']
 })
 export class MainFrameSideNavComponent {
+    // List of Features to display in the navigation bar
+    featureList = [
+        {
+            name: 'Notenplaner',
+            route: '/grades'
+        },
+        {
+            name: 'Dokumentenübersicht',
+            route: '/documents'
+        },
+        {
+            name: 'Vorlesungsübersicht',
+            route: '/lectures'
+        },
+        {
+            name: 'Kalender',
+            route: '/calender'
+        },
+        {
+            name: 'Karteikartenmanager',
+            route: '/flashcards'
+        },
+    ];
 
 }

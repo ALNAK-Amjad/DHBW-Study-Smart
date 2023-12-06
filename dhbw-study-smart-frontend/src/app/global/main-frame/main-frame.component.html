@@ -1,6 +1,21 @@
-<app-main-frame-header></app-main-frame-header>
-<app-main-frame-side-nav></app-main-frame-side-nav>
-<app-main-frame-sub-side-nav></app-main-frame-sub-side-nav>
-<div>
-    <router-outlet></router-outlet>
+<!-- Container to take the entire available space of the page -->
+<div class="main-frame flex-col">
+    <app-main-frame-header></app-main-frame-header>
+
+    <mat-sidenav-container class="content-container">
+        <!-- Main sidenav -->
+        <mat-sidenav [(opened)]="mainNavIsOpen" mode="side">
+            <app-main-frame-side-nav></app-main-frame-side-nav>
+        </mat-sidenav>
+
+        <!-- Sub sidenav -->
+        <mat-sidenav [(opened)]="subNavIsOpen" mode="side" position="end">
+            <app-main-frame-sub-side-nav></app-main-frame-sub-side-nav>
+        </mat-sidenav>
+
+        <!-- Main content of the selected feature -->
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </div>

@@ -9,12 +9,20 @@ import { LoginComponent } from './global/login/login.component';
 import { MaterialModule } from './global/angular-material-module/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegistrationComponent } from './global/registration/registration.component';
+import { MainFrameComponent } from './global/main-frame/main-frame.component';
+import { MainFrameHeaderComponent } from './global/main-frame/main-frame-header/main-frame-header.component';
+import { MainFrameSideNavComponent } from './global/main-frame/main-frame-side-nav/main-frame-side-nav.component';
+import { MainFrameSubSideNavComponent } from './global/main-frame/main-frame-sub-side-nav/main-frame-sub-side-nav.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         LoginComponent,
-        RegistrationComponent
+        RegistrationComponent,
+        MainFrameComponent,
+        MainFrameHeaderComponent,
+        MainFrameSideNavComponent,
+        MainFrameSubSideNavComponent
     ],
     imports: [
         BrowserModule,

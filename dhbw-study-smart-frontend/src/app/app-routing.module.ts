@@ -3,11 +3,33 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './global/login/login.component';
 import { RegistrationComponent } from './global/registration/registration.component';
+import { MainFrameComponent } from './global/main-frame/main-frame.component';
 
+// Child Routes displayed inside the main frame
+const featureRoutes: Routes = [
+    {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+    },
+];
+
+// Default Routes
 const routes: Routes = [
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: 'login', component: LoginComponent },
-    { path: 'registration', component: RegistrationComponent },
+    {
+        path: '',
+        component: MainFrameComponent,
+        canActivate: [], // @TODO Add AuthGuard (check if user if logged in)
+        children: featureRoutes
+    },
+    {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
+        path: 'registration',
+        component: RegistrationComponent
+    },
 ];
 
 @NgModule({

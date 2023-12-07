@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MainFrameService } from '../main-frame.service';
 
 @Component({
     selector: 'app-main-frame-header',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class MainFrameHeaderComponent {
 
+    constructor(private mainFrameService: MainFrameService) {}
+
+    // Trigger event when the nav toggle button is clicked
+    public triggerNavToggle() {
+        this.mainFrameService.emitNavToggle('Nav Toggle in Header triggered');
+    }
 }

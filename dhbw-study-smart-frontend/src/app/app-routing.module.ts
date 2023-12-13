@@ -4,12 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './global/login/login.component';
 import { RegistrationComponent } from './global/registration/registration.component';
 import { MainFrameComponent } from './global/main-frame/main-frame.component';
+import { AuthGuard } from './global/route-guard/auth.guard';
 
 // Child Routes displayed inside the main frame
 const featureRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'lectures',
         pathMatch: 'full'
     },
 ];
@@ -19,7 +20,7 @@ const routes: Routes = [
     {
         path: '',
         component: MainFrameComponent,
-        canActivate: [], // @TODO Add AuthGuard (check if user if logged in)
+        canActivate: [AuthGuard],
         children: featureRoutes
     },
     {

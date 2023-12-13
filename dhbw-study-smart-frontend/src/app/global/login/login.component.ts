@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService } from './login.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -15,7 +16,10 @@ export class LoginComponent {
 
     loginResponseData: null | { verified: boolean; userId: number; } = null;
 
-    constructor(private loginService: LoginService) { }
+    constructor(
+        private loginService: LoginService,
+        private router: Router
+    ) { }
 
     // Invoke Backend-Request for Login
     onSubmit() {
@@ -25,8 +29,17 @@ export class LoginComponent {
         this.loginService.login(email, password)
             .subscribe({
                 next: (data) => {
+                    // Save Response Data
                     this.loginResponseData = data;
-                    // @TODO forward to main application on successful login
+
+                    // Navigate to main page on successful login
+                    if (this.loginResponseData?.verified) {
+                        // @TODO save loggedIn status differently (cookie, etc.)
+                        localStorage.setItem('isLoggedIn', 'true');
+                        localStorage.setItem('userId', `${this.loginResponseData?.userId}`);
+
+                        this.router.navigate(['/app']);
+                    }
                 },
                 error: (error) => {
                     console.log(error);

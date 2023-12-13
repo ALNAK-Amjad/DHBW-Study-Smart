@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RegistrationService } from './registration.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StudyProgram } from 'src/app/shared/entities/study-program';
@@ -26,7 +27,10 @@ export class RegistrationComponent implements OnInit {
     // All selectable courses for the 2nd select input field
     courses: Course[] = [];
 
-    constructor(private registrationService: RegistrationService) { }
+    constructor(
+        private registrationService: RegistrationService,
+        private router: Router
+    ) { }
 
     // Initialize the component
     ngOnInit() {
@@ -53,7 +57,9 @@ export class RegistrationComponent implements OnInit {
         this.registrationService.register(this.registrationForm.value).subscribe({
             next: (data) => {
                 console.log(data);
-                // @TODO forward to main application on successful login
+
+                // Forward to Login Page on successful registration
+                this.router.navigate(['/login']);
             },
             error: (error) => {
                 console.log(error);

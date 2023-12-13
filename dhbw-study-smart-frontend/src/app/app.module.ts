@@ -13,6 +13,8 @@ import { MainFrameComponent } from './global/main-frame/main-frame.component';
 import { MainFrameHeaderComponent } from './global/main-frame/main-frame-header/main-frame-header.component';
 import { MainFrameSideNavComponent } from './global/main-frame/main-frame-side-nav/main-frame-side-nav.component';
 import { MainFrameSubSideNavComponent } from './global/main-frame/main-frame-sub-side-nav/main-frame-sub-side-nav.component';
+import { LectureComponent } from './features/lecture/lecture.component';
+import { DocumentComponent } from './features/document/document.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +24,9 @@ import { MainFrameSubSideNavComponent } from './global/main-frame/main-frame-sub
         MainFrameComponent,
         MainFrameHeaderComponent,
         MainFrameSideNavComponent,
-        MainFrameSubSideNavComponent
+        MainFrameSubSideNavComponent,
+        LectureComponent,
+        DocumentComponent
     ],
     imports: [
         BrowserModule,

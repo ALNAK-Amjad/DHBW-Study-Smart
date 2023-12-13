@@ -38,7 +38,7 @@ export class LoginComponent {
                         localStorage.setItem('isLoggedIn', 'true');
                         localStorage.setItem('userId', `${this.loginResponseData?.userId}`);
 
-                        this.router.navigate(['/app']);
+                        this.router.navigate(['']);
                     }
                 },
                 error: (error) => {

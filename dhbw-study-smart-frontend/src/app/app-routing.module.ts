@@ -5,6 +5,8 @@ import { LoginComponent } from './global/login/login.component';
 import { RegistrationComponent } from './global/registration/registration.component';
 import { MainFrameComponent } from './global/main-frame/main-frame.component';
 import { AuthGuard } from './global/route-guard/auth.guard';
+import { LectureComponent } from './features/lecture/lecture.component';
+import { DocumentComponent } from './features/document/document.component';
 
 // Child Routes displayed inside the main frame
 const featureRoutes: Routes = [
@@ -13,6 +15,14 @@ const featureRoutes: Routes = [
         redirectTo: 'lectures',
         pathMatch: 'full'
     },
+    {
+        path: 'lectures',
+        component: LectureComponent
+    },
+    {
+        path: 'documents',
+        component: DocumentComponent
+    }
 ];
 
 // Default Routes

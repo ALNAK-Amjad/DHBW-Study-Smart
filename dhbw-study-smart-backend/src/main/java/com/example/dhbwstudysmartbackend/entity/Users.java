@@ -38,7 +38,7 @@ public class Users {
     private int studentNumber;
 
     @ManyToOne
-    @JoinColumn(name = "courser_id", nullable = true)
+    @JoinColumn(name = "course_id", nullable = true)
     private Course course;
 
     @ManyToOne

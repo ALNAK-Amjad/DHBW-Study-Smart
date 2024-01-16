@@ -26,7 +26,6 @@ export class RegistrationService {
         return this.http.get<Course[]>(requestUrl);
     }
 
-
     // Invoke a POST-Request to register a new user
     register(formData: RegistrationUserDTO): Observable<unknown> {
         const requestUrl = 'http://localhost:8080/user/register';

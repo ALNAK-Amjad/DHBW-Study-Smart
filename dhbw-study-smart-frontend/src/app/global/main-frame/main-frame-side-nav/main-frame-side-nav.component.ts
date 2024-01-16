@@ -21,7 +21,7 @@ export class MainFrameSideNavComponent {
             route: '/lectures'
         },
         {
-            name: 'Kalender',
+            name: 'Terminplaner',
             route: '/calender'
         },
         {

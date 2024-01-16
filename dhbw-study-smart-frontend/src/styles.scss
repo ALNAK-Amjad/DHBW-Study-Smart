@@ -2,6 +2,44 @@
 @use "@angular/material" as mat;
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
-// Global styles
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// -----------------------------------------------
+// ------------ Global Default Styles ------------
+// -----------------------------------------------
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: blue;
+}
+
+// -----------------------------------------------
+// --------------- Global Classes ----------------
+// -----------------------------------------------
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+// Take the space of the entire page
+.main-frame {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(245, 245, 245);
+}

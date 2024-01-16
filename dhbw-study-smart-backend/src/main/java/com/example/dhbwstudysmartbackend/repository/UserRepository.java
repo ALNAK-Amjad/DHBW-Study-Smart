@@ -3,9 +3,13 @@ package com.example.dhbwstudysmartbackend.repository;
 
 import com.example.dhbwstudysmartbackend.entity.Users;
 import com.example.dhbwstudysmartbackend.entity.userDTOs.VerifyUserDTO;
+import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<Users, Long> {
@@ -17,4 +21,6 @@ public interface UserRepository extends JpaRepository<Users, Long> {
     WHERE email = ?1
 """, nativeQuery = true)
     public VerifyUserDTO getUsersByEmail(String email);
+
+
 }

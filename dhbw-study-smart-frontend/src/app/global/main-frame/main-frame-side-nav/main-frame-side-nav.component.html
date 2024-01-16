@@ -1,0 +1,5 @@
+<nav>
+    <div *ngFor="let feature of featureList" class="nav-item">
+        <a class="nav-item-link" [routerLink]="[feature.route]">{{ feature.name }}</a>
+    </div>
+</nav>

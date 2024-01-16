@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.Set;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -14,14 +17,20 @@ import java.util.Set;
 @Builder
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long CourseId;
+    @GenericGenerator(
+            name = "courseId-sequence-generator",
+            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = {
+                    @Parameter(name = "sequence_name", value = "courseId_sequence"),
+                    @Parameter(name = "initial_value", value = "1000"),
+                    @Parameter(name = "increment_size", value = "1")
+            })
+    @GeneratedValue(generator = "courseId-sequence-generator")
+    private Long courseId;
 
     private String name;
 
-    private double etcs;
 
-    private int SemesterCount;
 
 
 

@@ -1,0 +1,64 @@
+<div class="main-frame registration-frame flex-col">
+    <mat-card class="registration-container">
+        <mat-card-header>
+            <mat-card-title>Registrieren</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form class="flex-col" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                <mat-form-field appearance="outline">
+                    <mat-label>Vorname</mat-label>
+                    <input matInput formControlName="firstName">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Nachname</mat-label>
+                    <input matInput formControlName="lastName">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>E-Mail</mat-label>
+                    <input matInput formControlName="email">
+                </mat-form-field>
+        
+                <mat-form-field appearance="outline">
+                    <mat-label>Passwort</mat-label>
+                    <input matInput formControlName="password" type="password">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Studiengang</mat-label>
+                    <mat-select formControlName="studyProgramId">
+                        <mat-option *ngFor="let studyProgram of studyPrograms" [value]="studyProgram.studyProgramId">
+                            {{studyProgram.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Kurs</mat-label>
+                    <mat-select formControlName="courseId">
+                        <mat-option *ngFor="let course of courses" [value]="course.courseId">
+                            {{course.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Matrikelnummer</mat-label>
+                    <input matInput formControlName="studentNumber" type="number">
+                </mat-form-field>
+
+                <div class="sign-in-notice-container flex-row">
+                    <p class="sign-in-notice">Sie haben schon ein Konto?</p>
+                    <a class="sign-in-notice-link" routerLink="/login">Hier Anmelden!</a>
+                </div>
+
+                <div class="button-container">
+                    <button *ngIf="registrationForm.valid" mat-raised-button color="primary" type="submit">Registrieren</button>
+                    <button *ngIf="!registrationForm.valid" mat-raised-button disabled>Registrieren</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

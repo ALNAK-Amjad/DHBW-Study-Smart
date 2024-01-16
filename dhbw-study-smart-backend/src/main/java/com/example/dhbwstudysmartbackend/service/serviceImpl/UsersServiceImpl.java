@@ -49,8 +49,16 @@ public class UsersServiceImpl implements UsersService {
         user.setPassword(registrationUserDTO.getPassword());
         user.setEmail(registrationUserDTO.getEmail());
         user.setStudentNumber(registrationUserDTO.getStudentNumber());
-        user.setStudyProgram(studyProgramRepository.findById(registrationUserDTO.getStudyProgramId()).get());
-
+        if (studyProgramRepository.findById(registrationUserDTO.getStudyProgramId()).isPresent()) {
+            user.setStudyProgram(studyProgramRepository.findById(registrationUserDTO.getStudyProgramId()).get());
+        }else {
+            throw new RuntimeException("Study program not found");
+        }
+        if (courseRepository.findById(registrationUserDTO.getCourseId()).isPresent()) {
+            user.setCourse(courseRepository.findById(registrationUserDTO.getCourseId()).get());
+        }else {
+            throw new RuntimeException("Course not found");
+        }
         return userRepo.save(user);
 
     }

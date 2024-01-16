@@ -46,8 +46,6 @@ public class Users {
     private Semester semester;
 
     @ManyToOne
-    @JoinColumn(name = "studyprogram_id", nullable = true)
+    @JoinColumn(name = "study_program_id", nullable = true)
     private StudyProgram studyProgram;
-
-
 }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { RegistrationUserDTO } from 'src/app/shared/dto/registration-user-dto';
 import { Course } from 'src/app/shared/entities/course';
 import { StudyProgram } from 'src/app/shared/entities/study-program';
+import { Semester } from 'src/app/shared/entities/semester';
 
 @Injectable({
     providedIn: 'root'
@@ -24,6 +25,13 @@ export class RegistrationService {
         const requestUrl = 'http://localhost:8080/course/getall';
 
         return this.http.get<Course[]>(requestUrl);
+    }
+
+    // Get all available semesters
+    getSemesters(): Observable<Semester[]> {
+        const requestUrl = 'http://localhost:8080/semester/getall';
+
+        return this.http.get<Semester[]>(requestUrl);
     }
 
     // Invoke a POST-Request to register a new user

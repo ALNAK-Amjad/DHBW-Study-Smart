@@ -13,5 +13,6 @@ public class RegistrationUserDTO {
     private String email;
     private Long studyProgramId;
     private Long courseId;
+    private Long semesterId;
     private int studentNumber;
 }

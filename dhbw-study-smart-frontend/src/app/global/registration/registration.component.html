@@ -20,7 +20,7 @@
                     <mat-label>E-Mail</mat-label>
                     <input matInput formControlName="email">
                 </mat-form-field>
-        
+
                 <mat-form-field appearance="outline">
                     <mat-label>Passwort</mat-label>
                     <input matInput formControlName="password" type="password">
@@ -31,6 +31,15 @@
                     <mat-select formControlName="studyProgramId">
                         <mat-option *ngFor="let studyProgram of studyPrograms" [value]="studyProgram.studyProgramId">
                             {{studyProgram.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Semester</mat-label>
+                    <mat-select formControlName="semesterId">
+                        <mat-option *ngFor="let semester of semesters" [value]="semester.semesterId">
+                            {{semester.semesterId}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>

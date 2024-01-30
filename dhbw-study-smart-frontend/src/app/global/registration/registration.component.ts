@@ -4,6 +4,7 @@ import { RegistrationService } from './registration.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StudyProgram } from 'src/app/shared/entities/study-program';
 import { Course } from 'src/app/shared/entities/course';
+import { Semester } from 'src/app/shared/entities/semester';
 
 @Component({
     selector: 'app-registration',
@@ -18,6 +19,7 @@ export class RegistrationComponent implements OnInit {
         password: new FormControl('', [Validators.required]),
         studyProgramId: new FormControl(null),
         courseId: new FormControl(null),
+        semesterId: new FormControl(null),
         studentNumber: new FormControl('', [Validators.required])
     });
 
@@ -26,6 +28,9 @@ export class RegistrationComponent implements OnInit {
 
     // All selectable courses for the 2nd select input field
     courses: Course[] = [];
+
+    // All selectable semesters for the 3nd select input field
+    semesters: Semester[] = [];
 
     constructor(
         private registrationService: RegistrationService,
@@ -36,6 +41,7 @@ export class RegistrationComponent implements OnInit {
     ngOnInit() {
         this.getAllStudyPrograms();
         this.getAllCourses();
+        this.getAllSemesters();
     }
 
     // Get all study programs for the select input
@@ -49,6 +55,13 @@ export class RegistrationComponent implements OnInit {
     private getAllCourses(): void {
         this.registrationService.getCourses().subscribe((data: Course[]) => {
             this.courses = data;
+        });
+    }
+
+    // Get all semesters for the select input
+    private getAllSemesters(): void {
+        this.registrationService.getSemesters().subscribe((data: Semester[]) => {
+            this.semesters = data;
         });
     }
 

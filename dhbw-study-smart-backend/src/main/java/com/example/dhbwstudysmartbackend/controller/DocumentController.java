@@ -1,7 +1,55 @@
 package com.example.dhbwstudysmartbackend.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.dhbwstudysmartbackend.entity.Document;
+import com.example.dhbwstudysmartbackend.repository.DocumentRepository;
+
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
+
+import jakarta.servlet.http.HttpServletResponse;
+
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class DocumentController {
+    @Autowired
+    private DocumentRepository documentRepository;
+
+    // Get the document entity by ID from the database
+    private Document getDocument(@PathVariable("id") Long id) {
+        return documentRepository.findById(id).orElseThrow(() -> new RuntimeException("Item not found"));
+    }
+
+    @GetMapping("/download/file/{id}")
+    public void downloadFile(HttpServletResponse response, @PathVariable("id") String id) throws IOException {
+        // Get the filename of the document from the id
+        Document foundDocument = this.getDocument(Long.parseLong(id));
+        String filename = foundDocument.getFilename();
+
+        // Load file from resources folder
+        Resource resource = new ClassPathResource("static/" + filename);
+
+        // Set the content type and attachment header
+        response.setContentType(MediaType.APPLICATION_PDF_VALUE); // TODO: dynamically determine MediaType
+        response.setHeader("Content-Disposition", "attachment; filename=" + filename);
+
+        // Copy the stream to the response's output stream
+        try (InputStream in = resource.getInputStream(); OutputStream out = response.getOutputStream()) {
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = in.read(buffer)) != -1) {
+                out.write(buffer, 0, bytesRead);
+            }
+        }
+    }
 }

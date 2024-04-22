@@ -16,17 +16,20 @@ import lombok.NoArgsConstructor;
 public class Document {
     @Id
     @GenericGenerator(
-            name = "documentId-sequence-generator",
-            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
-            parameters = {
-                    @Parameter(name = "sequence_name", value = "documentId_sequence"),
-                    @Parameter(name = "initial_value", value = "1000"),
-                    @Parameter(name = "increment_size", value = "1")
-            })
+        name = "documentId-sequence-generator",
+        strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+        parameters = {
+                @Parameter(name = "sequence_name", value = "documentId_sequence"),
+                @Parameter(name = "initial_value", value = "1000"),
+                @Parameter(name = "increment_size", value = "1")
+        }
+    )
     @GeneratedValue(generator = "documentId-sequence-generator")
     private Long documentId;
 
-    private String Path;
+    private String path;
+
+    private String filename;
 
     @ManyToOne
     @JoinColumn(name = "SemesterId", nullable = false)
@@ -35,6 +38,4 @@ public class Document {
     @ManyToOne
     @JoinColumn(name = "LectureId", nullable = false)
     private Lecture lecture;
-
-
 }

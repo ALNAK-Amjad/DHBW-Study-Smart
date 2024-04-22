@@ -1,11 +1,36 @@
 <div class="feature-component-container flex-col">
     <div class="section-container">
-        <h2>Dokumentenübersicht</h2>
-    </div>
+        <h1>Dokumentenübersicht</h1>
+         <p>
+    <h2>Formulare und Vorlagen</h2> <br>
+    <mat-accordion multi="true">
+        <mat-expansion-panel *ngFor="let panel of panels">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{ panel.title }}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
 
-    <div class="section-container">
-        <div *ngFor="let document of documentList">
-            <a href="#" (click)="downloadFile(document, $event)">{{ document.filename }}</a>
-        </div>
+            <ng-container *ngIf="panel.documents && panel.documents.length > 0">
+                <mat-list>
+                    <mat-list-item *ngFor="let document of panel.documents">
+                        <a href="#" (click)="downloadFile(document, $event)">{{ document.filename }}</a>
+                    </mat-list-item>
+                </mat-list>
+            </ng-container>
+        </mat-expansion-panel>
+    </mat-accordion>
     </div>
+    <!--
+        <div class="section-container">
+            <div *ngFor="let document of documentList">
+                <a href="#" (click)="downloadFile(document, $event)">{{ document.filename }}</a>
+            </div>
+
+                         <div mat-line>{{ document.title }}</div>
+                        <small mat-line> {{ document.filename }}</small>
+                        <button mat-button (click)="downloadFile(document, $event)">Download</button>
+        </div>
+        -->
+
 </div>

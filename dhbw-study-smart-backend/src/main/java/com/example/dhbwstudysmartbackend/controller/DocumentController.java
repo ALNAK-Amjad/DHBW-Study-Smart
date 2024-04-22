@@ -3,13 +3,11 @@ package com.example.dhbwstudysmartbackend.controller;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.dhbwstudysmartbackend.entity.Document;
 import com.example.dhbwstudysmartbackend.repository.DocumentRepository;
@@ -20,17 +18,24 @@ import org.springframework.http.MediaType;
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
+@RequestMapping("/document")
 @CrossOrigin(origins = "http://localhost:4200")
 public class DocumentController {
     @Autowired
     private DocumentRepository documentRepository;
+
+    // Get all document entities from the database
+    @GetMapping("/getall")
+    public List<Document> getAllDocumentEntities() {
+        return documentRepository.findAll();
+    }
 
     // Get the document entity by ID from the database
     private Document getDocument(@PathVariable("id") Long id) {
         return documentRepository.findById(id).orElseThrow(() -> new RuntimeException("Item not found"));
     }
 
-    @GetMapping("/download/file/{id}")
+    @GetMapping("/download/{id}")
     public void downloadFile(HttpServletResponse response, @PathVariable("id") String id) throws IOException {
         // Get the filename of the document from the id
         Document foundDocument = this.getDocument(Long.parseLong(id));

@@ -1,1 +1,11 @@
-<p>document works!</p>
+<div class="feature-component-container flex-col">
+    <div class="section-container">
+        <h2>Dokumentenübersicht</h2>
+    </div>
+
+    <div class="section-container">
+        <div *ngFor="let document of documentList">
+            <a href="#" (click)="downloadFile(document, $event)">{{ document.filename }}</a>
+        </div>
+    </div>
+</div>

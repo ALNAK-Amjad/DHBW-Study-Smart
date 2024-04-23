@@ -37,12 +37,13 @@ public class DocumentController {
 
     @GetMapping("/download/{id}")
     public void downloadFile(HttpServletResponse response, @PathVariable("id") String id) throws IOException {
-        // Get the filename of the document from the id
+        // Get the filename and path of the document from the id
         Document foundDocument = this.getDocument(Long.parseLong(id));
         String filename = foundDocument.getFilename();
+        String filepath = foundDocument.getPath();
 
         // Load file from resources folder
-        Resource resource = new ClassPathResource("static/" + filename);
+        Resource resource = new ClassPathResource(filepath);
 
         // Set the content type and attachment header
         response.setContentType(MediaType.APPLICATION_PDF_VALUE); // TODO: dynamically determine MediaType

@@ -17,14 +17,16 @@ import org.hibernate.annotations.Parameter;
 public class Users {
     @Id
     @GenericGenerator(
-            name = "userId-sequence-generator",
-            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
-            parameters = {
-                    @Parameter(name = "sequence_name", value = "userId_sequence"),
-                    @Parameter(name = "initial_value", value = "1000"),
-                    @Parameter(name = "increment_size", value = "1")
-            })
+        name = "userId-sequence-generator",
+        strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+        parameters = {
+            @Parameter(name = "sequence_name", value = "userId_sequence"),
+            @Parameter(name = "initial_value", value = "1000"),
+            @Parameter(name = "increment_size", value = "1")
+        }
+    )
     @GeneratedValue(generator = "userId-sequence-generator")
+
     private Long userId;
 
     private String firstName;

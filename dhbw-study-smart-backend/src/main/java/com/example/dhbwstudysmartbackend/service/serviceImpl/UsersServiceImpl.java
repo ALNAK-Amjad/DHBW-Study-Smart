@@ -21,7 +21,6 @@ public class UsersServiceImpl implements UsersService {
     private final CourseRepository courseRepository;
     private final SemesterRepository semesterRepository;
 
-
     @Autowired
     public UsersServiceImpl(UserRepository userRepo, CourseRepository courseRepository, StudyProgramRepository studyProgramRepository, SemesterRepository semesterRepository) {
         this.userRepo = userRepo;
@@ -32,16 +31,16 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public LoginUserDTO verifyUser(String email, String password) {
-        if (userRepo.getUsersByEmail(email) != null){
+        if (userRepo.getUsersByEmail(email) != null) {
             VerifyUserDTO user = userRepo.getUsersByEmail(email);
-            if (Objects.equals(user.getPassword(), password)){
+            if (Objects.equals(user.getPassword(), password)) {
                 return new LoginUserDTO(true,user.getUserId());
-            }else {
+            } else {
                 return new LoginUserDTO(false , null);
             }
         }
-            return new LoginUserDTO(false, null);
 
+        return new LoginUserDTO(false, null);
     }
 
     @Override

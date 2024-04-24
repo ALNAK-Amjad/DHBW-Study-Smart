@@ -1,13 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {DocumentService} from './document.service';
-import {Document} from 'src/app/shared/entities/document';
-import {FileSaverService} from 'ngx-filesaver';
-
-interface Panel {
-    title: string;
-    documentIds: number[];
-    documents?: Document[];  // Optional, um initial null/undefined zu erlauben
-}
+import { Component, OnInit } from '@angular/core';
+import { DocumentService } from './document.service';
+import { Document } from 'src/app/shared/entities/document';
+import { FileSaverService } from 'ngx-filesaver';
+import { panelGroups } from './document-config';
 
 @Component({
     selector: 'app-document',
@@ -15,31 +10,23 @@ interface Panel {
     styleUrls: ['./document.component.scss']
 })
 export class DocumentComponent implements OnInit {
+    // List of all document entities from the Database
     documentList: Document[] = [];
-    panels: Panel[] = [
-        {title: "... für Themenmitteilungen, Berichte, etc.", documentIds: [1, 2, 3, 3, 4, 5, 6, 7, 8, 9]},
-        {
-            title: "... für die Bewertung von Praxis- und Projektberichten und Studien- und Bachelorarbeiten",
-            documentIds: [10, 11, 12, 13]
-        },
-        {title: "  ... Krankheit, Anerkennung von Prüfungsleistungen, etc", documentIds: [14, 15]},
-        {title: "  ... Kolloquiumsprüfung (T3_2000)", documentIds: [16]},
-        {title: "  ... zur Erstellung der Arbeiten", documentIds: [17,18,19,20,21,22]},
-        {title: " .... zur Themenstellung und Bewertung der Arbeiten und Prüfungen", documentIds: [23,24,25]},
 
-    ];
+    // Panels to be displayed
+    panels = panelGroups;
 
     constructor(
         private documentService: DocumentService,
         private _FileSaverService: FileSaverService,
-    ) {
-    }
+    ) {}
 
     ngOnInit(): void {
-        this.fetchDocuments();
+        this.fetchDocumentEntities();
     }
 
-    private fetchDocuments() {
+    // Get all document entities from the database
+    private fetchDocumentEntities() {
         this.documentService.getAllDocumentEntities().subscribe({
             next: (data) => {
                 this.documentList = data;
@@ -51,16 +38,22 @@ export class DocumentComponent implements OnInit {
         });
     }
 
+    // Match document entities to panels
     private matchDocumentsToPanels() {
-        this.panels.forEach(panel => {
-            panel.documents = this.documentList.filter(doc => panel.documentIds.includes(doc.documentId));
+        this.panels.forEach((panel) => {
+            panel.documents = this.documentList.filter((doc) => panel.documentIds.includes(doc.documentId));
         });
     }
 
+    // Download Link has been clicked
     public downloadFile(documentEntity: Document, event: Event) {
+        // Prevent <a> tag from behaving like a regular Link
         event.preventDefault();
+
+        // Get file from the Backend via get request
         this.documentService.downloadFile(documentEntity.documentId).subscribe({
             next: (data) => {
+                // Trigger download in the browser
                 this._FileSaverService.save(data, documentEntity.filename);
             },
             error: (err) => {

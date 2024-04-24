@@ -4,5 +4,4 @@ export interface Document {
     filename: string;
     semesterId: number;
     lectureId: number;
-    title: string;
 }

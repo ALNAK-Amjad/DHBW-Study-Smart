@@ -28,8 +28,10 @@ public class Document {
 
     private Long documentId;
 
+    @Column
     private String path;
 
+    @Column
     private String filename;
 
     @ManyToOne

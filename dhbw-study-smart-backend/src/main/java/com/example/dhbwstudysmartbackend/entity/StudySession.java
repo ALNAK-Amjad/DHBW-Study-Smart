@@ -30,6 +30,7 @@ public class StudySession {
     @GeneratedValue(generator = "studySessionId-sequence-generator")
     private Long studySessionId;
 
+    @Column
     private Time flashcardTime;
 
     @ManyToOne

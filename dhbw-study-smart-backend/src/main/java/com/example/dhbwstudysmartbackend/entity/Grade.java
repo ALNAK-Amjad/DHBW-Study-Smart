@@ -26,8 +26,10 @@ public class Grade {
     @GeneratedValue(generator = "gradeId-sequence-generator")
     private Long gradeId;
 
+    @Column
     private double grade;
 
+    @Column
     private double plannedGrade;
 
     @ManyToOne

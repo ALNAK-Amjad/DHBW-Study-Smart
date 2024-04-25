@@ -28,6 +28,7 @@ public class Lecture {
     @GeneratedValue(generator = "lectureId-sequence-generator")
     private Long lectureId;
 
+    @Column
     private String name;
 
 

@@ -28,8 +28,12 @@ public class Course {
     @GeneratedValue(generator = "courseId-sequence-generator")
     private Long courseId;
 
+    @Column
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "SemesterId", nullable = true)
+    private Semester semester;
 
 
 

@@ -28,9 +28,12 @@ public class Appointment {
     @GeneratedValue(generator = "appointmentId-sequence-generator")
     private Long appointmentId;
 
+    @Column
     private Timestamp startDate;
 
+    @Column
     private Timestamp endDate;
 
+    @Column
     private boolean repetitive;
 }

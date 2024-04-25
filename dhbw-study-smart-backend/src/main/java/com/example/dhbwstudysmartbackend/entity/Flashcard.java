@@ -27,8 +27,10 @@ public class Flashcard {
     @GeneratedValue(generator = "flashcardId-sequence-generator")
     private Long flashcardId;
 
+    @Column
     private String question;
 
+    @Column
     private String answer;
 
     @ManyToOne

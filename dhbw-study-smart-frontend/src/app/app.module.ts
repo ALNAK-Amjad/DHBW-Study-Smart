@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FileSaverModule } from 'ngx-filesaver';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -34,7 +35,8 @@ import { DocumentComponent } from './features/document/document.component';
         HttpClientModule,
         MaterialModule,
         BrowserAnimationsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FileSaverModule
     ],
     providers: [],
     bootstrap: [AppComponent]

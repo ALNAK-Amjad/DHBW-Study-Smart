@@ -1,1 +1,24 @@
-<p>document works!</p>
+<div class="feature-component-container flex-col">
+    <div class="section-container">
+        <h1>Dokumentenübersicht</h1>
+    </div>
+
+    <div class="section-container">
+        <h2>Formulare und Vorlagen</h2>
+        <mat-accordion multi="true">
+            <mat-expansion-panel *ngFor="let panel of panels">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{ panel.title }}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-list *ngIf="panel.documents && panel.documents.length > 0">
+                    <mat-list-item *ngFor="let document of panel.documents">
+                        <a href="#" (click)="downloadFile(document, $event)">{{ document.filename }}</a>
+                    </mat-list-item>
+                </mat-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>

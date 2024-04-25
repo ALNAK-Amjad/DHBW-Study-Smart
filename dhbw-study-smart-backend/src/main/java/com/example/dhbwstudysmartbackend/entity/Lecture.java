@@ -25,9 +25,12 @@ public class Lecture {
         }
     )
     @GeneratedValue(generator = "lectureId-sequence-generator")
-
     private Long lectureId;
 
     @Column
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "SemesterId", nullable = true)
+    private Semester semester;
 }

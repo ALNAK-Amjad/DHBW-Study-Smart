@@ -1,5 +1,4 @@
 package com.example.dhbwstudysmartbackend.entity;
-import com.example.dhbwstudysmartbackend.service.AppointmentService;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,17 +16,18 @@ import org.hibernate.annotations.Parameter;
 @AllArgsConstructor
 @Builder
 public class StudySession {
-
     @Id
     @GenericGenerator(
-            name = "studySessionId-sequence-generator",
-            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
-            parameters = {
-                    @Parameter(name = "sequence_name", value = "studySessionId_sequence"),
-                    @Parameter(name = "initial_value", value = "1000"),
-                    @Parameter(name = "increment_size", value = "1")
-            })
+        name = "studySessionId-sequence-generator",
+        strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+        parameters = {
+            @Parameter(name = "sequence_name", value = "studySessionId_sequence"),
+            @Parameter(name = "initial_value", value = "1000"),
+            @Parameter(name = "increment_size", value = "1")
+        }
+    )
     @GeneratedValue(generator = "studySessionId-sequence-generator")
+
     private Long studySessionId;
 
     @Column
@@ -37,4 +37,3 @@ public class StudySession {
     @JoinColumn(name = "appointment_id", nullable = true)
     private Appointment appointment;
 }
-

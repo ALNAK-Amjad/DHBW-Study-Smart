@@ -15,7 +15,7 @@ import com.example.dhbwstudysmartbackend.service.serviceImpl.SemesterServiceImpl
 @RequestMapping("/semester")
 @CrossOrigin(origins = "http://localhost:4200")
 public class SemesterController {
-private final SemesterServiceImpl semesterService;
+    private final SemesterServiceImpl semesterService;
 
     @Autowired
     public SemesterController(SemesterServiceImpl service) {

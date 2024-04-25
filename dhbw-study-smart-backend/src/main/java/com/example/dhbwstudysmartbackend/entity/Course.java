@@ -5,8 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
-
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -18,14 +16,16 @@ import org.hibernate.annotations.Parameter;
 public class Course {
     @Id
     @GenericGenerator(
-            name = "courseId-sequence-generator",
-            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
-            parameters = {
-                    @Parameter(name = "sequence_name", value = "courseId_sequence"),
-                    @Parameter(name = "initial_value", value = "1000"),
-                    @Parameter(name = "increment_size", value = "1")
-            })
+        name = "courseId-sequence-generator",
+        strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+        parameters = {
+            @Parameter(name = "sequence_name", value = "courseId_sequence"),
+            @Parameter(name = "initial_value", value = "1000"),
+            @Parameter(name = "increment_size", value = "1")
+        }
+    )
     @GeneratedValue(generator = "courseId-sequence-generator")
+
     private Long courseId;
 
     @Column
@@ -34,8 +34,4 @@ public class Course {
     @ManyToOne
     @JoinColumn(name = "SemesterId", nullable = true)
     private Semester semester;
-
-
-
-
 }

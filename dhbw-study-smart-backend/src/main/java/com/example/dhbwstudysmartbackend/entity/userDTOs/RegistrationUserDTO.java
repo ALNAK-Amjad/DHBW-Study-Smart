@@ -3,6 +3,7 @@ package com.example.dhbwstudysmartbackend.entity.userDTOs;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+
 @Getter
 @Setter
 @AllArgsConstructor

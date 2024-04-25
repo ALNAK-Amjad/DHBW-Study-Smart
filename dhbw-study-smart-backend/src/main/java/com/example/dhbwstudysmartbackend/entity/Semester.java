@@ -16,15 +16,15 @@ import lombok.NoArgsConstructor;
 public class Semester {
     @Id
     @GenericGenerator(
-            name = "semesterId-sequence-generator",
-            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
-            parameters = {
-                    @Parameter(name = "sequence_name", value = "semesterId_sequence"),
-                    @Parameter(name = "initial_value", value = "1000"),
-                    @Parameter(name = "increment_size", value = "1")
-            })
+        name = "semesterId-sequence-generator",
+        strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+        parameters = {
+            @Parameter(name = "sequence_name", value = "semesterId_sequence"),
+            @Parameter(name = "initial_value", value = "1000"),
+            @Parameter(name = "increment_size", value = "1")
+        }
+    )
     @GeneratedValue(generator = "semesterId-sequence-generator")
+
     private Long semesterId;
-
-
 }

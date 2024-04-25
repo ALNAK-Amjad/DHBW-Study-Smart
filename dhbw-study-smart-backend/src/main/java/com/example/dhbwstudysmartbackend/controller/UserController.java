@@ -23,9 +23,10 @@ public class UserController {
 
     @GetMapping("/verify")
     @ResponseBody
-    public LoginUserDTO verifyUser(@RequestParam(name = "email") String email, @RequestParam(name = "password") String password){
-       return service.verifyUser(email,password);
+    public LoginUserDTO verifyUser(@RequestParam(name = "email") String email, @RequestParam(name = "password") String password) {
+        return service.verifyUser(email,password);
     }
+
     @PostMapping("/register")
     public Users registerUser(@RequestBody RegistrationUserDTO registrationUserDTO) {
         return usersService.registerUser(registrationUserDTO);

@@ -1,11 +1,13 @@
 package com.example.dhbwstudysmartbackend.entity;
 
+import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,9 +33,12 @@ public class StudyProgram {
 
     private Long studyProgramId;
 
+    @Column
     private String name;
 
+    @Column
     private double etcs;
 
+    @Column
     private int semesterCount;
 }

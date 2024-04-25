@@ -28,5 +28,6 @@ public class Lecture {
 
     private Long lectureId;
 
+    @Column
     private String name;
 }

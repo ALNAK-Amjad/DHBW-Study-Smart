@@ -30,6 +30,7 @@ public class StudySession {
 
     private Long studySessionId;
 
+    @Column
     private Time flashcardTime;
 
     @ManyToOne

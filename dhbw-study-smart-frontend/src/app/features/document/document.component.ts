@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DocumentService } from './document.service';
 import { Document } from 'src/app/shared/entities/document';
 import { FileSaverService } from 'ngx-filesaver';
+import { panelGroups } from './document-config';
 
 @Component({
     selector: 'app-document',
@@ -9,8 +10,11 @@ import { FileSaverService } from 'ngx-filesaver';
     styleUrls: ['./document.component.scss']
 })
 export class DocumentComponent implements OnInit {
-    // List of all available documents for download
+    // List of all document entities from the Database
     documentList: Document[] = [];
+
+    // Panels to be displayed
+    panels = panelGroups;
 
     constructor(
         private documentService: DocumentService,
@@ -18,18 +22,26 @@ export class DocumentComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.getAllDocumentEntities();
+        this.fetchDocumentEntities();
     }
 
     // Get all document entities from the database
-    private getAllDocumentEntities() {
+    private fetchDocumentEntities() {
         this.documentService.getAllDocumentEntities().subscribe({
             next: (data) => {
                 this.documentList = data;
+                this.matchDocumentsToPanels();
             },
             error: (err) => {
                 console.error('Fetching Document Entities failed with Error:', err);
             }
+        });
+    }
+
+    // Match document entities to panels
+    private matchDocumentsToPanels() {
+        this.panels.forEach((panel) => {
+            panel.documents = this.documentList.filter((doc) => panel.documentIds.includes(doc.documentId));
         });
     }
 
@@ -38,10 +50,10 @@ export class DocumentComponent implements OnInit {
         // Prevent <a> tag from behaving like a regular Link
         event.preventDefault();
 
-        // Trigger Download
+        // Get file from the Backend via get request
         this.documentService.downloadFile(documentEntity.documentId).subscribe({
             next: (data) => {
-                // Save file via browser download
+                // Trigger download in the browser
                 this._FileSaverService.save(data, documentEntity.filename);
             },
             error: (err) => {

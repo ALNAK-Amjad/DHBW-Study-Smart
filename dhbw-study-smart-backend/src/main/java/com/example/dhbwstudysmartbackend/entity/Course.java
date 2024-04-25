@@ -28,10 +28,10 @@ public class Course {
 
     private Long courseId;
 
+    @Column
     private String name;
 
-
-
-
-
+    @ManyToOne
+    @JoinColumn(name = "SemesterId", nullable = true)
+    private Semester semester;
 }

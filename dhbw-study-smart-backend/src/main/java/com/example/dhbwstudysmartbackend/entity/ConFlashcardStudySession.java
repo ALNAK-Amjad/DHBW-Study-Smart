@@ -18,5 +18,6 @@ public class ConFlashcardStudySession {
     @JoinColumn(name = "studySessionId")
     private StudySession studySession;
 
+    @Column
     private boolean answered;
 }

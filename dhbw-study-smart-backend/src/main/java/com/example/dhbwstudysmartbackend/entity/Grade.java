@@ -28,8 +28,10 @@ public class Grade {
 
     private Long gradeId;
 
+    @Column
     private double grade;
 
+    @Column
     private double plannedGrade;
 
     @ManyToOne

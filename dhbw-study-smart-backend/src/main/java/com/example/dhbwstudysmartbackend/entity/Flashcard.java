@@ -29,8 +29,10 @@ public class Flashcard {
 
     private Long flashcardId;
 
+    @Column
     private String question;
 
+    @Column
     private String answer;
 
     @ManyToOne

@@ -5,7 +5,10 @@ import com.example.dhbwstudysmartbackend.entity.userDTOs.LoginUserDTO;
 import com.example.dhbwstudysmartbackend.entity.userDTOs.RegistrationUserDTO;
 import com.example.dhbwstudysmartbackend.service.UsersService;
 import com.example.dhbwstudysmartbackend.service.serviceImpl.UsersServiceImpl;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,7 +27,7 @@ public class UserController {
     @GetMapping("/verify")
     @ResponseBody
     public LoginUserDTO verifyUser(@RequestParam(name = "email") String email, @RequestParam(name = "password") String password) {
-        return service.verifyUser(email,password);
+        return service.verifyUser(email, password);
     }
 
     @PostMapping("/register")

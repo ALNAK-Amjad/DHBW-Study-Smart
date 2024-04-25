@@ -25,7 +25,6 @@ public class Document {
         }
     )
     @GeneratedValue(generator = "documentId-sequence-generator")
-
     private Long documentId;
 
     @Column
@@ -34,11 +33,4 @@ public class Document {
     @Column
     private String filename;
 
-    @ManyToOne
-    @JoinColumn(name = "SemesterId", nullable = false)
-    private Semester semester;
-
-    @ManyToOne
-    @JoinColumn(name = "LectureId", nullable = false)
-    private Lecture lecture;
 }

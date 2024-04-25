@@ -34,13 +34,4 @@ public class UserController {
     public Users registerUser(@RequestBody RegistrationUserDTO registrationUserDTO) {
         return usersService.registerUser(registrationUserDTO);
     }
-
-    @PostMapping("/logout")
-    public ResponseEntity<String> logoutUser(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate(); // Sitzung beenden
-        }
-        return ResponseEntity.ok("User logged out successfully");
-    }
 }

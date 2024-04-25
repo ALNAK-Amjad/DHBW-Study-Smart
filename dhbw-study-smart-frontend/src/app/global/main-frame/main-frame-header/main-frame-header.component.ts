@@ -22,30 +22,12 @@ export class MainFrameHeaderComponent {
         this.mainFrameService.emitNavToggle('Nav Toggle in Header triggered');
     }
 
-    logout() {
-        this.http.post('http://localhost:8080/user/logout', {}, {responseType: 'text'}) // Beachten Sie den responseType
-            .subscribe(
-                () => {
-                    console.log('Logout successful');
-                    localStorage.removeItem('isLoggedIn');
-                    localStorage.setItem('isLoggedIn', 'false');
-                    localStorage.removeItem('userId');
-                    localStorage.setItem('userId', String(null));
-                    this.router.navigate(['/login']); // Umleitung zur Login-Seite
-                    Swal.fire({
-                        title: "Erfolgreich abgemeldet!",
-                        text: "Sie Wurden erfolgreich abgemeldet.",
-                        icon: "success"
-                    });
-                },
-                error => {
-                    Swal.fire({
-                        title: "Abmeldung fehlgeschlagen!",
-                        text: "Wir könnten Sie nicht erfolgreich abmelden, bitte versuchen Sie erneuert.",
-                        icon: "error"
-                    });
-                    console.error('Logout failed', error);
-                }
-            );
+    // Logout user when the logout button is clicked
+    public logout() {
+        // Remove user data from cache
+        localStorage.removeItem('userId');
+        localStorage.removeItem('isLoggedIn');
+
+        this.router.navigate(['/login']);
     }
 }

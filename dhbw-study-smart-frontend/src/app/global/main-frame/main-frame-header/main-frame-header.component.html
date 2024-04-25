@@ -1,25 +1,17 @@
-<!--
 <header class="header-container flex-row">
-    <div class="nav-toggle-button">
-        <button mat-icon-button (click)="triggerNavToggle()" color="black" aria-label="Navigation Bar Toggle Icon">
-            <mat-icon>menu</mat-icon>
-        </button>
-    </div>
-    <div class="header-content">
-        <p class="header-text">DHBW Study Smart</p>
-    </div>
-    <button class="logout-button" (click)="logout()">Logout</button>
-</header>
--->
-<header class="header-container flex-row">
-    <div class="nav-toggle-button">
-        <button mat-icon-button (click)="triggerNavToggle()" color="black" aria-label="Navigation Bar Toggle Icon">
-            <mat-icon>menu</mat-icon>
-        </button>
-    </div>
-    <div class="header-content">
-        <p class="header-text">DHBW Study Smart</p>
-    </div>
-    <button class="logout-button" mat-raised-button color="primary" (click)="logout()">Logout</button>
-</header>
 
+    <div class="nav-toggle-button">
+        <button mat-icon-button (click)="triggerNavToggle()" color="black" aria-label="Navigation Bar Toggle Icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+
+    <div class="header-content">
+        <p class="header-text">DHBW Study Smart</p>
+    </div>
+
+    <div class="logout-button-container">
+        <button mat-raised-button (click)="logout()" class="logout-button">Abmelden</button>
+    </div>
+
+</header>

@@ -2,7 +2,6 @@ import {Component, Injectable} from '@angular/core';
 import {MainFrameService} from '../main-frame.service';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import Swal from "sweetalert2";
 
 @Component({
     selector: 'app-main-frame-header',
@@ -27,7 +26,6 @@ export class MainFrameHeaderComponent {
         // Remove user data from cache
         localStorage.removeItem('userId');
         localStorage.removeItem('isLoggedIn');
-
         this.router.navigate(['/login']);
     }
 }

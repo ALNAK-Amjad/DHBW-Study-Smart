@@ -21,7 +21,24 @@ INSERT INTO USERS (user_id, first_name, last_name, password, email ,student_numb
     VALUES (2, 'Markus', 'Steppenberger', '1','test@gmail.com', 938550, 2, 1, 2);
 
 -- Lectures
-INSERT INTO LECTURE (lecture_id, name) VALUES (1, 'Theoretische Informatik I');
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (1, 'Theoretische Informatik 1', 1);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (2, 'Praxisprojekt 1',1);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (3, 'Mathematik 1.1' ,1);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (4, 'Technische Informatik 1',1);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (5, 'Web Engineering',1);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (6, 'Anwendungsprojekt Informatik',1);
+
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (7, 'Mathematik 1.2',2);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (8, 'Theoretische Informatik 2',2);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (9, 'Programmieren',2);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (10, 'Intercultural Communication 1',2);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (11, 'BWL',2);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (12, 'Intercultural Communication 2',2);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (13, 'Marketing ',2);
+
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (14, 'Mathematik 2.1',3);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (15, 'Theoretische Informatik 3',3);
+
 
 -- Documents
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (1, 'static/Themenmitteilung/TINF-Themenmitteilung.docx', 'TINF-Themenmitteilung.docx');

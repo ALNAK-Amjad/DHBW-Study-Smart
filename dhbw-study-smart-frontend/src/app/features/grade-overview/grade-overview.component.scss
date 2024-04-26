@@ -1,0 +1,55 @@
+.Durchschnitt-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 100%; // Vollständige Breite auf kleinen Bildschirmen
+}
+
+.einreichenBtn {
+    margin-top: 20px; // Abstand vor dem Button
+    margin-bottom: 20px; // Abstand vor dem Kurs-ID-Feld
+}
+
+.row {
+    display: flex;
+    justify-content: space-between; // Stellt sicher, dass zwischen den beiden Elementen Platz ist
+    flex-wrap: wrap; // Erlaubt Elementen, in die nächste Zeile zu rutschen
+    margin-bottom: 20px; // Abstand zum nächsten Element
+}
+
+.container-GN, .container-UES, .container-result {
+    width: calc(50% - 10px); // Berechnet die Breite, um den Abstand einzubeziehen
+    min-width: 250px; // Minimale Breite der Eingabefelder, um Lesbarkeit zu gewährleisten
+}
+
+
+// Diese Klasse wird für den Button neben dem Prüfungsergebnis verwendet
+.result-and-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; // Abstand vor dem Kurs-ID-Feld
+}
+
+// Media Queries für Responsive Design
+@media (max-width: 768px) { // Für Tablets und kleinere Geräte
+    .container-GN, .container-UES, .container-result, .result-and-button {
+        width: 100%; // Elemente nehmen die volle Breite ein
+        margin-right: 0; // Entfernt den Abstand rechts, der zuvor definiert wurde
+        margin-bottom: 10px; // Reduzierter Abstand zum nächsten Element
+    }
+
+    .row, .result-and-button {
+        flex-direction: column; // Stapelt Elemente vertikal
+    }
+
+    .einreichenBtn {
+        width: 100%; // Button nimmt die volle Breite ein
+        margin-top: 10px;
+    }
+}

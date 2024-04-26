@@ -1,0 +1,63 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<div class="Durchschnitt-div">
+    <mat-form-field>
+        <mat-label>Semester</mat-label>
+        <mat-select>
+            <mat-option value="erste">Erste</mat-option>
+            <mat-option value="zweite">Zweite</mat-option>
+            <mat-option value="dritte">Dritte</mat-option>
+            <mat-option value="vierte">Vierte</mat-option>
+            <mat-option value="fünfte">Fünfte</mat-option>
+            <mat-option value="sechste">Sechste</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field [formGroup]="gradeForm" (ngSubmit)="onSubmit()">
+        <mat-label>Semester Durchschnitt</mat-label>
+        <input matInput formControlName="GradeAverage">
+    </mat-form-field>
+    <mat-form-field [formGroup]="gradeForm" (ngSubmit)="onSubmit()">
+        <mat-label>Geplanter Durchschnitt</mat-label>
+        <input matInput formControlName="plannedGradeAverage">
+    </mat-form-field>
+
+</div>
+
+
+<mat-accordion class="container" [formGroup]="gradeForm" (ngSubmit)="onSubmit()">
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Kurs
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <!-- Row für "Gewünschte Note" und "Übungssession" -->
+    <div class="row">
+      <mat-form-field class="container-GN">
+        <mat-label matNativeControl required>Gewünschte Note</mat-label>
+        <input matInput formControlName="plannedGrade">
+      </mat-form-field>
+      <mat-form-field class="container-UES">
+        <mat-label>Übungssession</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </div>
+
+    <!-- Row für "Prüfungsergebnisse" und Button -->
+    <div class="result-and-button">
+      <mat-form-field class="container-result">
+        <mat-label>Prüfungsergebnis</mat-label>
+        <input matInput formControlName="grade">
+      </mat-form-field>
+      <button [formGroup]="gradeForm" (click)="onSubmit()" [disabled]="!gradeForm.valid" mat-raised-button
+              color="primary" type="submit" class="einreichenBtn">Einreichen
+      </button>
+    </div>
+
+    <!-- Kurs-ID-Feld -->
+    <mat-form-field class="container-GN">
+      <mat-label matNativeControl required>Kurs ID</mat-label>
+      <input matInput formControlName="lectureId">
+    </mat-form-field>
+  </mat-expansion-panel>
+</mat-accordion>

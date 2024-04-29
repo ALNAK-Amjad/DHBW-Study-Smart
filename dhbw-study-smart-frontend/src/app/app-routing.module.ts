@@ -1,28 +1,28 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './global/login/login.component';
-import { RegistrationComponent } from './global/registration/registration.component';
-import { MainFrameComponent } from './global/main-frame/main-frame.component';
-import { AuthGuard } from './global/route-guard/auth.guard';
-import { LectureComponent } from './features/lecture/lecture.component';
-import { DocumentComponent } from './features/document/document.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule, Routes} from '@angular/router';
+import {LoginComponent} from './global/login/login.component';
+import {RegistrationComponent} from './global/registration/registration.component';
+import {MainFrameComponent} from './global/main-frame/main-frame.component';
+import {AuthGuard} from './global/route-guard/auth.guard';
+import {LectureComponent} from './features/lecture/lecture.component';
+import {DocumentComponent} from './features/document/document.component';
 
 // Child Routes displayed inside the main frame
 const featureRoutes: Routes = [
     {
         path: '',
         redirectTo: 'lectures',
-        pathMatch: 'full'
+        pathMatch: 'full',
     },
     {
         path: 'lectures',
-        component: LectureComponent
+        component: LectureComponent,
     },
     {
         path: 'documents',
-        component: DocumentComponent
-    }
+        component: DocumentComponent,
+    },
 ];
 
 // Default Routes
@@ -31,15 +31,15 @@ const routes: Routes = [
         path: '',
         component: MainFrameComponent,
         canActivate: [AuthGuard],
-        children: featureRoutes
+        children: featureRoutes,
     },
     {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
     },
     {
         path: 'registration',
-        component: RegistrationComponent
+        component: RegistrationComponent,
     },
 ];
 
@@ -47,8 +47,8 @@ const routes: Routes = [
     declarations: [],
     imports: [
         CommonModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes),
     ],
-    exports: [RouterModule]
+    exports: [RouterModule],
 })
 export class AppRoutingModule { }

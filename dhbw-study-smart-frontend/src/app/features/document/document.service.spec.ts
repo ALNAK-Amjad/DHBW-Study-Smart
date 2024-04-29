@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { DocumentService } from './document.service';
+import {TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {DocumentService} from './document.service';
 
 describe('DocumentService', () => {
     let service: DocumentService;
@@ -8,7 +8,7 @@ describe('DocumentService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule],
-            providers: [DocumentService]
+            providers: [DocumentService],
         });
         service = TestBed.inject(DocumentService);
     });

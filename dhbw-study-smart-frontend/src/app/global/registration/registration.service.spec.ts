@@ -1,7 +1,7 @@
-import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-import { RegistrationService } from './registration.service';
+import {RegistrationService} from './registration.service';
 
 describe('RegistrationService', () => {
     let service: RegistrationService;
@@ -9,7 +9,7 @@ describe('RegistrationService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule],
-            providers: [RegistrationService]
+            providers: [RegistrationService],
         });
         service = TestBed.inject(RegistrationService);
     });

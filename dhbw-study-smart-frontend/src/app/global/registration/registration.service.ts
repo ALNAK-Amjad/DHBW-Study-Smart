@@ -1,16 +1,15 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { RegistrationUserDTO } from 'src/app/shared/dto/registration-user-dto';
-import { Course } from 'src/app/shared/entities/course';
-import { StudyProgram } from 'src/app/shared/entities/study-program';
-import { Semester } from 'src/app/shared/entities/semester';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {RegistrationUserDTO} from 'src/app/shared/dto/registration-user-dto';
+import {Course} from 'src/app/shared/entities/course';
+import {StudyProgram} from 'src/app/shared/entities/study-program';
+import {Semester} from 'src/app/shared/entities/semester';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class RegistrationService {
-
     constructor(private http: HttpClient) { }
 
     // Get all available study prgrams

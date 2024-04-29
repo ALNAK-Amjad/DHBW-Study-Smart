@@ -5,6 +5,7 @@ import { RegistrationUserDTO } from 'src/app/shared/dto/registration-user-dto';
 import { Course } from 'src/app/shared/entities/course';
 import { StudyProgram } from 'src/app/shared/entities/study-program';
 import { Semester } from 'src/app/shared/entities/semester';
+import {Lecture} from "../../shared/entities/lecture";
 
 @Injectable({
     providedIn: 'root'
@@ -18,6 +19,12 @@ export class RegistrationService {
         const requestUrl = 'http://localhost:8080/studyprogram/getall';
 
         return this.http.get<StudyProgram[]>(requestUrl);
+    }
+
+    // Get all available lectures
+    getLectures(): Observable<Lecture[]>{
+        const requestUrl = 'http://localhost:8080/lecture/getall';
+        return this.http.get<Lecture[]>(requestUrl)
     }
 
     // Get all available courses

@@ -1,89 +1,165 @@
 import {Component, OnInit} from '@angular/core';
-import {MatExpansionModule} from "@angular/material/expansion";
-import {MaterialModule} from "../../global/angular-material-module/material.module";
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {Router} from '@angular/router';
+import {FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule} from '@angular/forms';
 import {GradeService} from './grade.service';
-import {StudyProgram} from "../../shared/entities/study-program";
-import {Course} from "../../shared/entities/course";
-import {RegistrationService} from "../../global/registration/registration.service";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatSelectModule} from "@angular/material/select";
+import {MatInputModule} from "@angular/material/input";
+import {CommonModule} from "@angular/common";
 import Swal from "sweetalert2";
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
     selector: 'app-grade-overview',
     templateUrl: './grade-overview.component.html',
     styleUrls: ['./grade-overview.component.scss'],
-    standalone: true,
-    imports: [MatExpansionModule, MaterialModule, ReactiveFormsModule],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatExpansionModule,
+        MatSelectModule,
+        MatButtonModule
+    ],
+    standalone: true
 })
-
 export class GradeOverviewComponent implements OnInit {
-    gradeForm: FormGroup = new FormGroup({
-        lectureId: new FormControl("", [Validators.required]),
-        grade: new FormControl("", [Validators.required]),
-        plannedGrade: new FormControl("", [Validators.required]),
-
-    })
-
-    // All selectable study programs for the select input field
-    studyPrograms: StudyProgram[] = [];
-
-    // All selectable courses for the 2nd select input field
-    courses: Course[] = [];
+    gradeForm: FormGroup;
+    semesters: any[] = [];
+    courses: any[] = [];
 
     constructor(
-        private gradeService: GradeService,
-        private registrationService: RegistrationService,
-        private router: Router
+        private fb: FormBuilder,
+        private gradeService: GradeService
     ) {
-    }
-
-    // Initialize the component
-    ngOnInit() {
-        this.getAllStudyPrograms();
-        this.getAllCourses();
-    }
-
-    // Get all study programs for the select input
-    private getAllStudyPrograms(): void {
-        this.registrationService.getStudyPrograms().subscribe((data: StudyProgram[]) => {
-            this.studyPrograms = data;
+        this.gradeForm = this.fb.group({
+            semester: ['', Validators.required],
+            courses: this.fb.array([]),
+            actualGradeAverage: [{value: 0, disabled: true}],
+            plannedGradeAverage: [{value: 0, disabled: true}]
         });
     }
 
-    // Get all courses for the select input
-    private getAllCourses(): void {
-        this.registrationService.getCourses().subscribe((data: Course[]) => {
-            this.courses = data;
+    ngOnInit(): void {
+        this.getSemesters();
+        this.updateAverages();
+
+    }
+
+    // Get all available semesters
+    getSemesters(): void {
+        this.gradeService.getSemesters().subscribe(semesters => {
+            this.semesters = semesters;
+        }, error => {
+            console.error('Fehler beim Laden der Semester: ', error);
         });
     }
 
-    panelOpenState = false;
+    // Get all available lectures by semester id
+    onSemesterChange(semesterId: number): void {
+        this.gradeService.getCoursesBySemester(semesterId).subscribe(courses => {
+            this.courses = courses;
+            this.setCoursesFormArray(courses);
+            this.updateAverages();
+        }, error => {
+            console.error('Fehler beim Laden der Kurse:', error);
+        });
+    }
 
-    onSubmit() {
-        console.log(this.gradeForm.value);
-        const userId = Number(localStorage.getItem('userId'));
-        const formData = {
-            grade: this.gradeForm.value.grade,
-            plannedGrade: this.gradeForm.value.plannedGrade,
-            userId: userId,
-            lectureId: this.gradeForm.value.lectureId,
+    // To generate the form for the available courses pro semester
+    setCoursesFormArray(courses: any[]): void {
+        const courseFormArray = this.getCoursesFormArray();
+        courseFormArray.clear();
+        courses.forEach(course => {
+            const courseFormGroup = this.fb.group({
+                plannedGrade: ['', Validators.required],
+                session: [''],
+                grade: ['', Validators.required]
+            });
+            courseFormGroup.valueChanges.subscribe(() => this.updateAverages());
+            courseFormArray.push(courseFormGroup);
+        });
+        this.updateAverages();
+    }
+
+    getCoursesFormArray(): FormArray {
+        return this.gradeForm.get('courses') as FormArray;
+    }
+
+    updateAverages(): void {
+        const coursesFormArray = this.getCoursesFormArray();
+        let totalActual = 0;
+        let totalPlanned = 0;
+        let countActual = 0;
+        let countPlanned = 0;
+
+        coursesFormArray.controls.forEach(control => {
+            const gradeValue = control.get('grade')?.value;
+            const plannedGradeValue = control.get('plannedGrade')?.value;
+
+            if (gradeValue) {
+                totalActual += parseFloat(gradeValue);
+                countActual++;
+            }
+            if (plannedGradeValue) {
+                totalPlanned += parseFloat(plannedGradeValue);
+                countPlanned++;
+            }
+        });
+
+        const actualAverage = countActual > 0 ? (totalActual / countActual).toFixed(2) : '0';
+        const plannedAverage = countPlanned > 0 ? (totalPlanned / countPlanned).toFixed(2) : '0';
+
+        this.gradeForm.patchValue({
+            actualGradeAverage: actualAverage,
+            plannedGradeAverage: plannedAverage
+        });
+    }
+
+
+    submitCourseGrade(index: number): void {
+        const courseFormGroup = (this.gradeForm.get('courses') as FormArray).at(index) as FormGroup;
+
+        // Überprüfen, ob das FormGroup gültig ist
+        if (!courseFormGroup.valid) {
+            Swal.fire("Fehler", "Bitte füllen Sie alle erforderlichen Felder aus.", "error");
+            return;
         }
+
+        const courseGradeData = courseFormGroup.value;
+        const userId = Number(localStorage.getItem('userId'));
+        const courseData = this.courses[index];
+        const lectureId = courseData?.lectureId;
+
+        // Sicherstellen, dass die Kurs-ID definiert ist
+        if (typeof lectureId !== 'number') {
+            console.error('Die Kurs-ID ist nicht definiert:', courseData);
+            Swal.fire("Fehler", "Die Kurs-ID ist nicht definiert. Überprüfen Sie die Kursdaten.", "error");
+            return;
+        }
+
+        // Sicherstellen, dass keine wesentlichen Felder leer sind
+        if (!courseGradeData.grade || !courseGradeData.plannedGrade) {
+            Swal.fire("Fehler", "Noteninformationen sind unvollständig. Bitte überprüfen Sie Ihre Eingaben.", "error");
+            return;
+        }
+
+        const formData = {
+            grade: courseGradeData.grade,
+            plannedGrade: courseGradeData.plannedGrade,
+            userId: userId,
+            lectureId: lectureId,
+        };
+
+        // Senden der Daten an den Server
         this.gradeService.addGrade(formData).subscribe(
             (data: any) => {
-                Swal.fire({
-                    title: "Noten erfolgreich eingetragen!",
-                    text: "Die Noten wurden erfolgreich gespeichert.",
-                    icon: "success"
-                });
+                Swal.fire("Erfolg", "Die Noten wurden erfolgreich eingetragen.", "success");
             },
             (error: any) => {
-                Swal.fire({
-                    title: "Fehler beim Eintragen der Daten!",
-                    text: "Es gab ein Problem beim Speichern der Noten. Bitte versuche es erneut.",
-                    icon: "error"
-                });
+                console.error('Fehler beim Eintragen der Noten:', error);
+                Swal.fire("Fehler", "Es gab ein Problem beim Speichern der Noten. Bitte versuche es erneut.", "error");
             }
         );
     }
+
 }

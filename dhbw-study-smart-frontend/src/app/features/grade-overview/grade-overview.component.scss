@@ -7,49 +7,47 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 100%; // Vollständige Breite auf kleinen Bildschirmen
+    max-width: 100%;
 }
 
-.einreichenBtn {
-    margin-top: 20px; // Abstand vor dem Button
-    margin-bottom: 20px; // Abstand vor dem Kurs-ID-Feld
+.einreichenBtn.mat-raised-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .row {
     display: flex;
-    justify-content: space-between; // Stellt sicher, dass zwischen den beiden Elementen Platz ist
-    flex-wrap: wrap; // Erlaubt Elementen, in die nächste Zeile zu rutschen
-    margin-bottom: 20px; // Abstand zum nächsten Element
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
 .container-GN, .container-UES, .container-result {
-    width: calc(50% - 10px); // Berechnet die Breite, um den Abstand einzubeziehen
-    min-width: 250px; // Minimale Breite der Eingabefelder, um Lesbarkeit zu gewährleisten
+    width: calc(50% - 10px);
+    min-width: 250px;
 }
 
-
-// Diese Klasse wird für den Button neben dem Prüfungsergebnis verwendet
 .result-and-button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px; // Abstand vor dem Kurs-ID-Feld
+    margin-bottom: 20px;
 }
 
-// Media Queries für Responsive Design
-@media (max-width: 768px) { // Für Tablets und kleinere Geräte
+
+@media (max-width: 768px) {
     .container-GN, .container-UES, .container-result, .result-and-button {
-        width: 100%; // Elemente nehmen die volle Breite ein
-        margin-right: 0; // Entfernt den Abstand rechts, der zuvor definiert wurde
-        margin-bottom: 10px; // Reduzierter Abstand zum nächsten Element
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
     }
 
     .row, .result-and-button {
-        flex-direction: column; // Stapelt Elemente vertikal
+        flex-direction: column;
     }
 
     .einreichenBtn {
-        width: 100%; // Button nimmt die volle Breite ein
+        width: 100%;
         margin-top: 10px;
     }
 }

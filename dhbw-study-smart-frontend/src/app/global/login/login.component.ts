@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {LoginService} from './login.service';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {LoginUserDTO} from 'src/app/shared/dto/login-user-dto';
 
 @Component({
     selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
         password: new FormControl('', [Validators.required]),
     });
 
-    loginResponseData: null | { verified: boolean; userId: number; } = null;
+    loginResponseData: null | LoginUserDTO = null;
 
     constructor(
         private loginService: LoginService,

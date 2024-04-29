@@ -55,7 +55,8 @@
                             "ViewChild",
                             "ViewChildren",
                             "Optional",
-                            "SkipSelf"
+                            "SkipSelf",
+                            "AuthGuard"
                         ]
                     }
                 ],
@@ -70,6 +71,9 @@
                 ],
                 "require-jsdoc": [
                     "off"
+                ],
+                "no-unused-vars": [
+                    "warn"
                 ]
             }
         },

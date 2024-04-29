@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { DocumentService } from './document.service';
-import { Document } from 'src/app/shared/entities/document';
-import { FileSaverService } from 'ngx-filesaver';
-import { panelGroups } from './document-config';
+import {Component, OnInit} from '@angular/core';
+import {DocumentService} from './document.service';
+import {Document} from 'src/app/shared/entities/document';
+import {FileSaverService} from 'ngx-filesaver';
+import {panelGroups} from './document-config';
 
 @Component({
     selector: 'app-document',
     templateUrl: './document.component.html',
-    styleUrls: ['./document.component.scss']
+    styleUrls: ['./document.component.scss'],
 })
 export class DocumentComponent implements OnInit {
     // List of all document entities from the Database
@@ -34,7 +34,7 @@ export class DocumentComponent implements OnInit {
             },
             error: (err) => {
                 console.error('Fetching Document Entities failed with Error:', err);
-            }
+            },
         });
     }
 
@@ -58,7 +58,7 @@ export class DocumentComponent implements OnInit {
             },
             error: (err) => {
                 console.error('Downloading Document failed with Error:', err);
-            }
+            },
         });
     }
 }

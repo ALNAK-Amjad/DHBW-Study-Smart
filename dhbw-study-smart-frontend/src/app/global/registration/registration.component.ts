@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { RegistrationService } from './registration.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { StudyProgram } from 'src/app/shared/entities/study-program';
-import { Course } from 'src/app/shared/entities/course';
-import { Semester } from 'src/app/shared/entities/semester';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {RegistrationService} from './registration.service';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {StudyProgram} from 'src/app/shared/entities/study-program';
+import {Course} from 'src/app/shared/entities/course';
+import {Semester} from 'src/app/shared/entities/semester';
 
 @Component({
     selector: 'app-registration',
     templateUrl: './registration.component.html',
-    styleUrls: ['./registration.component.scss']
+    styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent implements OnInit {
     registrationForm: FormGroup = new FormGroup({
@@ -20,7 +20,7 @@ export class RegistrationComponent implements OnInit {
         studyProgramId: new FormControl(null),
         courseId: new FormControl(null),
         semesterId: new FormControl(null),
-        studentNumber: new FormControl('', [Validators.required])
+        studentNumber: new FormControl('', [Validators.required]),
     });
 
     // All selectable study programs for the select input field
@@ -34,7 +34,7 @@ export class RegistrationComponent implements OnInit {
 
     constructor(
         private registrationService: RegistrationService,
-        private router: Router
+        private router: Router,
     ) { }
 
     // Initialize the component
@@ -77,8 +77,7 @@ export class RegistrationComponent implements OnInit {
             error: (error) => {
                 console.log(error);
                 // @TODO handle error
-            }
+            },
         });
     }
-
 }

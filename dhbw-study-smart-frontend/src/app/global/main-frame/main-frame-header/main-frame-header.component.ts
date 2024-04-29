@@ -2,7 +2,6 @@ import {Component, Injectable} from '@angular/core';
 import {MainFrameService} from '../main-frame.service';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import Swal from "sweetalert2";
 
 @Component({
     selector: 'app-main-frame-header',

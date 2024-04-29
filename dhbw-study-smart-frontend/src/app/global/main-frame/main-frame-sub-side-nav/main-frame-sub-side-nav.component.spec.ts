@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { MainFrameSubSideNavComponent } from './main-frame-sub-side-nav.component';
+import {MainFrameSubSideNavComponent} from './main-frame-sub-side-nav.component';
 
 describe('MainFrameSubSideNavComponent', () => {
     let component: MainFrameSubSideNavComponent;
@@ -8,7 +8,7 @@ describe('MainFrameSubSideNavComponent', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [MainFrameSubSideNavComponent]
+            declarations: [MainFrameSubSideNavComponent],
         });
         fixture = TestBed.createComponent(MainFrameSubSideNavComponent);
         component = fixture.componentInstance;

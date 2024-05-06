@@ -1,0 +1,15 @@
+.feature-component-container {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 40px;
+
+    .calendar-view-button-container {
+        margin-bottom: 20px;
+    }
+
+    .calendar-container {
+        width: 100%;
+        height: 80%;
+    }
+}

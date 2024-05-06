@@ -1,0 +1,33 @@
+<div class="feature-component-container">
+    <div class="calendar-view-button-container">
+        <mat-button-toggle-group [(ngModel)]="view">
+            <mat-button-toggle [value]="CalendarView.Day" [disabled]="true">Tagesansicht</mat-button-toggle>
+            <mat-button-toggle [value]="CalendarView.Week">Wochenansicht</mat-button-toggle>
+            <mat-button-toggle [value]="CalendarView.Month">Monatsansicht</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+
+    <div [ngSwitch]="view" class="calendar-container">
+        <mwl-calendar-month-view
+            *ngSwitchCase="CalendarView.Month"
+            [viewDate]="viewDate"
+            [events]="displayedEvents"
+            [locale]="locale"
+            [refresh]="refresh"
+            (eventTimesChanged)="eventTimesChanged($event)"
+        >
+        </mwl-calendar-month-view>
+        <mwl-calendar-week-view
+            *ngSwitchCase="CalendarView.Week"
+            [viewDate]="viewDate"
+            [events]="displayedEvents"
+            [locale]="locale"
+            [refresh]="refresh"
+            [weekStartsOn]="1"
+            [snapDraggedEvents]="true"
+            [eventSnapSize]="30"
+            (eventTimesChanged)="eventTimesChanged($event)"
+        >
+        </mwl-calendar-week-view>
+    </div>
+</div>

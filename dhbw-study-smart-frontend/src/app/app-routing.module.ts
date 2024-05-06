@@ -7,6 +7,7 @@ import {MainFrameComponent} from './global/main-frame/main-frame.component';
 import {AuthGuard} from './global/route-guard/auth.guard';
 import {LectureComponent} from './features/lecture/lecture.component';
 import {DocumentComponent} from './features/document/document.component';
+import {CalendarComponent} from './features/calendar/calendar.component';
 
 // Child Routes displayed inside the main frame
 const featureRoutes: Routes = [
@@ -22,6 +23,10 @@ const featureRoutes: Routes = [
     {
         path: 'documents',
         component: DocumentComponent,
+    },
+    {
+        path: 'calendar',
+        component: CalendarComponent,
     },
 ];
 

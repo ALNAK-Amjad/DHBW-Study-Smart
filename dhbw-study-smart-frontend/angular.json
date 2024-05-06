@@ -29,8 +29,9 @@
                             "src/assets"
                         ],
                         "styles": [
-                          "@angular/material/prebuilt-themes/deeppurple-amber.css",
-                          "src/styles.scss"
+                            "node_modules/angular-calendar/css/angular-calendar.css",
+                            "@angular/material/prebuilt-themes/deeppurple-amber.css",
+                            "src/styles.scss"
                         ],
                         "scripts": []
                     },
@@ -92,8 +93,9 @@
                             "src/assets"
                         ],
                         "styles": [
-                          "@angular/material/prebuilt-themes/deeppurple-amber.css",
-                          "src/styles.scss"
+                            "node_modules/angular-calendar/css/angular-calendar.css",
+                            "@angular/material/prebuilt-themes/deeppurple-amber.css",
+                            "src/styles.scss"
                         ],
                         "scripts": []
                     }

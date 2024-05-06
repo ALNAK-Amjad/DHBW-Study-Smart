@@ -16,6 +16,8 @@ import {MainFrameSideNavComponent} from './global/main-frame/main-frame-side-nav
 import {MainFrameSubSideNavComponent} from './global/main-frame/main-frame-sub-side-nav/main-frame-sub-side-nav.component';
 import {LectureComponent} from './features/lecture/lecture.component';
 import {DocumentComponent} from './features/document/document.component';
+import {CalendarModule, DateAdapter} from 'angular-calendar';
+import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
     declarations: [
@@ -37,6 +39,7 @@ import {DocumentComponent} from './features/document/document.component';
         BrowserAnimationsModule,
         ReactiveFormsModule,
         FileSaverModule,
+        CalendarModule.forRoot({provide: DateAdapter, useFactory: adapterFactory}),
     ],
     providers: [],
     bootstrap: [AppComponent],

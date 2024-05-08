@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {RaplaTimetableLecture} from './calendar-config';
 
 @Injectable({
     providedIn: 'root',
@@ -11,14 +12,13 @@ export class CalendarService {
     constructor(private http: HttpClient) {}
 
     // Get all lectures from Rapla by the given course
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    public getEventsByCourse(course: string): Observable<any> {
+    public getEventsByCourse(course: string): Observable<RaplaTimetableLecture[]> {
         /**
          * Build the url path for the course, i.e.: 'KA-TINF22B4/events'
          * This is required to get the correct data from Rapla
          */
         const courseUrlPath = 'KA-' + course + '/events';
 
-        return this.http.get(this.baseUrl + '/proxy', {params: {url: courseUrlPath}});
+        return this.http.get<RaplaTimetableLecture[]>(this.baseUrl + '/proxy', {params: {url: courseUrlPath}});
     }
 }

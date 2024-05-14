@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GradeRepository extends JpaRepository<Grade, Long> {
-    @Query("SELECT g FROM Grade g WHERE g.users.userId = :userId AND g.lecture = :lecture")
-    Grade findByUsersUserIdAndLectureId(Long userId, Long lecture);
+    @Query("SELECT g FROM Grade g WHERE g.users.userId = :userId AND g.lecture.lectureId = :lectureId")
+    Grade findByUsersUserIdAndLectureId(Long userId, Long lectureId);
 }
+

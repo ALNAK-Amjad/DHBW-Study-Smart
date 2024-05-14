@@ -91,6 +91,7 @@ public class GradeController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @PostMapping("/updateGrade/{id}")
     public ResponseEntity<Grade> updateGrade(@PathVariable long id, @RequestBody Grade grade) {
         try {

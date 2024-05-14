@@ -8,7 +8,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class GradeDTO {
-
     private double grade;
     private double plannedGrade;
     private long userId;

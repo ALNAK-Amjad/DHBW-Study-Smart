@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,7 +27,8 @@ import { GradeOverviewComponent } from './features/grade-overview/grade-overview
         MainFrameSideNavComponent,
         MainFrameSubSideNavComponent,
         LectureComponent,
-        DocumentComponent
+        DocumentComponent,
+        GradeOverviewComponent,
     ],
     imports: [
         BrowserModule,
@@ -36,7 +37,7 @@ import { GradeOverviewComponent } from './features/grade-overview/grade-overview
         MaterialModule,
         BrowserAnimationsModule,
         ReactiveFormsModule,
-        GradeOverviewComponent,
+        FormsModule,
 
     ],
     providers: [],

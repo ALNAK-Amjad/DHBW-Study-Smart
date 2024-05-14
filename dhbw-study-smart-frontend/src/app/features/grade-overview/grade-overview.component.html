@@ -12,13 +12,13 @@
     <!-- Tatsächlicher Durchschnitt -->
     <mat-form-field>
       <mat-label>Tatsächlicher Durchschnitt</mat-label>
-      <input matInput formControlName="actualGradeAverage" >
+      <input matInput formControlName="actualGradeAverage">
     </mat-form-field>
 
     <!-- Geplanter Durchschnitt -->
     <mat-form-field>
       <mat-label>Geplanter Durchschnitt</mat-label>
-      <input matInput formControlName="plannedGradeAverage" >
+      <input matInput formControlName="plannedGradeAverage">
     </mat-form-field>
   </div>
 
@@ -46,8 +46,9 @@
           <mat-label>Prüfungsergebnis</mat-label>
           <input matInput formControlName="grade">
         </mat-form-field>
-        <button class="einreichenBtn" type="button" (click)="submitCourseGrade(i)" mat-raised-button color="primary" >Einreichen</button>
+        <button class="einreichenBtn" type="button" (click)="submitCourseGrade(i)" mat-raised-button color="primary">Einreichen</button>
       </div>
     </mat-expansion-panel>
   </mat-accordion>
 </form>
+

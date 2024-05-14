@@ -13,7 +13,7 @@ import {Router} from "@angular/router";
 })
 export class MainFrameHeaderComponent {
 
-    constructor(private mainFrameService: MainFrameService, private http: HttpClient, private router: Router) {
+    constructor(private mainFrameService: MainFrameService, private router: Router) {
     }
 
     // Trigger event when the nav toggle button is clicked

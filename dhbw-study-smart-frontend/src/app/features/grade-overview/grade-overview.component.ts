@@ -1,26 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
 import {GradeService} from './grade.service';
-import {MatExpansionModule} from "@angular/material/expansion";
-import {MatSelectModule} from "@angular/material/select";
-import {MatInputModule} from "@angular/material/input";
-import {CommonModule} from "@angular/common";
 import Swal from "sweetalert2";
-import {MatButtonModule} from '@angular/material/button';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-grade-overview',
     templateUrl: './grade-overview.component.html',
     styleUrls: ['./grade-overview.component.scss'],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatExpansionModule,
-        MatSelectModule,
-        MatButtonModule
-    ],
-    standalone: true
 })
 export class GradeOverviewComponent implements OnInit {
     gradeForm: FormGroup;
@@ -29,10 +16,10 @@ export class GradeOverviewComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private gradeService: GradeService
+        private gradeService: GradeService, private snackBar: MatSnackBar
     ) {
         this.gradeForm = this.fb.group({
-            semester: ['', Validators.required],
+            semester: [],
             courses: this.fb.array([]),
             actualGradeAverage: [{value: 0, disabled: true}],
             plannedGradeAverage: [{value: 0, disabled: true}]
@@ -121,7 +108,7 @@ export class GradeOverviewComponent implements OnInit {
 
         // Überprüfen, ob das FormGroup gültig ist
         if (!courseFormGroup.valid) {
-            Swal.fire("Fehler", "Bitte füllen Sie alle erforderlichen Felder aus.", "error");
+            this.openSnackBar("Bitte füllen Sie alle erforderlichen Felder aus.", "Fehler");
             return;
         }
 
@@ -133,13 +120,13 @@ export class GradeOverviewComponent implements OnInit {
         // Sicherstellen, dass die Kurs-ID definiert ist
         if (typeof lectureId !== 'number') {
             console.error('Die Kurs-ID ist nicht definiert:', courseData);
-            Swal.fire("Fehler", "Die Kurs-ID ist nicht definiert. Überprüfen Sie die Kursdaten.", "error");
+            this.openSnackBar("Die Kurs-ID ist nicht definiert. Überprüfen Sie die Kursdaten.", "Fehler");
             return;
         }
 
         // Sicherstellen, dass keine wesentlichen Felder leer sind
         if (!courseGradeData.grade || !courseGradeData.plannedGrade) {
-            Swal.fire("Fehler", "Noteninformationen sind unvollständig. Bitte überprüfen Sie Ihre Eingaben.", "error");
+            this.openSnackBar("Noteninformationen sind unvollständig. Bitte überprüfen Sie Ihre Eingaben.", "Fehler");
             return;
         }
 
@@ -153,13 +140,20 @@ export class GradeOverviewComponent implements OnInit {
         // Senden der Daten an den Server
         this.gradeService.addGrade(formData).subscribe(
             (data: any) => {
-                Swal.fire("Erfolg", "Die Noten wurden erfolgreich eingetragen.", "success");
+                this.openSnackBar("Die Noten wurden erfolgreich eingetragen.", "Erfolg");
             },
             (error: any) => {
                 console.error('Fehler beim Eintragen der Noten:', error);
-                Swal.fire("Fehler", "Es gab ein Problem beim Speichern der Noten. Bitte versuche es erneut.", "error");
+                this.openSnackBar("Es gab ein Problem beim Speichern der Noten. Bitte versuche es erneut.", "Fehler");
             }
         );
     }
+
+    openSnackBar(message: string, action: string) {
+        this.snackBar.open(message, action, {
+            duration: 2000,
+        });
+    }
+
 
 }

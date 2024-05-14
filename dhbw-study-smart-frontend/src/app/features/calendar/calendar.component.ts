@@ -9,6 +9,8 @@ import localeDe from '@angular/common/locales/de';
 import {Subject} from 'rxjs';
 import {CalendarService} from './calendar.service';
 import {RaplaTimetableLecture} from './calendar-config';
+import {UserService} from 'src/app/shared/services/user.service';
+import {User} from 'src/app/shared/entities/user';
 
 @Component({
     selector: 'app-calendar',
@@ -36,19 +38,59 @@ export class CalendarComponent implements OnInit {
 
     constructor(
         private calendarService: CalendarService,
+        private userService: UserService,
     ) {}
 
     ngOnInit(): void {
         // Set German date locale
         registerLocaleData(localeDe, this.locale);
 
-        // Get and Initialize timetable data
-        this.getTimeTableByCourse('TINF22B4'); // TODO Get course of the current user
-        this.getAllAppointmentsByUser(1); // TODO Get user ID of the current user
+        // Init. calendar data
+        this.initializeCalendar();
+    }
+
+    // Initializes the entire calendar with user appointments and timetable data
+    private initializeCalendar() {
+        // Get user data of the currently logged-in user
+        this.getUserData().then((user) => {
+            // Get and Initialize timetable and appointments with the given user data
+            this.getTimeTableByCourse(user.course?.name);
+            this.getAllAppointmentsByUser(user.userId);
+        }).catch((err) => {
+            console.error('Error initializing calendar:', err);
+        });
+    }
+
+    // Get all user data from the currently logged in user
+    private getUserData(): Promise<User> {
+        return new Promise((resolve, reject) => {
+            const userId = localStorage.getItem('userId');
+
+            // Check if the user is still logged in
+            if (userId &&!isNaN(Number(userId))) {
+                // Get user data from the backend
+                this.userService.getUserById(Number(userId)).subscribe({
+                    next: (data) => {
+                        resolve(data);
+                    },
+                    error: (err) => {
+                        reject(err);
+                    },
+                });
+            } else {
+                reject(new Error('User is no longer authenticated.'));
+            }
+        });
     }
 
     // Get timetable from Rapla by the given course
-    private getTimeTableByCourse(course: string) {
+    private getTimeTableByCourse(course: string | undefined) {
+        // If the user has no course then early return
+        if (course === undefined) {
+            return;
+        }
+
+        // Get the timetable data and prepare it for the calendar
         this.calendarService.getEventsByCourse(course).subscribe({
             next: (data) => {
                 this.initializeTimetableAsCalendarEvent(data);

@@ -72,4 +72,9 @@ public class UsersServiceImpl implements UsersService {
 
         return userRepo.save(user);
     }
+
+    @Override
+    public Users getUserById(Long userId) {
+        return userRepo.findById(userId).orElseThrow(() -> new RuntimeException("User not found with id " + userId));
+    }
 }

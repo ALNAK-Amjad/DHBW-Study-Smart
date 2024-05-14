@@ -38,4 +38,8 @@ export class GradeService {
     getCoursesBySemester(semesterId: number): Observable<any[]> {
         return this.http.get<any[]>(`http://localhost:8080/lecture/getLecturesBySemester/${semesterId}`);
     }
+
+    getAllGrades(): Observable<any[]> {
+        return this.http.get<any[]>('http://localhost:8080/api/grades/getAllGrade');
+    }
 }

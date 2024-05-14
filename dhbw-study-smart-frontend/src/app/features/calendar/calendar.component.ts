@@ -148,4 +148,55 @@ export class CalendarComponent implements OnInit {
         event.end = newEnd;
         this.refresh.next();
     }
+
+    // Change calendar view to previous Day/Week/Month
+    public previousButtonClicked() {
+        // Check current view
+        switch (this.view) {
+            case CalendarView.Day:
+                this.viewDate.setDate(this.viewDate.getDate() - 1);
+                break;
+            case CalendarView.Week:
+                this.viewDate.setDate(this.viewDate.getDate() - 7);
+                break;
+            case CalendarView.Month:
+                this.viewDate.setMonth(this.viewDate.getMonth() - 1);
+                break;
+            default:
+                break;
+        }
+
+        // Refresh the calendar
+        this.refresh.next();
+    }
+
+    // Change calendar view to today
+    public todayButtonClicked() {
+        // Set to current day
+        this.viewDate = new Date();
+
+        // Refresh the calendar
+        this.refresh.next();
+    }
+
+    // Change calendar view to next Day/Week/Month
+    public nextButtonClicked() {
+        // Check current view
+        switch (this.view) {
+            case CalendarView.Day:
+                this.viewDate.setDate(this.viewDate.getDate() + 1);
+                break;
+            case CalendarView.Week:
+                this.viewDate.setDate(this.viewDate.getDate() + 7);
+                break;
+            case CalendarView.Month:
+                this.viewDate.setMonth(this.viewDate.getMonth() + 1);
+                break;
+            default:
+                break;
+        }
+
+        // Refresh the calendar
+        this.refresh.next();
+    }
 }

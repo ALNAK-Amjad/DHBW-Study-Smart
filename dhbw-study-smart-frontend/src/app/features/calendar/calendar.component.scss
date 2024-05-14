@@ -4,8 +4,20 @@
     box-sizing: border-box;
     padding: 40px;
 
-    .calendar-view-button-container {
+    .calendar-navigation-container {
         margin-bottom: 20px;
+
+        .calendar-view-button-container {
+            margin-right: 40px;
+        }
+
+        .calendar-prev-next-button-container {
+            align-items: center;
+
+            button {
+                margin: 0 5px;
+            }
+        }
     }
 
     .calendar-container {

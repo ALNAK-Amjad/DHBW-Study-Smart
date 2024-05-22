@@ -1,6 +1,6 @@
 <form [formGroup]="gradeForm">
   <div class="Durchschnitt-div">
-    <mat-form-field>
+    <mat-form-field class="semester-selection">
       <mat-label>Semester</mat-label>
       <mat-select (selectionChange)="onSemesterChange($event.value)" formControlName="semester">
         <mat-option *ngFor="let semester of semesters" [value]="semester.semesterId">
@@ -10,13 +10,13 @@
     </mat-form-field>
 
     <!-- Tatsächlicher Durchschnitt -->
-    <mat-form-field>
+    <mat-form-field class="actualGradeAverage">
       <mat-label>Tatsächlicher Durchschnitt</mat-label>
       <input matInput formControlName="actualGradeAverage">
     </mat-form-field>
 
     <!-- Geplanter Durchschnitt -->
-    <mat-form-field>
+    <mat-form-field class="plannedGradeAverage">
       <mat-label>Geplanter Durchschnitt</mat-label>
       <input matInput formControlName="plannedGradeAverage">
     </mat-form-field>

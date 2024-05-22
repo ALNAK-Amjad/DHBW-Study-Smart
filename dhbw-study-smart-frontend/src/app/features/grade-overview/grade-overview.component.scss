@@ -1,6 +1,12 @@
 .Durchschnitt-div {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.semester-selection, .actualGradeAverage, .plannedGradeAverage {
+    flex: 1 0 200px;
 }
 
 .container {
@@ -32,10 +38,14 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
-
 @media (max-width: 768px) {
+    .semester-selection, .actualGradeAverage, .plannedGradeAverage {
+        flex: 1 0 100%;
+    }
+
     .container-GN, .container-UES, .container-result, .result-and-button {
         width: 100%;
         margin-right: 0;

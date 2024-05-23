@@ -1,4 +1,5 @@
 package com.example.dhbwstudysmartbackend.entity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -7,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Set;
 
 @Entity
 @Data
@@ -27,4 +30,10 @@ public class Semester {
     @GeneratedValue(generator = "semesterId-sequence-generator")
 
     private Long semesterId;
+    @Column
+    private String name;
+
+    @OneToMany(mappedBy = "semester", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private Set<Lecture> lectures;
 }

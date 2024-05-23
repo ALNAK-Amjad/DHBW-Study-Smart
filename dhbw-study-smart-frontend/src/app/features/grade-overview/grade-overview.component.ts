@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
-import {GradeService} from './grade.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { GradeService } from './grade.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-grade-overview',
@@ -12,6 +12,7 @@ export class GradeOverviewComponent implements OnInit {
     gradeForm: FormGroup;
     semesters: any[] = [];
     courses: any[] = [];
+    groupedCourses: any[] = [];
     grades: any[] = [];
 
     constructor(
@@ -22,8 +23,8 @@ export class GradeOverviewComponent implements OnInit {
         this.gradeForm = this.fb.group({
             semester: [],
             courses: this.fb.array([]),
-            actualGradeAverage: [{value: 0, disabled: true}],
-            plannedGradeAverage: [{value: 0, disabled: true}]
+            actualGradeAverage: [{ value: 0, disabled: true }],
+            plannedGradeAverage: [{ value: 0, disabled: true }]
         });
     }
 
@@ -57,6 +58,22 @@ export class GradeOverviewComponent implements OnInit {
                 });
             }
         });
+
+        // Handle grades for grouped courses
+        this.groupedCourses.forEach((group, groupIndex) => {
+            group.lectures.forEach((course: any, courseIndex: number) => {
+                const grade = this.grades.find(g => g.lecture.lectureId === course.lectureId);
+                if (grade) {
+                    const formArrayIndex = this.getFormGroupIndex(groupIndex, courseIndex);
+                    coursesFormArray.at(formArrayIndex).patchValue({
+                        plannedGrade: grade.plannedGrade,
+                        session: grade.session,
+                        grade: grade.grade
+                    });
+                }
+            });
+        });
+
         this.updateAverages();
     }
 
@@ -70,9 +87,19 @@ export class GradeOverviewComponent implements OnInit {
 
     onSemesterChange(semesterId: number): void {
         this.gradeService.getCoursesBySemester(semesterId).subscribe(courses => {
-            this.courses = courses;
-            this.setCoursesFormArray(courses);
-            this.loadGrades();
+            this.gradeService.getGroupedCoursesBySemester(semesterId).subscribe(groupedCourses => {
+                this.groupedCourses = groupedCourses;
+
+                // Filter out courses that are part of a group
+                const groupedCourseIds = new Set(groupedCourses.flatMap(group => group.lectures.map((lecture: any) => lecture.lectureId)));
+                this.courses = courses.filter(course => !groupedCourseIds.has(course.lectureId));
+
+                this.setCoursesFormArray(this.courses);
+                this.setGroupedCoursesFormArray(groupedCourses);
+                this.loadGrades();
+            }, error => {
+                console.error('Fehler beim Laden der Gruppierten Kurse:', error);
+            });
         }, error => {
             console.error('Fehler beim Laden der Kurse:', error);
         });
@@ -93,8 +120,29 @@ export class GradeOverviewComponent implements OnInit {
         this.updateAverages();
     }
 
+    setGroupedCoursesFormArray(groupedCourses: any[]): void {
+        const courseFormArray = this.getCoursesFormArray();
+        groupedCourses.forEach(group => {
+            group.lectures.forEach(() => {
+                const courseFormGroup = this.fb.group({
+                    plannedGrade: ['', Validators.required],
+                    session: [''],
+                    grade: ['', Validators.required]
+                });
+                courseFormGroup.valueChanges.subscribe(() => this.updateAverages());
+                courseFormArray.push(courseFormGroup);
+            });
+        });
+        this.updateAverages();
+    }
+
     getCoursesFormArray(): FormArray {
         return this.gradeForm.get('courses') as FormArray;
+    }
+
+    getFormGroupIndex(groupIndex: number, courseIndex: number): number {
+        const totalUngroupedCourses = this.courses.length;
+        return totalUngroupedCourses + groupIndex * this.groupedCourses[groupIndex].lectures.length + courseIndex;
     }
 
     updateAverages(): void {

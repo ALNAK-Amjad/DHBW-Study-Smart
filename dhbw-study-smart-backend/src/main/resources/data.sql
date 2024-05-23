@@ -21,14 +21,16 @@ INSERT INTO USERS (user_id, first_name, last_name, password, email ,student_numb
     VALUES (2, 'Markus', 'Steppenberger', '1','test@gmail.com', 938550, 2, 1, 2);
 
 -- Lectures
+-- Erste Semester
 INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (1, 'Theoretische Informatik 1', 1);
 INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (2, 'Praxisprojekt 1',1);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (3, 'Mathematik 1.1' ,1);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (3, 'Lineare Algebra' ,1);
 INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (4, 'Technische Informatik 1',1);
 INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (5, 'Web Engineering',1);
 INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (6, 'Anwendungsprojekt Informatik',1);
 
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (7, 'Mathematik 1.2',2);
+-- Zweite Semester
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (7, 'Analysis',2);
 INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (8, 'Theoretische Informatik 2',2);
 INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (9, 'Programmieren',2);
 INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (10, 'Intercultural Communication 1',2);
@@ -36,13 +38,63 @@ INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (11, 'BWL',2);
 INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (12, 'Intercultural Communication 2',2);
 INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (13, 'Marketing ',2);
 
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (14, 'Mathematik 2.1',3);
+-- Dritte Semester
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (14, 'Angewandte Mathematik',3);
 INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (15, 'Theoretische Informatik 3',3);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (24, 'Geschäftsprozesse',3);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (25, 'Web-Engineering 2',3);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (26, 'Signale und Systeme 1',3);
+
+-- Vierte Semester
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (16, 'Statistik',4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (17, 'Software Engineering I',4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (18, 'Datenbanken',4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (19, 'Betriebssysteme',4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (20, 'Rechnerarchitekturen 1',4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (21, 'Systemnahe Programmierung 1',4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (22, 'Kommunikations- und Netztechnik',4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (23, 'Compilerbau',4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (27, 'Anwendungen der Robotik',4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (28, 'OO Best Practice',4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (29, 'Workflow',4);
+
+
+-- Fünfte Semester
+
+-- Sechste Semester
+
+
 
 INSERT INTO LECTURE_GROUP(lecture_group_id, name) VALUES (1, 'Mathematik 1');
+INSERT INTO LECTURE_GROUP(lecture_group_id, name) VALUES (2, 'Schlüsselqualifikationen 1');
+INSERT INTO LECTURE_GROUP(lecture_group_id, name) VALUES (3, 'Schlüsselqualifikationen 2');
+INSERT INTO LECTURE_GROUP(lecture_group_id, name) VALUES (4, 'Technische Informatik 2');
+INSERT INTO LECTURE_GROUP(lecture_group_id, name) VALUES (5, 'Wahlmodul Informatik Karlsruhe');
+
+
 
 INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (1, 3 , 1);
 INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (2, 7 , 1);
+
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (3, 10 , 2);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (4, 11 , 2);
+
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (5, 12 , 3);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (6, 13 , 3);
+
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (7, 19 , 4);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (8, 20 , 4);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (9, 21 , 4);
+
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (10, 24 , 5);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (11, 25 , 5);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (12, 26 , 5);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (13, 27 , 5);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (14, 28 , 5);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (15, 29 , 5);
+
+
+
 
 -- Documents
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (1, 'static/Themenmitteilung/TINF-Themenmitteilung.docx', 'TINF-Themenmitteilung.docx');

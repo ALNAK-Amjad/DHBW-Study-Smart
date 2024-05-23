@@ -1,11 +1,9 @@
 
 package com.example.dhbwstudysmartbackend.controller;
 
-import com.example.dhbwstudysmartbackend.entity.Course;
 import com.example.dhbwstudysmartbackend.entity.Grade;
+import com.example.dhbwstudysmartbackend.entity.GradeDTO.CompleteGradeDTO;
 import com.example.dhbwstudysmartbackend.entity.GradeDTO.GradeDTO;
-import com.example.dhbwstudysmartbackend.entity.Lecture;
-import com.example.dhbwstudysmartbackend.entity.userDTOs.LoginUserDTO;
 import com.example.dhbwstudysmartbackend.repository.GradeRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,7 +43,7 @@ public class GradeController {
 
     */
     @GetMapping("/getAllGrade/{userId}")
-    public List<GradeDTO> getGradeList(@PathVariable long userId) {
+    public List<CompleteGradeDTO> getGradeList(@PathVariable long userId) {
         return gradeService.getAllGrades(userId);
     }
 

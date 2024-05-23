@@ -2,7 +2,7 @@
 package com.example.dhbwstudysmartbackend.repository;
 
 import com.example.dhbwstudysmartbackend.entity.Grade;
-import com.example.dhbwstudysmartbackend.entity.GradeDTO.GradeDTO;
+import com.example.dhbwstudysmartbackend.entity.GradeDTO.CompleteGradeDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -31,7 +31,7 @@ FROM GRADE
         ON CON_LECTURE_TO_GROUP.LECTURE_GROUP_ID = LECTURE_GROUP.LECTURE_GROUP_ID
     WHERE( GRADE.USER_ID = ?1)
 """, nativeQuery = true)
-    List<GradeDTO> getAllGrades(long userId);
+    List<CompleteGradeDTO> getAllGrades(long userId);
 
 }
 

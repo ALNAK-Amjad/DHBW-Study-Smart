@@ -2,6 +2,7 @@
 package com.example.dhbwstudysmartbackend.service.serviceImpl;
 
 import com.example.dhbwstudysmartbackend.entity.Grade;
+import com.example.dhbwstudysmartbackend.entity.GradeDTO.CompleteGradeDTO;
 import com.example.dhbwstudysmartbackend.entity.GradeDTO.GradeDTO;
 import com.example.dhbwstudysmartbackend.repository.GradeRepository;
 import com.example.dhbwstudysmartbackend.repository.LectureRepository;
@@ -10,7 +11,6 @@ import com.example.dhbwstudysmartbackend.service.GradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,7 +58,7 @@ public class GradeServiceImpl implements GradeService {
     }
 
     @Override
-    public List<GradeDTO> getAllGrades(long userId) {
+    public List<CompleteGradeDTO> getAllGrades(long userId) {
     return gradeRepository.getAllGrades(userId);
     }
 

@@ -57,4 +57,9 @@ public class GradeServiceImpl implements GradeService {
         return gradeRepository.save(grade);
     }
 
+    @Override
+    public List<GradeDTO> getAllGrades(long userId) {
+    return gradeRepository.getAllGrades(userId);
+    }
+
 }

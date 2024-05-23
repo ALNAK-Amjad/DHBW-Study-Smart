@@ -39,6 +39,10 @@ INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (13, 'Marketing ',2);
 INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (14, 'Mathematik 2.1',3);
 INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (15, 'Theoretische Informatik 3',3);
 
+INSERT INTO LECTURE_GROUP(lecture_group_id, name) VALUES (1, 'Mathematik 1');
+
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (1, 3 , 1);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (2, 7 , 1);
 
 -- Documents
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (1, 'static/Themenmitteilung/TINF-Themenmitteilung.docx', 'TINF-Themenmitteilung.docx');
@@ -71,3 +75,4 @@ INSERT INTO DOCUMENT (document_id, path, filename) VALUES (22, 'static/Hinweise/
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (23, 'static/Hinweise/TINF-Anleitung-zur-Bewertung-von-Projekt-Studien-und-Bachelorarbeiten.pdf', 'TINF-Anleitung-zur-Bewertung-von-Projekt-Studien-und-Bachelorarbeiten.pdf');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (24, 'static/Hinweise/TINF-Hinweise-zur-Stellung-und-Bewertung-von-Klausuren-Kurzfassung.pdf', 'TINF-Hinweise-zur-Stellung-und-Bewertung-von-Klausuren-Kurzfassung.pdf');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (25, 'static/Hinweise/Kolloquium-T3_2000-Bewertung.pdf', 'Kolloquium-T3_2000-Bewertung.pdf');
+

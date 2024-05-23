@@ -1,9 +1,11 @@
 
 package com.example.dhbwstudysmartbackend.controller;
 
+import com.example.dhbwstudysmartbackend.entity.Course;
 import com.example.dhbwstudysmartbackend.entity.Grade;
 import com.example.dhbwstudysmartbackend.entity.GradeDTO.GradeDTO;
 import com.example.dhbwstudysmartbackend.entity.Lecture;
+import com.example.dhbwstudysmartbackend.entity.userDTOs.LoginUserDTO;
 import com.example.dhbwstudysmartbackend.repository.GradeRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -43,22 +45,11 @@ public class GradeController {
     }
 
     */
-    @GetMapping("/getAllGrade")
-    public ResponseEntity<List<Grade>> getGradeList() {
-        try {
-            List<Grade> gradeList = new ArrayList<>();
-            gradeRepository.findAll().forEach(gradeList::add);
-
-            if (gradeList.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(gradeList, HttpStatus.OK);
-
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-
-        }
+    @GetMapping("/getAllGrade/{userId}")
+    public List<GradeDTO> getGradeList(@PathVariable long userId) {
+        return gradeService.getAllGrades(userId);
     }
+
 
     @GetMapping("/getGradeById/{id}")
     public ResponseEntity<Grade> getGradeById(@PathVariable long id) {

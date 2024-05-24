@@ -29,24 +29,10 @@ public class GradeController {
         this.gradeService = gradeService;
     }
 
-    /*
-    @GetMapping("/compare/{userId}/{lectureId}")
-    public String compareGrades(@PathVariable Long userId, @PathVariable Long lectureId) {
-        return gradeService.compareGrades(userId, lectureId);
-    }
-
-    @PostMapping("/add")
-    public ResponseEntity<String> addGrade(@RequestBody Grade grade) {
-        gradeService.addGrade(grade);
-        return ResponseEntity.ok("Note erfolgreich hinzugefügt");
-    }
-
-    */
     @GetMapping("/getAllGrade/{userId}")
     public List<CompleteGradeDTO> getGradeList(@PathVariable long userId) {
         return gradeService.getAllGrades(userId);
     }
-
 
     @GetMapping("/getGradeById/{id}")
     public ResponseEntity<Grade> getGradeById(@PathVariable long id) {
@@ -59,16 +45,6 @@ public class GradeController {
         }
     }
 
-    /*{
-  "grade": 85.5,
-  "plannedGrade": 90.0,
-  "users": {
-    "userId": 1
-  },
-  "lecture": {
-    "lectureId": 1
-  }
-}*/
     @PostMapping("/addGrade")
     public ResponseEntity<Grade> addGrade(@RequestBody GradeDTO gradeDTO) {
         try {

@@ -14,24 +14,19 @@ public interface GradeRepository extends JpaRepository<Grade, Long> {
     @Query("SELECT g FROM Grade g WHERE g.users.userId = :userId AND g.lecture.lectureId = :lectureId")
     Grade findByUsersUserIdAndLectureId(Long userId, Long lectureId);
 
-
     @Query(value = """
-SELECT GRADE.GRADE AS grade,
-       GRADE.PLANNED_GRADE AS plannedGrade,
-       GRADE.USER_ID AS userID, 
-       LECTURE.LECTURE_ID AS lectureID, 
-       LECTURE_GROUP.LECTURE_GROUP_ID AS lectureGroupId, 
-       LECTURE_GROUP.NAME AS lectureGroupName
-FROM GRADE
-    INNER JOIN LECTURE 
-        ON GRADE.LECTURE_ID = LECTURE.LECTURE_ID 
-    INNER JOIN CON_LECTURE_TO_GROUP
-        ON LECTURE.LECTURE_ID = CON_LECTURE_TO_GROUP.LECTURE_ID
-    INNER JOIN LECTURE_GROUP
-        ON CON_LECTURE_TO_GROUP.LECTURE_GROUP_ID = LECTURE_GROUP.LECTURE_GROUP_ID
-    WHERE( GRADE.USER_ID = ?1)
-""", nativeQuery = true)
+        SELECT 
+            g.GRADE AS grade,
+            g.PLANNED_GRADE AS plannedGrade,
+            g.USER_ID AS userId, 
+            l.LECTURE_ID AS lectureId,
+            lg.LECTURE_GROUP_ID AS lectureGroupId,
+            lg.NAME AS lectureGroupName
+        FROM GRADE g
+        LEFT JOIN LECTURE l ON g.LECTURE_ID = l.LECTURE_ID
+        LEFT JOIN CON_LECTURE_TO_GROUP cltg ON l.LECTURE_ID = cltg.LECTURE_ID
+        LEFT JOIN LECTURE_GROUP lg ON cltg.LECTURE_GROUP_ID = lg.LECTURE_GROUP_ID
+        WHERE g.USER_ID = ?1
+        """, nativeQuery = true)
     List<CompleteGradeDTO> getAllGrades(long userId);
-
 }
-

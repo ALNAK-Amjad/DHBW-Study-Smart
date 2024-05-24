@@ -10,4 +10,7 @@ public interface GradeService {
     Grade addGrade(GradeDTO gradeDTO);
 
     List<CompleteGradeDTO> getAllGrades(long userId);
+
+
+
 }

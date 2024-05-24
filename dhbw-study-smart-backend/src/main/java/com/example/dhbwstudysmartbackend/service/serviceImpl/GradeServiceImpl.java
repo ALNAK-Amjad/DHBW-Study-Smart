@@ -32,7 +32,7 @@ public class GradeServiceImpl implements GradeService {
     @Override
     public Grade addGrade(GradeDTO gradeDTO) {
         Optional<Grade> existingGrade = Optional.ofNullable(
-                gradeRepository.findByUsersUserIdAndLectureId(gradeDTO.getUserId(), lectureRepository.findById(gradeDTO.getLectureId()).orElse(null).getLectureId())
+                gradeRepository.findByUsersUserIdAndLectureId(gradeDTO.getUserId(), gradeDTO.getLectureId())
         );
 
         Grade grade;
@@ -42,16 +42,8 @@ public class GradeServiceImpl implements GradeService {
             grade.setPlannedGrade(gradeDTO.getPlannedGrade());
         } else {
             grade = new Grade(gradeDTO.getGrade(), gradeDTO.getPlannedGrade());
-            if (lectureRepository.findById(gradeDTO.getLectureId()).isPresent()) {
-                grade.setLecture(lectureRepository.findById(gradeDTO.getLectureId()).get());
-            } else {
-                throw new RuntimeException("Lecture ID not found");
-            }
-            if (userRepository.findById(gradeDTO.getUserId()).isPresent()) {
-                grade.setUsers(userRepository.findById(gradeDTO.getUserId()).get());
-            } else {
-                throw new RuntimeException("User not found");
-            }
+            lectureRepository.findById(gradeDTO.getLectureId()).ifPresent(grade::setLecture);
+            userRepository.findById(gradeDTO.getUserId()).ifPresent(grade::setUsers);
         }
 
         return gradeRepository.save(grade);
@@ -59,7 +51,8 @@ public class GradeServiceImpl implements GradeService {
 
     @Override
     public List<CompleteGradeDTO> getAllGrades(long userId) {
-    return gradeRepository.getAllGrades(userId);
+        List<CompleteGradeDTO> grades = gradeRepository.getAllGrades(userId);
+        System.out.println("Grades for userId " + userId + ": " + grades);
+        return grades;
     }
-
 }

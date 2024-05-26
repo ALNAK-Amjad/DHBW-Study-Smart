@@ -64,7 +64,7 @@
           <mat-expansion-panel *ngFor="let course of group.lectures; let j = index" [formGroupName]="getFormGroupIndex(groupIndex, j)">
             <mat-expansion-panel-header>
               <mat-panel-title>
-                {{ course.name }}
+                {{ course.lectureId.name }}
               </mat-panel-title>
             </mat-expansion-panel-header>
 
@@ -92,4 +92,3 @@
     </ng-container>
   </mat-accordion>
 </form>
-

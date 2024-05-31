@@ -194,4 +194,3 @@ INSERT INTO DOCUMENT (document_id, path, filename) VALUES (22, 'static/Hinweise/
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (23, 'static/Hinweise/TINF-Anleitung-zur-Bewertung-von-Projekt-Studien-und-Bachelorarbeiten.pdf', 'TINF-Anleitung-zur-Bewertung-von-Projekt-Studien-und-Bachelorarbeiten.pdf');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (24, 'static/Hinweise/TINF-Hinweise-zur-Stellung-und-Bewertung-von-Klausuren-Kurzfassung.pdf', 'TINF-Hinweise-zur-Stellung-und-Bewertung-von-Klausuren-Kurzfassung.pdf');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (25, 'static/Hinweise/Kolloquium-T3_2000-Bewertung.pdf', 'Kolloquium-T3_2000-Bewertung.pdf');
-

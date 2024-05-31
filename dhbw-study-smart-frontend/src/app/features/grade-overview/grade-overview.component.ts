@@ -87,7 +87,7 @@ export class GradeOverviewComponent implements OnInit {
 
         this.groupedCourses.forEach((group, groupIndex) => {
             group.lectures.forEach((course: any, courseIndex: number) => {
-                const grade = this.grades.find(g => g.lectureId === course.lectureId);
+                const grade = this.grades.find(g => g.lectureId === course.lectureId.lectureId);
                 if (grade) {
                     const formArrayIndex = this.getFormGroupIndex(groupIndex, courseIndex);
                     coursesFormArray.at(formArrayIndex).patchValue({

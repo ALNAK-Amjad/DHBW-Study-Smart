@@ -23,41 +23,41 @@ INSERT INTO USERS (user_id, first_name, last_name, password, email ,student_numb
 -- Lectures
 -- Erste Semester
 INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (1, 'Theoretische Informatik 1', 1);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (2, 'Praxisprojekt 1',1);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (3, 'Lineare Algebra' ,2);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (4, 'Technische Informatik 1',1);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (5, 'Web Engineering',1);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (6, 'Anwendungsprojekt Informatik',1);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (2, 'Praxisprojekt 1', 1);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (3, 'Lineare Algebra' , 2);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (4, 'Technische Informatik 1', 1);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (5, 'Web Engineering', 1);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (6, 'Anwendungsprojekt Informatik', 1);
 
 -- Zweite Semester
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (7, 'Analysis',2);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (8, 'Theoretische Informatik 2',2);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (9, 'Programmieren',2);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (10, 'Intercultural Communication 1',2);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (11, 'BWL',2);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (12, 'Intercultural Communication 2',2);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (13, 'Marketing ',2);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (7, 'Analysis', 2);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (8, 'Theoretische Informatik 2', 2);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (9, 'Programmieren', 2);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (10, 'Intercultural Communication 1', 2);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (11, 'BWL', 2);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (12, 'Intercultural Communication 2', 2);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (13, 'Marketing', 2);
 
 -- Dritte Semester
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (14, 'Angewandte Mathematik',3);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (15, 'Theoretische Informatik 3',3);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (14, 'Angewandte Mathematik', 3);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (15, 'Theoretische Informatik 3', 3);
 
 
 -- Vierte Semester
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (16, 'Statistik',4);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (17, 'Software Engineering I',4);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (18, 'Datenbanken',4);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (19, 'Betriebssysteme',4);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (20, 'Rechnerarchitekturen 1',4);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (21, 'Systemnahe Programmierung 1',4);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (22, 'Kommunikations- und Netztechnik',4);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (23, 'Compilerbau',4);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (24, 'Geschäftsprozesse',4);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (25, 'Web-Engineering 2',4);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (26, 'Signale und Systeme 1',4);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (27, 'Anwendungen der Robotik',4);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (28, 'OO Best Practice',4);
-INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (29, 'Workflow',4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (16, 'Statistik', 4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (17, 'Software Engineering I', 4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (18, 'Datenbanken', 4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (19, 'Betriebssysteme', 4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (20, 'Rechnerarchitekturen 1', 4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (21, 'Systemnahe Programmierung 1', 4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (22, 'Kommunikations- und Netztechnik', 4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (23, 'Compilerbau', 4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (24, 'Geschäftsprozesse', 4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (25, 'Web-Engineering 2', 4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (26, 'Signale und Systeme 1', 4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (27, 'Anwendungen der Robotik', 4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (28, 'OO Best Practice', 4);
+INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (29, 'Workflow', 4);
 
 
 -- Fünfte Semester

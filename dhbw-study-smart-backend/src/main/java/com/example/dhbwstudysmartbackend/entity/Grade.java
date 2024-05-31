@@ -2,15 +2,11 @@ package com.example.dhbwstudysmartbackend.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Data
@@ -30,10 +26,10 @@ public class Grade {
     @GeneratedValue(generator = "gradeId-sequence-generator")
     private Long gradeId;
 
+    // Fields are mapped to columns with the same name by default
     private double grade;
 
     private double plannedGrade;
-
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -47,5 +43,4 @@ public class Grade {
         this.grade = grade;
         this.plannedGrade = plannedGrade;
     }
-
 }

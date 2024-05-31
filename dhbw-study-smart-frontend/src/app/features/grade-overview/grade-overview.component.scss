@@ -1,39 +1,39 @@
-.Durchschnitt-div {
+.average-container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 16px;
 }
 
-.semester-selection, .actualGradeAverage, .plannedGradeAverage {
+.semester-select, .actual-grade, .planned-grade {
     flex: 1 0 200px;
 }
 
-.container {
+.form-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     max-width: 100%;
 }
 
-.einreichenBtn.mat-raised-button {
+.submit-button.mat-raised-button {
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.row {
+.course-row {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     margin-bottom: 20px;
 }
 
-.container-GN, .container-UES, .container-result {
+.desired-grade, .session-input, .exam-result {
     width: calc(50% - 10px);
     min-width: 250px;
 }
 
-.result-and-button {
+.result-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,23 +42,22 @@
 }
 
 @media (max-width: 768px) {
-    .semester-selection, .actualGradeAverage, .plannedGradeAverage {
+    .semester-select, .actual-grade, .planned-grade {
         flex: 1 0 100%;
     }
 
-    .container-GN, .container-UES, .container-result, .result-and-button {
+    .desired-grade, .session-input, .exam-result, .result-container {
         width: 100%;
         margin-right: 0;
         margin-bottom: 10px;
     }
 
-    .row, .result-and-button {
+    .course-row, .result-container {
         flex-direction: column;
     }
 
-    .einreichenBtn {
+    .submit-button {
         width: 100%;
         margin-top: 10px;
     }
 }
-

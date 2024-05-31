@@ -1,6 +1,6 @@
 <form [formGroup]="gradeForm">
-  <div class="Durchschnitt-div">
-    <mat-form-field class="semester-selection">
+  <div class="average-container">
+    <mat-form-field class="semester-select">
       <mat-label>Semester</mat-label>
       <mat-select (selectionChange)="onSemesterChange($event.value)" formControlName="semester">
         <mat-option *ngFor="let semester of semesters" [value]="semester.semesterId">
@@ -9,21 +9,21 @@
       </mat-select>
     </mat-form-field>
 
-    <!-- Tatsächlicher Durchschnitt -->
-    <mat-form-field class="actualGradeAverage">
-      <mat-label>Tatsächlicher Durchschnitt</mat-label>
+    <!-- Actual Grade Average -->
+    <mat-form-field class="actual-grade">
+      <mat-label>Semester Durchschnitt</mat-label>
       <input matInput formControlName="actualGradeAverage">
     </mat-form-field>
 
-    <!-- Geplanter Durchschnitt -->
-    <mat-form-field class="plannedGradeAverage">
+    <!-- Planned Grade Average -->
+    <mat-form-field class="planned-grade">
       <mat-label>Geplanter Durchschnitt</mat-label>
       <input matInput formControlName="plannedGradeAverage">
     </mat-form-field>
   </div>
 
   <mat-accordion *ngIf="getCoursesFormArray().length > 0" formArrayName="courses">
-    <!-- Ungegroupierte Kurse -->
+    <!-- Ungrouped Courses -->
     <mat-expansion-panel *ngFor="let course of courses; let i = index" [formGroupName]="i">
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -31,27 +31,27 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <div class="row">
-        <mat-form-field class="container-GN">
+      <div class="course-row">
+        <mat-form-field class="desired-grade">
           <mat-label>Gewünschte Note</mat-label>
           <input matInput formControlName="plannedGrade">
         </mat-form-field>
-        <mat-form-field class="container-UES">
+        <mat-form-field class="session-input">
           <mat-label>Übungssession</mat-label>
           <input matInput formControlName="session">
         </mat-form-field>
       </div>
 
-      <div class="result-and-button">
-        <mat-form-field class="container-result">
+      <div class="result-container">
+        <mat-form-field class="exam-result">
           <mat-label>Prüfungsergebnis</mat-label>
           <input matInput formControlName="grade">
         </mat-form-field>
-        <button class="einreichenBtn" type="button" (click)="submitCourseGrade(i)" mat-raised-button color="primary">Einreichen</button>
+        <button class="submit-button" type="button" (click)="submitCourseGrade(i)" mat-raised-button color="primary">Submit</button>
       </div>
     </mat-expansion-panel>
 
-    <!-- Gruppierte Kurse -->
+    <!-- Grouped Courses -->
     <ng-container *ngFor="let group of groupedCourses; let groupIndex = index">
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -68,23 +68,23 @@
               </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <div class="row">
-              <mat-form-field class="container-GN">
+            <div class="course-row">
+              <mat-form-field class="desired-grade">
                 <mat-label>Gewünschte Note</mat-label>
                 <input matInput formControlName="plannedGrade">
               </mat-form-field>
-              <mat-form-field class="container-UES">
+              <mat-form-field class="session-input">
                 <mat-label>Übungssession</mat-label>
                 <input matInput formControlName="session">
               </mat-form-field>
             </div>
 
-            <div class="result-and-button">
-              <mat-form-field class="container-result">
+            <div class="result-container">
+              <mat-form-field class="exam-result">
                 <mat-label>Prüfungsergebnis</mat-label>
                 <input matInput formControlName="grade">
               </mat-form-field>
-              <button class="einreichenBtn" type="button" (click)="submitCourseGrade(getFormGroupIndex(groupIndex, j))" mat-raised-button color="primary">Einreichen</button>
+              <button class="submit-button" type="button" (click)="submitCourseGrade(getFormGroupIndex(groupIndex, j))" mat-raised-button color="primary">Submit</button>
             </div>
           </mat-expansion-panel>
         </mat-accordion>

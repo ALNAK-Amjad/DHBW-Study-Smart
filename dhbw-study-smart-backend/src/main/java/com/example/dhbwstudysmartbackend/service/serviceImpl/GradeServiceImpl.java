@@ -1,4 +1,3 @@
-
 package com.example.dhbwstudysmartbackend.service.serviceImpl;
 
 import com.example.dhbwstudysmartbackend.entity.Grade;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class GradeServiceImpl implements GradeService {
 
@@ -29,6 +27,7 @@ public class GradeServiceImpl implements GradeService {
         this.userRepository = userRepository;
     }
 
+    // Add a new grade or update an existing one
     @Override
     public Grade addGrade(GradeDTO gradeDTO) {
         Optional<Grade> existingGrade = Optional.ofNullable(
@@ -49,10 +48,38 @@ public class GradeServiceImpl implements GradeService {
         return gradeRepository.save(grade);
     }
 
+    // Get all grades for a specific user
     @Override
     public List<CompleteGradeDTO> getAllGrades(long userId) {
-        List<CompleteGradeDTO> grades = gradeRepository.getAllGrades(userId);
-        System.out.println("Grades for userId " + userId + ": " + grades);
-        return grades;
+        return gradeRepository.getAllGrades(userId);
+    }
+
+    // Get a grade by ID
+    @Override
+    public Optional<Grade> getGradeById(long id) {
+        return gradeRepository.findById(id);
+    }
+
+    // Update an existing grade
+    @Override
+    public Grade updateGrade(long id, Grade grade) {
+        Optional<Grade> gradeData = gradeRepository.findById(id);
+        if (gradeData.isPresent()) {
+            Grade updateGradeData = gradeData.get();
+            updateGradeData.setGrade(grade.getGrade());
+
+            return gradeRepository.save(updateGradeData);
+        }
+        return null;
+    }
+
+    // Delete a grade by ID
+    @Override
+    public boolean deleteGrade(long id) {
+        if (gradeRepository.existsById(id)) {
+            gradeRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

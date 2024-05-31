@@ -103,7 +103,6 @@ INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (65, 'Machine Learnin
 INSERT INTO LECTURE (lecture_id, name, semester_id) VALUES (66, 'Machine Learning (unsupervised)', 6);
 
 
-
 -- Vorlesung gruppe erstellen
 INSERT INTO LECTURE_GROUP(lecture_group_id, name) VALUES (1, 'Mathematik 1');
 INSERT INTO LECTURE_GROUP(lecture_group_id, name) VALUES (2, 'Schlüsselqualifikationen 1');
@@ -117,7 +116,6 @@ INSERT INTO LECTURE_GROUP(lecture_group_id, name) VALUES (9, 'Künstliche Intell
 INSERT INTO LECTURE_GROUP(lecture_group_id, name) VALUES (10, 'E-Business');
 INSERT INTO LECTURE_GROUP(lecture_group_id, name) VALUES (11, 'Robotik');
 INSERT INTO LECTURE_GROUP(lecture_group_id, name) VALUES (12, 'Wahlmodul Informatik 3. SJ KA');
-
 
 
 -- Vorlesungen zur der Gruppen zu Ordnen
@@ -170,10 +168,6 @@ INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_gr
 INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (49, 66, 12);
 
 
-
-
-
-
 -- Documents
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (1, 'static/Themenmitteilung/TINF-Themenmitteilung.docx', 'TINF-Themenmitteilung.docx');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (2, 'static/Themenmitteilung/TINF-Themenmitteilung.odt', 'TINF-Themenmitteilung.odt');
@@ -184,24 +178,19 @@ INSERT INTO DOCUMENT (document_id, path, filename) VALUES (6, 'static/Deckblatt/
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (7, 'static/Deckblatt/latex-vorlage-bericht.pdf', 'latex-vorlage-bericht.pdf');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (8, 'static/Deckblatt/latex-vorlage-2024-04-10.tar.gz', 'latex-vorlage-2024-04-10.tar.gz');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (9, 'static/INF_Konzept_digit/INF_Konzept_digit.pdf', 'INF_Konzept_digit.pdf');
-
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (10, 'static/Bewertung/TINF-Anleitung-zur-Bewertung-von-Projekt-Studien-und-Bachelorarbeiten.pdf', 'TINF-Anleitung-zur-Bewertung-von-Projekt-Studien-und-Bachelorarbeiten.pdf');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (11, 'static/Bewertung/Themenmitteilung_TINF-Themenmitteilung.docx', 'Themenmitteilung_TINF-Themenmitteilung.docx');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (12, 'static/Bewertung/Bewertung_DH_092019.xlsx', 'Bewertung_DH_092019.xlsx');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (13, 'static/Bewertung/Bewertung-Vorlage-2019-09.ods', 'Bewertung-Vorlage-2019-09.ods');
-
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (14, 'static/Krankheit/Antrag-zum-Pruefungsruecktritt.pdf', 'Antrag-zum-Pruefungsruecktritt.pdf');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (15, 'static/Krankheit/Antrag-Bearbeitungszeitverlaengerung.pdf', 'Antrag-Bearbeitungszeitverlaengerung.pdf');
-
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (16, 'static/Kolloqium/Kolloq-Merkblatt-T3_2000.pdf', 'Kolloq-Merkblatt-T3_2000.pdf');
-
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (17, 'static/Hinweise/Leitlinien-Bearbeitung-Dokumentation.pdf', 'Leitlinien-Bearbeitung-Dokumentation.pdf');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (18, 'static/Hinweise/TINF-Merkblatt-Studienarbeiten.pdf', 'TINF-Merkblatt-Studienarbeiten.pdf');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (19, 'static/Hinweise/TINF-Merkblatt-Bachelorarbeiten.pdf', 'TINF-Merkblatt-Bachelorarbeiten.pdf');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (20, 'static/Hinweise/TINF-Praxisbericht-Merkblatt.pdf', 'TINF-Praxisbericht-Merkblatt.pdf');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (21, 'static/Hinweise/Kolloquium-T3_2000-Merkblatt.pdf', 'Kolloquium-T3_2000-Merkblatt.pdf');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (22, 'static/Hinweise/Kolloquium-T3_2000-Hinweise-Guter-Vortrag.pdf', 'Kolloquium-T3_2000-Hinweise-Guter-Vortrag.pdf');
-
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (23, 'static/Hinweise/TINF-Anleitung-zur-Bewertung-von-Projekt-Studien-und-Bachelorarbeiten.pdf', 'TINF-Anleitung-zur-Bewertung-von-Projekt-Studien-und-Bachelorarbeiten.pdf');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (24, 'static/Hinweise/TINF-Hinweise-zur-Stellung-und-Bewertung-von-Klausuren-Kurzfassung.pdf', 'TINF-Hinweise-zur-Stellung-und-Bewertung-von-Klausuren-Kurzfassung.pdf');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (25, 'static/Hinweise/Kolloquium-T3_2000-Bewertung.pdf', 'Kolloquium-T3_2000-Bewertung.pdf');

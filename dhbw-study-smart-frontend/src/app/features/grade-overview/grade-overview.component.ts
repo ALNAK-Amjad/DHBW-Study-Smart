@@ -129,11 +129,9 @@ export class GradeOverviewComponent implements OnInit {
                     this.loadGrades(userId);
                 }
             }, error => {
-                // Zeigt Fehlermeldung, wenn es ein Problem beim Laden der gruppierten Kurse gibt
                 this.openSnackBar("Fehler beim Laden der Gruppierten Kurse: ", error);
             });
         }, error => {
-            // Zeigt Fehlermeldung, wenn es ein Problem beim Laden der Kurse gibt
             this.openSnackBar("Fehler beim Laden der Kurse: ", error);
         });
     }
@@ -244,14 +242,12 @@ export class GradeOverviewComponent implements OnInit {
             }
 
             if (typeof lectureId !== 'number') {
-                // Zeigt Fehlermeldung, wenn die Kurs-ID nicht definiert ist
                 this.openSnackBar("Die Kurs-ID ist nicht definiert. Überprüfen Sie die Kursdaten.", "Fehler");
                 return;
             }
 
-            if (!courseGradeData.grade || !courseGradeData.plannedGrade) {
-                // Zeigt Fehlermeldung, wenn die Noteninformationen unvollständig sind
-                this.openSnackBar("Noteninformationen sind unvollständig. Bitte überprüfen Sie Ihre Eingaben.", "Fehler");
+            if (courseGradeData.grade >6 || courseGradeData.grade<1  || courseGradeData.plannedGrade>6 || courseGradeData.plannedGrade <1) {
+                this.openSnackBar("Noteninformationen sind nicht Korrekt. Bitte überprüfen Sie Ihre Eingaben.", "Fehler");
                 return;
             }
 

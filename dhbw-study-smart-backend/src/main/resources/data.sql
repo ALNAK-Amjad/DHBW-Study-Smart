@@ -148,24 +148,24 @@ INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_gr
 INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (27, 44, 10);
 INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (28, 45, 11);
 INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (29, 46, 11);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (32, 49, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (33, 50, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (34, 51, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (35, 52, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (36, 53, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (37, 54, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (38, 55, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (39, 56, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (40, 57, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (41, 58, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (42, 59, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (43, 60, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (44, 61, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (45, 62, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (46, 63, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (47, 64, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (48, 65, 12);
-INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id) VALUES (49, 66, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (32, 49, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (33, 50, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (34, 51, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (35, 52, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (36, 53, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (37, 54, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (38, 55, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (39, 56, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (40, 57, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (41, 58, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (42, 59, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (43, 60, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (44, 61, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (45, 62, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (46, 63, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (47, 64, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (48, 65, 12);
+INSERT INTO CON_LECTURE_TO_GROUP(con_lecture_to_group_id, lecture_id, lecture_group_id ) VALUES (49, 66, 12);
 
 
 -- Documents

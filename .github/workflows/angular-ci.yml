@@ -30,22 +30,22 @@ jobs:
         cache: 'npm'
         cache-dependency-path: './dhbw-study-smart-frontend/package-lock.json'
     - run: npm ci
-    - name: Upload Dependencies
-      uses: actions/upload-artifact@v2
+    - name: Cache Dependencies
+      uses: actions/cache@v4
       with:
-        name: node-modules-${{ matrix.node-version }}
-        path: ./dhbw-study-smart-frontend/node_modules/
+        path: ./dhbw-study-smart-frontend/node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
   lint:
     needs: setup
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Download Dependencies
-      uses: actions/download-artifact@v2
+    - name: Restore Cache
+      uses: actions/cache@v4
       with:
-        name: node-modules-${{ matrix.node-version }}
-        path: ./dhbw-study-smart-frontend/node_modules/
+        path: ./dhbw-study-smart-frontend/node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
     - run: npm run lint
 
   build:
@@ -53,11 +53,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Download Dependencies
-      uses: actions/download-artifact@v2
+    - name: Restore Cache
+      uses: actions/cache@v4
       with:
-        name: node-modules-${{ matrix.node-version }}
-        path: ./dhbw-study-smart-frontend/node_modules/
+        path: ./dhbw-study-smart-frontend/node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
     - run: npm run build --if-present
 
   test:
@@ -65,9 +65,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Download Dependencies
-      uses: actions/download-artifact@v2
+    - name: Restore Cache
+      uses: actions/cache@v4
       with:
-        name: node-modules-${{ matrix.node-version }}
-        path: ./dhbw-study-smart-frontend/node_modules/
+        path: ./dhbw-study-smart-frontend/node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
     - run: npm test

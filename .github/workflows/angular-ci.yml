@@ -34,7 +34,7 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ./dhbw-study-smart-frontend/node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/dhbw-study-smart-frontend/package-lock.json') }}
 
   lint:
     needs: setup
@@ -45,7 +45,7 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ./dhbw-study-smart-frontend/node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/dhbw-study-smart-frontend/package-lock.json') }}
     - run: npm run lint
 
   build:
@@ -57,7 +57,7 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ./dhbw-study-smart-frontend/node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/dhbw-study-smart-frontend/package-lock.json') }}
     - run: npm run build --if-present
 
   test:
@@ -69,5 +69,5 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ./dhbw-study-smart-frontend/node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/dhbw-study-smart-frontend/package-lock.json') }}
     - run: npm test

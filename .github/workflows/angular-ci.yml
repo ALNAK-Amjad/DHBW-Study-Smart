@@ -38,7 +38,7 @@ jobs:
 
   lint:
     needs: setup
-    runs-on: ${{ jobs.setup.outputs.node-version }}
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Download Dependencies
@@ -50,7 +50,7 @@ jobs:
 
   build:
     needs: setup
-    runs-on: ${{ jobs.setup.outputs.node-version }}
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Download Dependencies
@@ -62,7 +62,7 @@ jobs:
 
   test:
     needs: build
-    runs-on: ${{ jobs.setup.outputs.node-version }}
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Download Dependencies

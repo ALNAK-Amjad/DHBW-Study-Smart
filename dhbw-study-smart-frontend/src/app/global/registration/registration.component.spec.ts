@@ -1,14 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatCardModule } from '@angular/material/card';
-import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import {MatOptionModule} from '@angular/material/core';
 
-import { RegistrationComponent } from './registration.component';
+import {RegistrationComponent} from './registration.component';
 
 describe('RegistrationComponent', () => {
     let component: RegistrationComponent;
@@ -24,9 +24,9 @@ describe('RegistrationComponent', () => {
                 MatInputModule,
                 MatCardModule,
                 MatSelectModule,
-                MatOptionModule
+                MatOptionModule,
             ],
-            declarations: [RegistrationComponent]
+            declarations: [RegistrationComponent],
         });
         fixture = TestBed.createComponent(RegistrationComponent);
         component = fixture.componentInstance;

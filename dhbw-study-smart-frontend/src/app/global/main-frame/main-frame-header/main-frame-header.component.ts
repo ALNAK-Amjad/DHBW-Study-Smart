@@ -1,20 +1,20 @@
 import {Component, Injectable} from '@angular/core';
 import {MainFrameService} from '../main-frame.service';
-import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-main-frame-header',
     templateUrl: './main-frame-header.component.html',
-    styleUrls: ['./main-frame-header.component.scss']
+    styleUrls: ['./main-frame-header.component.scss'],
 })
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class MainFrameHeaderComponent {
-
-    constructor(private mainFrameService: MainFrameService, private router: Router) {
-    }
+    constructor(
+        private mainFrameService: MainFrameService,
+        private router: Router,
+    ) { }
 
     // Trigger event when the nav toggle button is clicked
     public triggerNavToggle() {

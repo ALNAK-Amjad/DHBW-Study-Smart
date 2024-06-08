@@ -9,7 +9,7 @@ export const AuthGuard: CanActivateFn = () => {
     const userId = localStorage.getItem('userId');
 
     // Check if user is logged in
-    if (isLoggedIn === 'true') {
+    if (isLoggedIn === 'true' && userId !== null) {
         return true;
     } else {
         // Redirect the user to the login page

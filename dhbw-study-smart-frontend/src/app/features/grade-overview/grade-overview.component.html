@@ -1,6 +1,6 @@
-<form [formGroup]="gradeForm">
+<form [formGroup]="gradeForm" class="feature-component-container">
   <div class="average-container">
-    <mat-form-field class="semester-select">
+    <mat-form-field appearance="outline" class="semester-select">
       <mat-label>Semester</mat-label>
       <mat-select (selectionChange)="onSemesterChange($event.value)" formControlName="semester">
         <mat-option *ngFor="let semester of semesters" [value]="semester.semesterId">
@@ -10,13 +10,13 @@
     </mat-form-field>
 
     <!-- Actual Grade Average -->
-    <mat-form-field class="actual-grade">
+    <mat-form-field appearance="outline" class="actual-grade">
       <mat-label>Semester Durchschnitt</mat-label>
       <input matInput formControlName="actualGradeAverage">
     </mat-form-field>
 
     <!-- Planned Grade Average -->
-    <mat-form-field class="planned-grade">
+    <mat-form-field appearance="outline" class="planned-grade">
       <mat-label>Geplanter Durchschnitt</mat-label>
       <input matInput formControlName="plannedGradeAverage">
     </mat-form-field>
@@ -32,18 +32,18 @@
       </mat-expansion-panel-header>
 
       <div class="course-row">
-        <mat-form-field class="desired-grade">
+        <mat-form-field appearance="outline" class="desired-grade">
           <mat-label>Gewünschte Note</mat-label>
           <input matInput formControlName="plannedGrade">
         </mat-form-field>
-        <mat-form-field class="session-input">
+        <mat-form-field appearance="outline" class="session-input">
           <mat-label>Übungssession</mat-label>
           <input matInput formControlName="session">
         </mat-form-field>
       </div>
 
       <div class="result-container">
-        <mat-form-field class="exam-result">
+        <mat-form-field appearance="outline" class="exam-result">
           <mat-label>Prüfungsergebnis</mat-label>
           <input matInput formControlName="grade">
         </mat-form-field>
@@ -69,18 +69,18 @@
             </mat-expansion-panel-header>
 
             <div class="course-row">
-              <mat-form-field class="desired-grade">
+              <mat-form-field appearance="outline" class="desired-grade">
                 <mat-label>Gewünschte Note</mat-label>
                 <input matInput formControlName="plannedGrade">
               </mat-form-field>
-              <mat-form-field class="session-input">
+              <mat-form-field appearance="outline" class="session-input">
                 <mat-label>Übungssession</mat-label>
                 <input matInput formControlName="session">
               </mat-form-field>
             </div>
 
             <div class="result-container">
-              <mat-form-field class="exam-result">
+              <mat-form-field appearance="outline" class="exam-result">
                 <mat-label>Prüfungsergebnis</mat-label>
                 <input matInput formControlName="grade">
               </mat-form-field>

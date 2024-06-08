@@ -19,6 +19,7 @@ export class RegistrationService {
         return this.http.get<StudyProgram[]>(requestUrl);
     }
 
+
     // Get all available courses
     getCourses(): Observable<Course[]> {
         const requestUrl = 'http://localhost:8080/course/getall';

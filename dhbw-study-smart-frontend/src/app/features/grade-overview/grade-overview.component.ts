@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
 import {GradeService} from './grade.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 // Definition of the GradeOverviewComponent
 @Component({
@@ -23,20 +23,20 @@ export class GradeOverviewComponent implements OnInit {
         private fb: FormBuilder,
         private gradeService: GradeService,
         private snackBar: MatSnackBar,
-        private router: Router
+        private router: Router,
     ) {
         // Initializing gradeForm with various fields and validations
         this.gradeForm = this.fb.group({
             semester: [],
             courses: this.fb.array([]),
             actualGradeAverage: [{value: 0, disabled: true}],
-            plannedGradeAverage: [{value: 0, disabled: true}]
+            plannedGradeAverage: [{value: 0, disabled: true}],
         });
     }
 
     // ngOnInit is called when the component is initialized
     ngOnInit(): void {
-        const userIdString = localStorage.getItem("userId");
+        const userIdString = localStorage.getItem('userId');
 
         if (userIdString !== null) {
             const numericUserId = Number(userIdString);
@@ -48,12 +48,12 @@ export class GradeOverviewComponent implements OnInit {
                 this.loadGrades(numericUserId);
             } else {
                 // Zeigt Fehlermeldung, wenn Benutzer-ID nicht gültig ist
-                this.openSnackBar("Keine gültige Benutzer-ID gefunden. Bitte melden Sie sich erneut an.", "Fehler");
+                this.openSnackBar('Keine gültige Benutzer-ID gefunden. Bitte melden Sie sich erneut an.', 'Fehler');
             }
         } else {
             this.router.navigate(['/login']);
             // Zeigt Fehlermeldung, wenn Benutzer-ID nicht im LocalStorage gefunden wurde
-            this.openSnackBar("Keine Benutzer-ID im LocalStorage gefunden. Bitte melden Sie sich erneut an.", "Fehler");
+            this.openSnackBar('Keine Benutzer-ID im LocalStorage gefunden. Bitte melden Sie sich erneut an.', 'Fehler');
         }
     }
 
@@ -66,8 +66,8 @@ export class GradeOverviewComponent implements OnInit {
             },
             (error: any) => {
                 // Zeigt Fehlermeldung, wenn es ein Problem beim Laden der Noten gibt
-                this.openSnackBar("Es gab ein Problem beim Laden der Noten. Bitte versuche es erneut.", "Fehler");
-            }
+                this.openSnackBar('Es gab ein Problem beim Laden der Noten. Bitte versuche es erneut.', 'Fehler');
+            },
         );
     }
 
@@ -76,23 +76,23 @@ export class GradeOverviewComponent implements OnInit {
         const coursesFormArray = this.getCoursesFormArray();
 
         this.courses.forEach((course, index) => {
-            const grade = this.grades.find(g => g.lectureId === course.lectureId);
+            const grade = this.grades.find((g) => g.lectureId === course.lectureId);
             if (grade) {
                 coursesFormArray.at(index).patchValue({
                     plannedGrade: grade.plannedGrade,
-                    grade: grade.grade
+                    grade: grade.grade,
                 });
             }
         });
 
         this.groupedCourses.forEach((group, groupIndex) => {
             group.lectures.forEach((course: any, courseIndex: number) => {
-                const grade = this.grades.find(g => g.lectureId === course.lectureId.lectureId);
+                const grade = this.grades.find((g) => g.lectureId === course.lectureId.lectureId);
                 if (grade) {
                     const formArrayIndex = this.getFormGroupIndex(groupIndex, courseIndex);
                     coursesFormArray.at(formArrayIndex).patchValue({
                         plannedGrade: grade.plannedGrade,
-                        grade: grade.grade
+                        grade: grade.grade,
                     });
                 }
             });
@@ -103,36 +103,36 @@ export class GradeOverviewComponent implements OnInit {
 
     // Loads the semesters
     getSemesters(): void {
-        this.gradeService.getSemesters().subscribe(semesters => {
+        this.gradeService.getSemesters().subscribe((semesters) => {
             this.semesters = semesters;
-        }, error => {
+        }, (error) => {
             // Zeigt Fehlermeldung, wenn es ein Problem beim Laden der Semester gibt
-            this.openSnackBar("Fehler beim Laden der Semester:", error)
+            this.openSnackBar('Fehler beim Laden der Semester:', error);
         });
     }
 
     // Called when the semester changes and loads the corresponding courses
     onSemesterChange(semesterId: number): void {
-        this.gradeService.getCoursesBySemester(semesterId).subscribe(courses => {
-            this.gradeService.getGroupedCoursesBySemester(semesterId).subscribe(groupedCourses => {
+        this.gradeService.getCoursesBySemester(semesterId).subscribe((courses) => {
+            this.gradeService.getGroupedCoursesBySemester(semesterId).subscribe((groupedCourses) => {
                 this.groupedCourses = groupedCourses;
 
-                const groupedCourseIds = new Set(groupedCourses.flatMap(group => group.lectures.map((lecture: any) => lecture.lectureId.lectureId)));
-                this.courses = courses.filter(course => !groupedCourseIds.has(course.lectureId));
+                const groupedCourseIds = new Set(groupedCourses.flatMap((group) => group.lectures.map((lecture: any) => lecture.lectureId.lectureId)));
+                this.courses = courses.filter((course) => !groupedCourseIds.has(course.lectureId));
 
                 this.setCoursesFormArray(this.courses);
                 this.setGroupedCoursesFormArray(groupedCourses);
 
-                const userIdString = localStorage.getItem("userId");
+                const userIdString = localStorage.getItem('userId');
                 if (userIdString !== null) {
                     const userId = Number(userIdString);
                     this.loadGrades(userId);
                 }
-            }, error => {
-                this.openSnackBar("Fehler beim Laden der Gruppierten Kurse: ", error);
+            }, (error) => {
+                this.openSnackBar('Fehler beim Laden der Gruppierten Kurse: ', error);
             });
-        }, error => {
-            this.openSnackBar("Fehler beim Laden der Kurse: ", error);
+        }, (error) => {
+            this.openSnackBar('Fehler beim Laden der Kurse: ', error);
         });
     }
 
@@ -140,11 +140,11 @@ export class GradeOverviewComponent implements OnInit {
     setCoursesFormArray(courses: any[]): void {
         const courseFormArray = this.getCoursesFormArray();
         courseFormArray.clear();
-        courses.forEach(course => {
+        courses.forEach(() => {
             const courseFormGroup = this.fb.group({
                 plannedGrade: ['', Validators.required],
                 session: [''],
-                grade: ['', Validators.required]
+                grade: ['', Validators.required],
             });
             courseFormGroup.valueChanges.subscribe(() => this.updateAverages());
             courseFormArray.push(courseFormGroup);
@@ -155,12 +155,12 @@ export class GradeOverviewComponent implements OnInit {
     // Sets the form array for grouped courses
     setGroupedCoursesFormArray(groupedCourses: any[]): void {
         const courseFormArray = this.getCoursesFormArray();
-        groupedCourses.forEach(group => {
+        groupedCourses.forEach((group) => {
             group.lectures.forEach(() => {
                 const courseFormGroup = this.fb.group({
                     plannedGrade: ['', Validators.required],
                     session: [''],
-                    grade: ['', Validators.required]
+                    grade: ['', Validators.required],
                 });
                 courseFormGroup.valueChanges.subscribe(() => this.updateAverages());
                 courseFormArray.push(courseFormGroup);
@@ -188,7 +188,7 @@ export class GradeOverviewComponent implements OnInit {
         let countActual = 0;
         let countPlanned = 0;
 
-        coursesFormArray.controls.forEach(control => {
+        coursesFormArray.controls.forEach((control) => {
             const gradeValue = control.get('grade')?.value;
             const plannedGradeValue = control.get('plannedGrade')?.value;
 
@@ -207,7 +207,7 @@ export class GradeOverviewComponent implements OnInit {
 
         this.gradeForm.patchValue({
             actualGradeAverage: actualAverage,
-            plannedGradeAverage: plannedAverage
+            plannedGradeAverage: plannedAverage,
         });
     }
 
@@ -217,7 +217,7 @@ export class GradeOverviewComponent implements OnInit {
         const courseFormGroup = courseFormArray.at(index) as FormGroup;
 
         if (!courseFormGroup.valid) {
-            this.openSnackBar("Bitte füllen Sie alle erforderlichen Felder aus.", "Fehler");
+            this.openSnackBar('Bitte füllen Sie alle erforderlichen Felder aus.', 'Fehler');
             return;
         }
 
@@ -242,12 +242,12 @@ export class GradeOverviewComponent implements OnInit {
             }
 
             if (typeof lectureId !== 'number') {
-                this.openSnackBar("Die Kurs-ID ist nicht definiert. Überprüfen Sie die Kursdaten.", "Fehler");
+                this.openSnackBar('Die Kurs-ID ist nicht definiert. Überprüfen Sie die Kursdaten.', 'Fehler');
                 return;
             }
 
-            if (courseGradeData.grade >6 || courseGradeData.grade<1  || courseGradeData.plannedGrade>6 || courseGradeData.plannedGrade <1) {
-                this.openSnackBar("Noteninformationen sind nicht Korrekt. Bitte überprüfen Sie Ihre Eingaben.", "Fehler");
+            if (courseGradeData.grade > 6 || courseGradeData.grade < 1 || courseGradeData.plannedGrade > 6 || courseGradeData.plannedGrade < 1) {
+                this.openSnackBar('Noteninformationen sind nicht Korrekt. Bitte überprüfen Sie Ihre Eingaben.', 'Fehler');
                 return;
             }
 
@@ -260,12 +260,12 @@ export class GradeOverviewComponent implements OnInit {
 
             this.gradeService.addGrade(formData).subscribe(
                 (data: any) => {
-                    this.openSnackBar("Die Noten wurden erfolgreich eingetragen.", "Erfolg");
+                    this.openSnackBar('Die Noten wurden erfolgreich eingetragen.', 'Erfolg');
                     this.loadGrades(userId);
                 },
                 (error: any) => {
-                    this.openSnackBar("Es gab ein Problem beim Speichern der Noten. Bitte versuche es erneut.", "Fehler");
-                }
+                    this.openSnackBar('Es gab ein Problem beim Speichern der Noten. Bitte versuche es erneut.', 'Fehler');
+                },
             );
         }
     }

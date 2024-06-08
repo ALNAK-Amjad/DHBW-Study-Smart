@@ -6,10 +6,9 @@ import {Course} from 'src/app/shared/entities/course';
 import {StudyProgram} from 'src/app/shared/entities/study-program';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class GradeService {
-
     constructor(private http: HttpClient) {
     }
 
@@ -46,5 +45,4 @@ export class GradeService {
     getAllGrades(userid: number): Observable<any[]> {
         return this.http.get<any[]>(`http://localhost:8080/api/grades/getAllGrade/${userid}`);
     }
-
 }

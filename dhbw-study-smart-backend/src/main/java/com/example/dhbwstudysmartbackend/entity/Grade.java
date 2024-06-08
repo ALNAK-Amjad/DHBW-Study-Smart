@@ -1,7 +1,7 @@
 package com.example.dhbwstudysmartbackend.entity;
+
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,22 +16,19 @@ import lombok.NoArgsConstructor;
 public class Grade {
     @Id
     @GenericGenerator(
-        name = "gradeId-sequence-generator",
-        strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
-        parameters = {
-            @Parameter(name = "sequence_name", value = "gradeId_sequence"),
-            @Parameter(name = "initial_value", value = "1000"),
-            @Parameter(name = "increment_size", value = "1")
-        }
-    )
+            name = "gradeId-sequence-generator",
+            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = {
+                    @Parameter(name = "sequence_name", value = "gradeId_sequence"),
+                    @Parameter(name = "initial_value", value = "1000"),
+                    @Parameter(name = "increment_size", value = "1")
+            })
     @GeneratedValue(generator = "gradeId-sequence-generator")
-
     private Long gradeId;
 
-    @Column
+    // Fields are mapped to columns with the same name by default
     private double grade;
 
-    @Column
     private double plannedGrade;
 
     @ManyToOne
@@ -41,4 +38,9 @@ public class Grade {
     @ManyToOne
     @JoinColumn(name = "lecture_id", nullable = false)
     private Lecture lecture;
+
+    public Grade(double grade, double plannedGrade) {
+        this.grade = grade;
+        this.plannedGrade = plannedGrade;
+    }
 }

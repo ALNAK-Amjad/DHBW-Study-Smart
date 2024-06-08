@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FileSaverModule} from 'ngx-filesaver';
 
 import {AppComponent} from './app.component';
@@ -16,6 +16,7 @@ import {MainFrameSideNavComponent} from './global/main-frame/main-frame-side-nav
 import {MainFrameSubSideNavComponent} from './global/main-frame/main-frame-sub-side-nav/main-frame-sub-side-nav.component';
 import {LectureComponent} from './features/lecture/lecture.component';
 import {DocumentComponent} from './features/document/document.component';
+import {GradeOverviewComponent} from './features/grade-overview/grade-overview.component';
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import {DocumentComponent} from './features/document/document.component';
         MainFrameSubSideNavComponent,
         LectureComponent,
         DocumentComponent,
+        GradeOverviewComponent,
     ],
     imports: [
         BrowserModule,
@@ -36,6 +38,7 @@ import {DocumentComponent} from './features/document/document.component';
         MaterialModule,
         BrowserAnimationsModule,
         ReactiveFormsModule,
+        FormsModule,
         FileSaverModule,
     ],
     providers: [],

@@ -4,6 +4,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {FormsModule} from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {CalendarComponent} from './calendar.component';
 import {CalendarModule, DateAdapter} from 'angular-calendar';
@@ -21,6 +26,11 @@ describe('CalendarComponent', () => {
                 MatButtonToggleModule,
                 MatButtonModule,
                 MatIconModule,
+                MatFormFieldModule,
+                MatDatepickerModule,
+                MatNativeDateModule,
+                MatInputModule,
+                BrowserAnimationsModule,
                 FormsModule,
                 CalendarModule.forRoot({provide: DateAdapter, useFactory: adapterFactory}),
             ],

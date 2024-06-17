@@ -67,7 +67,7 @@ export class CalendarComponent implements OnInit {
             const userId = localStorage.getItem('userId');
 
             // Check if the user is still logged in
-            if (userId &&!isNaN(Number(userId))) {
+            if (userId && !isNaN(Number(userId))) {
                 // Get user data from the backend
                 this.userService.getUserById(Number(userId)).subscribe({
                     next: (data) => {

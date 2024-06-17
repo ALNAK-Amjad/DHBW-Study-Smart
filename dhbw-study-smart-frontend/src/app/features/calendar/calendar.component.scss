@@ -4,19 +4,29 @@
     box-sizing: border-box;
     padding: 40px;
 
+    // Pseudo "Navigationbar" for the calendar
     .calendar-navigation-container {
         margin-bottom: 20px;
+        align-items: center;
 
+        // Container for the button group which switches between Day/Week/Month view
         .calendar-view-button-container {
             margin-right: 40px;
         }
 
+        // Container for the previous/next/today buttons
         .calendar-prev-next-button-container {
+            margin-right: 40px;
             align-items: center;
 
             button {
                 margin: 0 5px;
             }
+        }
+
+        // Container for the date input field
+        .calendar-date-setter-container {
+            margin-left: auto;
         }
     }
 

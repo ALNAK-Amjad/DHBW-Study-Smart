@@ -23,6 +23,16 @@
                 <mat-icon>arrow_forward</mat-icon>
             </button>
         </div>
+
+        <!-- Navigate to chosen date -->
+        <div class="calendar-date-setter-container">
+            <mat-form-field appearance="outline">
+                <mat-label>Angezeigtes Datum</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="viewDate" disabled>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker disabled="false"></mat-datepicker>
+            </mat-form-field>
+        </div>
     </div>
 
     <div [ngSwitch]="view" class="calendar-container">

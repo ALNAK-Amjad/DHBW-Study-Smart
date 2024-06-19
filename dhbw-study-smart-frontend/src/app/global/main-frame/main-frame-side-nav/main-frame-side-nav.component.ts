@@ -11,22 +11,27 @@ export class MainFrameSideNavComponent {
         {
             name: 'Notenplaner',
             route: '/grades',
+            active: true,
         },
         {
             name: 'Dokumentenübersicht',
             route: '/documents',
-        },
-        {
-            name: 'Vorlesungsübersicht',
-            route: '/lectures',
+            active: true,
         },
         {
             name: 'Terminplaner',
             route: '/calendar',
+            active: true,
+        },
+        {
+            name: 'Vorlesungsübersicht',
+            route: '/lectures',
+            active: false,
         },
         {
             name: 'Karteikartenmanager',
             route: '/flashcards',
+            active: false,
         },
     ];
 }

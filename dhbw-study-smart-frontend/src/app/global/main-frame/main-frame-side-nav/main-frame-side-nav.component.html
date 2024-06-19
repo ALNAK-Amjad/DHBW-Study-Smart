@@ -1,5 +1,6 @@
 <nav>
     <div *ngFor="let feature of featureList" class="nav-item">
-        <a class="nav-item-link" [routerLink]="[feature.route]">{{ feature.name }}</a>
+        <a *ngIf="feature.active" class="nav-item-link" [routerLink]="[feature.route]">{{ feature.name }}</a>
+        <a *ngIf="!feature.active" class="nav-item-link-inactive">{{ feature.name }}</a>
     </div>
 </nav>

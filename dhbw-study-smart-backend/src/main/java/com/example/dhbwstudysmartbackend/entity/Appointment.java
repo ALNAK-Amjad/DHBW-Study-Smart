@@ -27,8 +27,10 @@ public class Appointment {
         }
     )
     @GeneratedValue(generator = "appointmentId-sequence-generator")
-
     private Long appointmentId;
+
+    @Column
+    private String title;
 
     @Column
     private Timestamp startDate;
@@ -38,4 +40,8 @@ public class Appointment {
 
     @Column
     private boolean repetitive;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private Users users;
 }

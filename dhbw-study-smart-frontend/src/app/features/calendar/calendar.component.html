@@ -1,0 +1,69 @@
+<div class="feature-component-container">
+    <div class="calendar-navigation-container flex-row">
+        <!-- Button Group to toggle between Day, Week and Month view of the calendar -->
+        <div class="calendar-view-button-container">
+            <mat-button-toggle-group [(ngModel)]="view">
+                <mat-button-toggle [value]="CalendarView.Day" [disabled]="true">Tagesansicht</mat-button-toggle>
+                <mat-button-toggle [value]="CalendarView.Week">Wochenansicht</mat-button-toggle>
+                <mat-button-toggle [value]="CalendarView.Month">Monatsansicht</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+
+        <!-- Buttons to go to the next/previous day/week/month or to today's date -->
+        <div class="calendar-prev-next-button-container flex-row">
+            <button mat-mini-fab (click)="previousButtonClicked()" color="primary">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+    
+            <button mat-raised-button (click)="todayButtonClicked()" color="primary">
+                Heute
+            </button>
+    
+            <button mat-mini-fab (click)="nextButtonClicked()" color="primary">
+                <mat-icon>arrow_forward</mat-icon>
+            </button>
+        </div>
+
+        <!-- Navigate to chosen date -->
+        <div class="calendar-date-setter-container">
+            <mat-form-field appearance="outline">
+                <mat-label>Angezeigtes Datum</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="viewDate" disabled>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker disabled="false"></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <!-- Button to create a new appointment -->
+        <div class="calender-create-appointment-button-container flex-row">
+            <button mat-raised-button (click)="createAppointment()" color="primary">
+                Neuer Termin
+            </button>
+        </div>
+    </div>
+
+    <div [ngSwitch]="view" class="calendar-container">
+        <mwl-calendar-month-view
+            *ngSwitchCase="CalendarView.Month"
+            [viewDate]="viewDate"
+            [events]="displayedEvents"
+            [locale]="locale"
+            [refresh]="refresh"
+            (eventTimesChanged)="eventTimesChanged($event)"
+        >
+        </mwl-calendar-month-view>
+        <mwl-calendar-week-view
+            *ngSwitchCase="CalendarView.Week"
+            [viewDate]="viewDate"
+            [events]="displayedEvents"
+            [locale]="locale"
+            [refresh]="refresh"
+            [weekStartsOn]="1"
+            [dayStartHour]="6"
+            [snapDraggedEvents]="true"
+            [eventSnapSize]="30"
+            (eventTimesChanged)="eventTimesChanged($event)"
+        >
+        </mwl-calendar-week-view>
+    </div>
+</div>

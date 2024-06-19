@@ -22,7 +22,7 @@ export class MainFrameSideNavComponent {
         },
         {
             name: 'Terminplaner',
-            route: '/calender',
+            route: '/calendar',
         },
         {
             name: 'Karteikartenmanager',

@@ -252,8 +252,8 @@ export class GradeOverviewComponent implements OnInit {
             }
 
             const formData = {
-                grade: courseGradeData.grade,
-                plannedGrade: courseGradeData.plannedGrade,
+                grade: parseFloat(courseGradeData.grade),
+                plannedGrade: parseFloat(courseGradeData.plannedGrade),
                 userId: userId,
                 lectureId: lectureId,
             };
@@ -269,6 +269,7 @@ export class GradeOverviewComponent implements OnInit {
             );
         }
     }
+
 
     // Opens a snackbar with a message
     openSnackBar(message: string, action: string) {

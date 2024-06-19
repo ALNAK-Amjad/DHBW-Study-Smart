@@ -20,7 +20,19 @@ export class LoginComponent {
     constructor(
         private loginService: LoginService,
         private router: Router,
-    ) { }
+    ) {}
+
+    // Flag that determines if the passwort is visible
+    hide = true;
+
+    // Check if the user has right E-Mail spelling
+    getErrorMessage() {
+        const emailControl = this.loginForm.get('email');
+        if (emailControl?.hasError('required')) {
+            return 'E-Mail is required!';
+        }
+        return emailControl?.hasError('email') ? 'Not a valid E-Mail!' : '';
+    }
 
     // Invoke Backend-Request for Login
     onSubmit() {

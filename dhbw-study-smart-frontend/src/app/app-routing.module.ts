@@ -14,7 +14,7 @@ import {GradeOverviewComponent} from './features/grade-overview/grade-overview.c
 const featureRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'lectures',
+        redirectTo: 'documents',
         pathMatch: 'full',
     },
     {

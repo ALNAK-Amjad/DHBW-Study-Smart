@@ -23,6 +23,11 @@ INSERT INTO USERS (user_id, first_name, last_name, password, email ,student_numb
 -- Lectures
 INSERT INTO LECTURE (lecture_id, name) VALUES (1, 'Theoretische Informatik I');
 
+-- Appointments
+INSERT INTO APPOINTMENT (appointment_id, user_id, title, start_date, end_date, repetitive) VALUES (1, 1, 'Termin 1', TIMESTAMP '2024-06-18 14:00', TIMESTAMP '2024-06-18 15:00', false);
+INSERT INTO APPOINTMENT (appointment_id, user_id, title, start_date, end_date, repetitive) VALUES (2, 1, 'Termin 2', TIMESTAMP '2024-06-18 15:30', TIMESTAMP '2024-06-18 16:30', false);
+INSERT INTO APPOINTMENT (appointment_id, user_id, title, start_date, end_date, repetitive) VALUES (3, 1, 'Termin 3', TIMESTAMP '2024-06-18 16:30', TIMESTAMP '2024-06-18 18:00', false);
+
 -- Documents
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (1, 'static/Themenmitteilung/TINF-Themenmitteilung.docx', 'TINF-Themenmitteilung.docx');
 INSERT INTO DOCUMENT (document_id, path, filename) VALUES (2, 'static/Themenmitteilung/TINF-Themenmitteilung.odt', 'TINF-Themenmitteilung.odt');

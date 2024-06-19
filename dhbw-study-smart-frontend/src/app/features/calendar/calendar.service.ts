@@ -21,4 +21,9 @@ export class CalendarService {
 
         return this.http.get<RaplaTimetableLecture[]>(this.baseUrl + '/proxy', {params: {url: courseUrlPath}});
     }
+
+    // Get all appointments from the user
+    public getAppointmentsByUserId(userId: number): Observable<any> {
+        return this.http.get(this.baseUrl + '/getAllAppointmentsByUserId', {params: {userId: userId}});
+    }
 }

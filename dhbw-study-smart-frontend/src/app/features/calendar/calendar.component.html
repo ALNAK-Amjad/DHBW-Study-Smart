@@ -33,6 +33,13 @@
                 <mat-datepicker #picker disabled="false"></mat-datepicker>
             </mat-form-field>
         </div>
+
+        <!-- Button to create a new appointment -->
+        <div class="calender-create-appointment-button-container">
+            <button mat-raised-button (click)="createAppointment()" color="primary">
+                Neuer Termin
+            </button>
+        </div>
     </div>
 
     <div [ngSwitch]="view" class="calendar-container">

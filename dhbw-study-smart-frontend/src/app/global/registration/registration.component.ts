@@ -68,9 +68,7 @@ export class RegistrationComponent implements OnInit {
     // Invoke Backend-Request to register a new user
     onSubmit() {
         this.registrationService.register(this.registrationForm.value).subscribe({
-            next: (data) => {
-                console.log(data);
-
+            next: () => {
                 // Forward to Login Page on successful registration
                 this.router.navigate(['/login']);
             },

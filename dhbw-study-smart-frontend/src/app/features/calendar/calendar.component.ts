@@ -11,6 +11,7 @@ import {CalendarService} from './calendar.service';
 import {RaplaTimetableLecture} from './calendar-config';
 import {UserService} from 'src/app/shared/services/user.service';
 import {User} from 'src/app/shared/entities/user';
+import {Appointment} from 'src/app/shared/entities/appointment';
 
 @Component({
     selector: 'app-calendar',
@@ -33,8 +34,6 @@ export class CalendarComponent implements OnInit {
     displayedEvents: CalendarEvent[] = [];
     // Raw data from Rapla
     raplaTimetableData = [];
-    // Appointments of the user
-    userAppointments = [];
 
     constructor(
         private calendarService: CalendarService,
@@ -103,8 +102,14 @@ export class CalendarComponent implements OnInit {
 
     // Get all appointments of the current user
     private getAllAppointmentsByUser(userId: number) {
-        // TODO Get all appointments from the database
-        this.userAppointments = [];
+        this.calendarService.getAppointmentsByUserId(Number(userId)).subscribe({
+            next: (data) => {
+                this.initializeAppointmentsAsCalendarEvent(data);
+            },
+            error: (err) => {
+                console.error('Fetching appointments failed with error:', err);
+            },
+        });
     }
 
     // Convert the timetable data from Rapla to `CalendarEvent` objects
@@ -126,17 +131,19 @@ export class CalendarComponent implements OnInit {
     }
 
     // Convert appointments to `CalendarEvent` objects
-    private initializeAppointmentsAsCalendarEvent() {
-        // TODO Init all appointments
-        // this.displayedEvents.push({
-        //     title: 'test',
-        //     start: new Date(),
-        //     draggable: true,
-        //     resizable: {
-        //         beforeStart: true,
-        //         afterEnd: true,
-        //     },
-        // });
+    private initializeAppointmentsAsCalendarEvent(appointments: Appointment[]) {
+        for (const appointment of appointments) {
+            this.displayedEvents.push({
+                title: appointment.title,
+                start: new Date(appointment.startDate),
+                end: new Date(appointment.endDate),
+                draggable: true,
+                resizable: {
+                    beforeStart: true,
+                    afterEnd: true,
+                },
+            });
+        }
 
         // Refresh the calendar
         this.refresh.next();
@@ -198,5 +205,10 @@ export class CalendarComponent implements OnInit {
 
         // Refresh the calendar
         this.refresh.next();
+    }
+
+    // Create a new appointment
+    public createAppointment() {
+        // todo
     }
 }

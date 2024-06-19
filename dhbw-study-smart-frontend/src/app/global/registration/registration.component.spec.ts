@@ -7,6 +7,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import {MatOptionModule} from '@angular/material/core';
+import {MatIconModule} from '@angular/material/icon';
 
 import {RegistrationComponent} from './registration.component';
 
@@ -25,6 +26,7 @@ describe('RegistrationComponent', () => {
                 MatCardModule,
                 MatSelectModule,
                 MatOptionModule,
+                MatIconModule,
             ],
             declarations: [RegistrationComponent],
         });

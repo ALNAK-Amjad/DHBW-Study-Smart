@@ -6,5 +6,6 @@ export interface Appointment {
     startDate: string;
     endDate: string;
     repetitive: boolean;
-    user: User;
+    user?: User;
+    userId?: string | number;
 }

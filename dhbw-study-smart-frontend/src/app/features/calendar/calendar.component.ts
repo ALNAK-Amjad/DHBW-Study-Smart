@@ -137,6 +137,7 @@ export class CalendarComponent implements OnInit {
     private initializeAppointmentsAsCalendarEvent(appointments: Appointment[]) {
         for (const appointment of appointments) {
             this.displayedEvents.push({
+                id: appointment.appointmentId,
                 title: appointment.title,
                 start: new Date(appointment.startDate),
                 end: new Date(appointment.endDate),
@@ -156,6 +157,28 @@ export class CalendarComponent implements OnInit {
     public eventTimesChanged({event, newStart, newEnd}: CalendarEventTimesChangedEvent): void {
         event.start = newStart;
         event.end = newEnd;
+
+        const userId = localStorage.getItem('userId');
+
+        if (userId) {
+            const formData = {
+                appointmentId: Number(event.id),
+                title: event.title,
+                startDate: event.start,
+                endDate: event.end,
+                repetitive: false,
+                userId: userId,
+            };
+
+            this.calendarService.updateAppointment(formData as any).subscribe(() => {
+                // Refresh the calendar
+                this.refresh.next();
+            });
+        } else {
+            console.error('Aktualisierung des Termins fehlgeschlagen.');
+        }
+
+        // Refresh the calendar
         this.refresh.next();
     }
 
@@ -234,7 +257,7 @@ export class CalendarComponent implements OnInit {
 
     // Save the new appointment
     private saveAppointment(appointment: Appointment) {
-        this.calendarService.createAppointment(appointment).subscribe((data) => {
+        this.calendarService.createAppointment(appointment).subscribe(() => {
             // Refresh the calendar
             this.displayedEvents = [];
             this.initializeCalendar();

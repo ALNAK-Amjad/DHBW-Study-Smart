@@ -32,4 +32,9 @@ export class CalendarService {
     public createAppointment(appointment: Appointment) {
         return this.http.post(this.baseUrl + '/createAppointment', appointment);
     }
+
+    // Update Appointment
+    public updateAppointment(appointment: Appointment) {
+        return this.http.post(this.baseUrl + '/updateAppointment', appointment);
+    }
 }

@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class AppointmentDTO {
+    private Long appointmentId;
     private String title;
     private Timestamp startDate;
     private Timestamp endDate;

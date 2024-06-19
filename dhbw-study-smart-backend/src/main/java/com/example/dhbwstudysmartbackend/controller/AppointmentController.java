@@ -62,4 +62,10 @@ public class AppointmentController {
     public Appointment createAppointment(@RequestBody AppointmentDTO appointment) {
         return appointmentService.createAppointment(appointment);
     }
+
+    // Insert new appointment
+    @PostMapping("/updateAppointment")
+    public Appointment updateAppointment(@RequestBody AppointmentDTO appointment) {
+        return appointmentService.updateAppointment(appointment);
+    }
 }

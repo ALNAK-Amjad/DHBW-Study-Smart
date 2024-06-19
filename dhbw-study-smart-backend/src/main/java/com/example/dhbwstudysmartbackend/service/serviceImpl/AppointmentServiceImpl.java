@@ -43,4 +43,17 @@ public class AppointmentServiceImpl implements AppointmentService {
 
         return appointmentRepo.save(ap);
     }
+
+    @Override
+    public Appointment updateAppointment(AppointmentDTO appointment) {
+        if (appointmentRepo.findById(appointment.getAppointmentId()).isPresent()) {
+            Appointment updatedAp = appointmentRepo.findById(appointment.getAppointmentId()).get();
+            updatedAp.setStartDate(appointment.getStartDate());
+            updatedAp.setEndDate(appointment.getEndDate());
+
+            return appointmentRepo.save(updatedAp);
+        }
+
+        return null;
+    }
 }

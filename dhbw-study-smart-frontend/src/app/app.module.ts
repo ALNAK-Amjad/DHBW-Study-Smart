@@ -21,6 +21,7 @@ import {LectureComponent} from './features/lecture/lecture.component';
 import {DocumentComponent} from './features/document/document.component';
 import {CalendarComponent} from './features/calendar/calendar.component';
 import {NewAppointmentPopupComponent} from './features/calendar/new-appointment-popup/new-appointment-popup.component';
+import {GradeOverviewComponent} from './features/grade-overview/grade-overview.component';
 
 @NgModule({
     declarations: [
@@ -35,6 +36,7 @@ import {NewAppointmentPopupComponent} from './features/calendar/new-appointment-
         DocumentComponent,
         CalendarComponent,
         NewAppointmentPopupComponent,
+        GradeOverviewComponent,
     ],
     imports: [
         BrowserModule,

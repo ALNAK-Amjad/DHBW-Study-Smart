@@ -8,6 +8,7 @@ import {AuthGuard} from './global/route-guard/auth.guard';
 import {LectureComponent} from './features/lecture/lecture.component';
 import {DocumentComponent} from './features/document/document.component';
 import {CalendarComponent} from './features/calendar/calendar.component';
+import {GradeOverviewComponent} from './features/grade-overview/grade-overview.component';
 
 // Child Routes displayed inside the main frame
 const featureRoutes: Routes = [
@@ -27,6 +28,10 @@ const featureRoutes: Routes = [
     {
         path: 'calendar',
         component: CalendarComponent,
+    },
+    {
+        path: 'grades',
+        component: GradeOverviewComponent,
     },
 ];
 
@@ -56,4 +61,5 @@ const routes: Routes = [
     ],
     exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

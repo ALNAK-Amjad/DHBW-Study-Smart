@@ -26,6 +26,7 @@
         "date-fns": "^2.29.3",
         "ngx-filesaver": "^16.0.0",
         "rxjs": "~7.8.0",
+        "sweetalert2": "^11.10.8",
         "tslib": "^2.6.2",
         "zone.js": "~0.13.0"
     },

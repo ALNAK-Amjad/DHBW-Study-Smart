@@ -1,18 +1,20 @@
 package com.example.dhbwstudysmartbackend.entity;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+
+import java.util.Set;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode(exclude = {"semester", "lectureGroups"})
 public class Lecture {
     @Id
     @GenericGenerator(
@@ -31,6 +33,11 @@ public class Lecture {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "SemesterId", nullable = true)
+    @JoinColumn(name = "semester_id", nullable = true)
+    @JsonBackReference
     private Semester semester;
+
+    @OneToMany(mappedBy = "lectureId", fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Set<ConLectureToGroup> lectureGroups;
 }

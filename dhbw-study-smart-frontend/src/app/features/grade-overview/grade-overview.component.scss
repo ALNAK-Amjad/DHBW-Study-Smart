@@ -1,0 +1,70 @@
+.feature-component-container {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+}
+
+.average-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.semester-select, .actual-grade, .planned-grade {
+    flex: 1 0 200px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 100%;
+}
+
+.submit-button.mat-raised-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.course-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.desired-grade, .session-input, .exam-result {
+    width: calc(50% - 10px);
+    min-width: 250px;
+}
+
+.result-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .semester-select, .actual-grade, .planned-grade {
+        flex: 1 0 100%;
+    }
+
+    .desired-grade, .session-input, .exam-result, .result-container {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .course-row, .result-container {
+        flex-direction: column;
+    }
+
+    .submit-button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}

@@ -26,7 +26,6 @@ export class MainFrameHeaderComponent {
         // Remove user data from cache
         localStorage.removeItem('userId');
         localStorage.removeItem('isLoggedIn');
-
         this.router.navigate(['/login']);
     }
 }

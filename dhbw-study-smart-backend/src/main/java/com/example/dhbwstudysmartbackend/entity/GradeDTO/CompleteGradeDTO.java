@@ -5,6 +5,6 @@ public interface CompleteGradeDTO {
     double getPlannedGrade();
     long getUserId();
     long getLectureId();
-    Long getLectureGroupId();  // Wrapper Klasse verwendet, um null-Werte zu erlauben
+    Long getLectureGroupId();
     String getLectureGroupName();
 }

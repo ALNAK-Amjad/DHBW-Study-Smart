@@ -8,8 +8,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class GradeDTO {
-    private long grade;
-    private long plannedGrade;
+    private double grade;
+    private double plannedGrade;
     private long userId;
     private long lectureId;
 

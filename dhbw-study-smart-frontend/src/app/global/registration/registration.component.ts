@@ -15,13 +15,16 @@ export class RegistrationComponent implements OnInit {
     registrationForm: FormGroup = new FormGroup({
         firstName: new FormControl('', [Validators.required]),
         lastName: new FormControl('', [Validators.required]),
-        email: new FormControl('', [Validators.required]),
+        email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [Validators.required]),
         studyProgramId: new FormControl(null),
         courseId: new FormControl(null),
         semesterId: new FormControl(null),
         studentNumber: new FormControl('', [Validators.required]),
     });
+
+    // Flag that determines if the passwort is visible
+    hide = true;
 
     // All selectable study programs for the select input field
     studyPrograms: StudyProgram[] = [];
@@ -42,6 +45,15 @@ export class RegistrationComponent implements OnInit {
         this.getAllStudyPrograms();
         this.getAllCourses();
         this.getAllSemesters();
+    }
+
+    // Check if the user has right E-Mail spelling
+    getErrorMessage() {
+        const emailControl = this.registrationForm.get('email');
+        if (emailControl?.hasError('required')) {
+            return 'You must enter a value';
+        }
+        return emailControl?.hasError('email') ? 'Not a valid email' : '';
     }
 
     // Get all study programs for the select input

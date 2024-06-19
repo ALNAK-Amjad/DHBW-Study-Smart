@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {RaplaTimetableLecture} from './calendar-config';
+import {Appointment} from 'src/app/shared/entities/appointment';
 
 @Injectable({
     providedIn: 'root',
@@ -23,7 +24,12 @@ export class CalendarService {
     }
 
     // Get all appointments from the user
-    public getAppointmentsByUserId(userId: number): Observable<any> {
-        return this.http.get(this.baseUrl + '/getAllAppointmentsByUserId', {params: {userId: userId}});
+    public getAppointmentsByUserId(userId: number): Observable<Appointment[]> {
+        return this.http.get<Appointment[]>(this.baseUrl + '/getAllAppointmentsByUserId', {params: {userId: userId}});
+    }
+
+    // Save new Appointment
+    public createAppointment(appointment: Appointment) {
+        return this.http.post(this.baseUrl + '/createAppointment', appointment);
     }
 }

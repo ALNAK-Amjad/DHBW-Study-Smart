@@ -1,0 +1,16 @@
+.popup-container {
+    padding: 40px;
+
+    .button-container {
+        align-items: center;
+
+        .button-1 {
+            margin-right: 20px;
+        }
+    }
+}
+
+::ng-deep.mat-datepicker-content {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}

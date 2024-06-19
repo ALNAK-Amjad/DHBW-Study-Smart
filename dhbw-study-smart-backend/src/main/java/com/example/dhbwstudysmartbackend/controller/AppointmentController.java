@@ -4,12 +4,15 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.dhbwstudysmartbackend.entity.Appointment;
+import com.example.dhbwstudysmartbackend.entity.appointmentDTO.AppointmentDTO;
 import com.example.dhbwstudysmartbackend.service.AppointmentService;
 
 import reactor.core.publisher.Mono;
@@ -52,5 +55,11 @@ public class AppointmentController {
     public List<Appointment> getAllAppointmentsByUserId(@RequestParam(name = "userId") String userId) {
         List<Appointment> appointments = appointmentService.findAllByUserId(userId);
         return appointments;
+    }
+
+    // Insert new appointment
+    @PostMapping("/createAppointment")
+    public Appointment createAppointment(@RequestBody AppointmentDTO appointment) {
+        return appointmentService.createAppointment(appointment);
     }
 }

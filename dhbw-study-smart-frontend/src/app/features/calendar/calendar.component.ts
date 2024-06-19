@@ -12,6 +12,8 @@ import {RaplaTimetableLecture} from './calendar-config';
 import {UserService} from 'src/app/shared/services/user.service';
 import {User} from 'src/app/shared/entities/user';
 import {Appointment} from 'src/app/shared/entities/appointment';
+import {MatDialog} from '@angular/material/dialog';
+import {NewAppointmentPopupComponent} from './new-appointment-popup/new-appointment-popup.component';
 
 @Component({
     selector: 'app-calendar',
@@ -38,6 +40,7 @@ export class CalendarComponent implements OnInit {
     constructor(
         private calendarService: CalendarService,
         private userService: UserService,
+        public dialog: MatDialog,
     ) {}
 
     ngOnInit(): void {
@@ -209,6 +212,32 @@ export class CalendarComponent implements OnInit {
 
     // Create a new appointment
     public createAppointment() {
-        // todo
+        // Open pop-up
+        const dialogRef = this.dialog.open(NewAppointmentPopupComponent, {
+            width: '450px',
+        });
+
+        // React when pop-up has been closed
+        dialogRef.afterClosed().subscribe((result) => {
+            if (result) {
+                // Prepare Form Data
+                const formData = {
+                    ...result,
+                    userId: localStorage.getItem('userId'),
+                };
+
+                // Save in the DB
+                this.saveAppointment(formData);
+            }
+        });
+    }
+
+    // Save the new appointment
+    private saveAppointment(appointment: Appointment) {
+        this.calendarService.createAppointment(appointment).subscribe((data) => {
+            // Refresh the calendar
+            this.displayedEvents = [];
+            this.initializeCalendar();
+        });
     }
 }

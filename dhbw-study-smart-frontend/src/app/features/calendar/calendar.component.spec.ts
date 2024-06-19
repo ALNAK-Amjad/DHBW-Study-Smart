@@ -13,6 +13,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CalendarComponent} from './calendar.component';
 import {CalendarModule, DateAdapter} from 'angular-calendar';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
+import {MatDialogModule} from '@angular/material/dialog';
 
 describe('CalendarComponent', () => {
     let component: CalendarComponent;
@@ -32,6 +33,7 @@ describe('CalendarComponent', () => {
                 MatInputModule,
                 BrowserAnimationsModule,
                 FormsModule,
+                MatDialogModule,
                 CalendarModule.forRoot({provide: DateAdapter, useFactory: adapterFactory}),
             ],
         });

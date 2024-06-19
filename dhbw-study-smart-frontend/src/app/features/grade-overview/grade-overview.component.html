@@ -66,12 +66,12 @@
             <div class="course-row">
               <mat-form-field appearance="outline" class="desired-grade">
                 <mat-label>Gewünschte Note</mat-label>
-                <input matInput type="number" step="0.1" formControlName="plannedGrade">
+                <input matInput type="number" step="0.1" [min]="1" [max]="6" formControlName="plannedGrade">
               </mat-form-field>
 
               <mat-form-field appearance="outline" class="exam-result">
                 <mat-label>Prüfungsergebnis</mat-label>
-                <input matInput type="number" step="0.1" formControlName="grade">
+                <input matInput type="number" step="0.1" [min]="1" [max]="6" formControlName="grade">
               </mat-form-field>
 
               <button class="submit-button" type="button" (click)="submitCourseGrade(getFormGroupIndex(groupIndex, j))" mat-raised-button color="primary">Submit</button>

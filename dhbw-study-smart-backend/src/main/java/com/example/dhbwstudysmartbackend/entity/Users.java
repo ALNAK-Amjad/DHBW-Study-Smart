@@ -26,7 +26,6 @@ public class Users {
         }
     )
     @GeneratedValue(generator = "userId-sequence-generator")
-
     private Long userId;
 
     @Column

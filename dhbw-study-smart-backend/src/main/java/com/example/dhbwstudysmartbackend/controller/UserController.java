@@ -31,4 +31,10 @@ public class UserController {
     public Users registerUser(@RequestBody RegistrationUserDTO registrationUserDTO) {
         return usersService.registerUser(registrationUserDTO);
     }
+
+    @GetMapping("/getUserById")
+    @ResponseBody
+    public Users getUserById(@RequestParam(name = "userId") Long userId) {
+        return usersService.getUserById(userId);
+    }
 }

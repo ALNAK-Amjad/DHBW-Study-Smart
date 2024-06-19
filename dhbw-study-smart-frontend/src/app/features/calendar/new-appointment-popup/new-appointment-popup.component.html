@@ -1,0 +1,40 @@
+<div class="popup-container">
+    <h2>Neuen Termin erstellen</h2>
+
+    <form [formGroup]="appointmentForm" class="form-container flex-col">
+        <mat-form-field appearance="outline">
+            <mat-label>Titel</mat-label>
+            <input matInput formControlName="title">
+        </mat-form-field>
+
+        <!-- Start Datum -->
+        <mat-form-field appearance="outline">
+            <!-- <mat-label>Anfang</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="startDate">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker> -->
+
+            <mat-label>Anfang</mat-label>
+            <input matInput [ngxMatDatetimePicker]="picker" [min]="getToday()" formControlName="startDate">
+            <ngx-mat-datepicker-toggle matSuffix [for]="picker"></ngx-mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #picker
+                [showSpinners]="true" [stepHour]="1" [stepMinute]="15" color="primary" [enableMeridian]="false">
+            </ngx-mat-datetime-picker>
+        </mat-form-field>
+
+        <!-- End Datum -->
+        <mat-form-field appearance="outline">
+            <mat-label>Ende</mat-label>
+            <input matInput [ngxMatDatetimePicker]="picker2" [min]="getStartDate()" formControlName="endDate">
+            <ngx-mat-datepicker-toggle matSuffix [for]="picker2"></ngx-mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #picker2
+                [showSpinners]="true" [stepHour]="1" [stepMinute]="15" color="primary" [enableMeridian]="false">
+            </ngx-mat-datetime-picker>
+        </mat-form-field>
+
+        <div class="button-container flex-row">
+            <button mat-raised-button class="button-1" (click)="submit()" color="primary" [disabled]="!appointmentForm.valid">Termin erstellen</button>
+            <button mat-raised-button class="button-2" (click)="cancel()" color="primary">Abbrechen</button>
+        </div>
+    </form>
+</div>
